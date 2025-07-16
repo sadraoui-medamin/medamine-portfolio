@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Menu, X, Github, Linkedin, Mail, ExternalLink, Code, Database, Smartphone, Globe } from 'lucide-react';
 import Hero from '../components/Hero';
@@ -7,6 +6,9 @@ import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Navigation from '../components/Navigation';
+import FloatingElements from '../components/FloatingElements';
+import ParticleSystem from '../components/ParticleSystem';
+import LightBeams from '../components/LightBeams';
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,6 +29,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white relative overflow-x-hidden">
+      {/* Enhanced Background System */}
+      <ParticleSystem />
+      <LightBeams />
+      <FloatingElements />
+      
       {/* Enhanced Animated Background */}
       <div className="fixed inset-0 z-0">
         {/* Base gradient */}
@@ -41,22 +48,26 @@ const Index = () => {
           }}
         ></div>
         
-        {/* Floating geometric shapes */}
+        {/* Enhanced floating geometric shapes with more variety */}
         <div className="absolute inset-0 opacity-10">
-          {[...Array(50)].map((_, i) => (
+          {[...Array(80)].map((_, i) => (
             <div
               key={i}
-              className={`absolute animate-float ${
-                i % 4 === 0 ? 'w-2 h-2 bg-blue-400 rounded-full' :
-                i % 4 === 1 ? 'w-1 h-1 bg-purple-400 rounded-full' :
-                i % 4 === 2 ? 'w-1.5 h-1.5 bg-pink-400 rounded-sm rotate-45' :
-                'w-3 h-0.5 bg-cyan-400 rounded-full'
+              className={`absolute ${
+                i % 8 === 0 ? 'w-3 h-3 bg-blue-400 rounded-full animate-orbit' :
+                i % 8 === 1 ? 'w-2 h-2 bg-purple-400 rounded-full animate-spiral' :
+                i % 8 === 2 ? 'w-2.5 h-2.5 bg-pink-400 rounded-sm rotate-45 animate-liquid-motion' :
+                i % 8 === 3 ? 'w-4 h-0.5 bg-cyan-400 rounded-full animate-wave-motion' :
+                i % 8 === 4 ? 'w-1.5 h-1.5 bg-green-400 rounded-full animate-float-complex' :
+                i % 8 === 5 ? 'w-2 h-2 bg-yellow-400 rounded-sm animate-morph' :
+                i % 8 === 6 ? 'w-3 h-1 bg-red-400 rounded-full animate-glitch-1' :
+                'w-1 h-3 bg-indigo-400 rounded-full animate-glitch-2'
               }`}
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 8}s`,
-                animationDuration: `${4 + Math.random() * 8}s`,
+                animationDelay: `${Math.random() * 10}s`,
+                animationDuration: `${4 + Math.random() * 12}s`,
               }}
             />
           ))}
@@ -106,6 +117,27 @@ const Index = () => {
               }}
             />
           ))}
+        </div>
+        
+        {/* Enhanced morphing blobs */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-1/6 left-1/6 w-48 h-48 bg-gradient-radial from-blue-500/20 to-transparent animate-morph blur-3xl" />
+          <div className="absolute bottom-1/6 right-1/6 w-40 h-40 bg-gradient-radial from-purple-500/20 to-transparent animate-morph-reverse blur-2xl" />
+          <div className="absolute top-2/3 left-1/2 w-32 h-32 bg-gradient-radial from-pink-500/20 to-transparent animate-morph-slow blur-xl" />
+          <div className="absolute top-1/2 right-1/4 w-56 h-56 bg-gradient-radial from-cyan-500/15 to-transparent animate-liquid-motion blur-3xl" />
+        </div>
+        
+        {/* Energy vortex effects */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 border-2 border-blue-400/30 rounded-full animate-spin" style={{ animationDuration: '20s' }}>
+            <div className="absolute inset-4 border border-blue-400/20 rounded-full animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}>
+              <div className="absolute inset-4 border border-blue-400/10 rounded-full animate-spin" style={{ animationDuration: '10s' }} />
+            </div>
+          </div>
+          
+          <div className="absolute bottom-1/4 right-1/4 w-48 h-48 border-2 border-purple-400/30 rounded-full animate-spin" style={{ animationDuration: '25s', animationDirection: 'reverse' }}>
+            <div className="absolute inset-6 border border-purple-400/20 rounded-full animate-spin" style={{ animationDuration: '18s' }} />
+          </div>
         </div>
       </div>
 
