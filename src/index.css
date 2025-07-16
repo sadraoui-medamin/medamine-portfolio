@@ -84,15 +84,6 @@ All colors MUST be HSL.
     background: linear-gradient(180deg, hsl(217.2 91.2% 69.8%), hsl(271.5 81.3% 65.9%));
   }
 
-  /* Custom glow effects */
-  .glow-blue {
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.2), 0 0 30px rgba(59, 130, 246, 0.1);
-  }
-
-  .glow-purple {
-    box-shadow: 0 0 10px rgba(147, 51, 234, 0.3), 0 0 20px rgba(147, 51, 234, 0.2), 0 0 30px rgba(147, 51, 234, 0.1);
-  }
-
   /* Enhanced Cyberpunk grid animation */
   .cyber-grid {
     background-image: 
@@ -105,15 +96,6 @@ All colors MUST be HSL.
   @keyframes grid-move {
     0% { transform: translate(0, 0); }
     100% { transform: translate(50px, 50px); }
-  }
-
-  /* Neon text effect */
-  .neon-text {
-    text-shadow: 
-      0 0 5px currentColor,
-      0 0 10px currentColor,
-      0 0 15px currentColor,
-      0 0 20px currentColor;
   }
 
   /* Enhanced particle effect background */
@@ -194,14 +176,43 @@ All colors MUST be HSL.
     50% { background-position: 100% 50%; }
   }
 
-  /* New scanning line animation */
+  /* New enhanced animations */
   @keyframes scan {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    0% { transform: translateX(-100%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateX(100%); opacity: 0; }
   }
 
   .animate-scan {
     animation: scan 2s ease-in-out infinite;
+  }
+
+  @keyframes slide-right {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .animate-slide-right {
+    animation: slide-right 3s ease-in-out infinite;
+  }
+
+  @keyframes slide-left {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+
+  .animate-slide-left {
+    animation: slide-left 3s ease-in-out infinite;
+  }
+
+  @keyframes slide-down {
+    0% { transform: translateY(-100%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(100%); opacity: 0; }
+  }
+
+  .animate-slide-down {
+    animation: slide-down 2s ease-in-out infinite;
   }
 
   /* Enhanced shimmer effect */
@@ -262,6 +273,113 @@ All colors MUST be HSL.
   .ripple {
     animation: ripple 0.6s linear;
   }
+
+  /* New advanced effects */
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+    }
+    50% {
+      box-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor, 0 0 40px currentColor;
+    }
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  /* Gradient radial utility */
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+
+  /* Enhanced particle burst effect */
+  @keyframes particle-burst {
+    0% {
+      transform: scale(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  .animate-particle-burst {
+    animation: particle-burst 0.8s ease-out forwards;
+  }
+
+  /* Floating animation variations */
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+
+  .animate-float-slow {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+
+  @keyframes float-fast {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(-3deg); }
+  }
+
+  .animate-float-fast {
+    animation: float-fast 3s ease-in-out infinite;
+  }
+
+  /* Text glow effect */
+  .text-glow {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor,
+      0 0 20px currentColor;
+  }
+
+  /* Neon border effect */
+  .border-neon {
+    border: 1px solid transparent;
+    background: linear-gradient(var(--background), var(--background)) padding-box,
+                linear-gradient(45deg, hsl(217.2 91.2% 59.8%), hsl(271.5 81.3% 55.9%)) border-box;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+
+  /* Enhanced hover effects */
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .hover-glow:hover {
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.5));
+  }
+
+  /* Magnetic effect */
+  @keyframes magnetic-pull {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  .magnetic:hover {
+    animation: magnetic-pull 0.3s ease-in-out;
+  }
 }
 
 @layer utilities {
@@ -282,15 +400,16 @@ All colors MUST be HSL.
   .backdrop-blur-xl { backdrop-filter: blur(16px); }
   .backdrop-blur-2xl { backdrop-filter: blur(24px); }
 
+  /* Transform GPU acceleration */
+  .transform-gpu {
+    transform: translateZ(0);
+  }
+
   /* Enhanced gaming-specific utilities */
   .border-glow {
     border: 1px solid transparent;
     background: linear-gradient(var(--background), var(--background)) padding-box,
                 linear-gradient(45deg, hsl(217.2 91.2% 59.8%), hsl(271.5 81.3% 55.9%)) border-box;
-  }
-
-  .text-glow {
-    text-shadow: 0 0 15px currentColor, 0 0 30px currentColor;
   }
 
   .shadow-glow {
@@ -305,13 +424,13 @@ All colors MUST be HSL.
     box-shadow: 0 0 30px rgba(34, 197, 94, 0.4);
   }
 
+  .shadow-glow-pink {
+    box-shadow: 0 0 30px rgba(236, 72, 153, 0.4);
+  }
+
   /* Interactive transform utilities */
   .hover-float:hover {
     transform: translateY(-8px);
-  }
-
-  .hover-glow:hover {
-    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.5));
   }
 
   /* Perspective utilities for 3D effects */
@@ -321,5 +440,30 @@ All colors MUST be HSL.
 
   .transform-style-3d {
     transform-style: preserve-3d;
+  }
+
+  /* Energy wave effect */
+  .energy-wave {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .energy-wave::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+    background-size: 400% 400%;
+    z-index: -1;
+    animation: energy-pulse 3s ease-in-out infinite;
+    border-radius: inherit;
+  }
+
+  @keyframes energy-pulse {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
   }
 }
