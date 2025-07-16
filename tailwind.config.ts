@@ -129,11 +129,11 @@ export default {
 				'scale-in': {
 					'0%': {
 						opacity: '0',
-						transform: 'scale(0.95)'
+						transform: 'scale(0.9) translateY(20px)'
 					},
 					'100%': {
 						opacity: '1',
-						transform: 'scale(1)'
+						transform: 'scale(1) translateY(0)'
 					}
 				},
 				'glow': {
@@ -146,10 +146,13 @@ export default {
 				},
 				'float': {
 					'0%, 100%': {
-						transform: 'translateY(0px)'
+						transform: 'translateY(0px) rotate(0deg)'
 					},
-					'50%': {
-						transform: 'translateY(-10px)'
+					'33%': {
+						transform: 'translateY(-10px) rotate(2deg)'
+					},
+					'66%': {
+						transform: 'translateY(-5px) rotate(-1deg)'
 					}
 				},
 				'typing': {
@@ -167,6 +170,60 @@ export default {
 					'51%, 100%': {
 						opacity: '0'
 					}
+				},
+				'spin-slow': {
+					'0%': {
+						transform: 'rotate(0deg)'
+					},
+					'100%': {
+						transform: 'rotate(360deg)'
+					}
+				},
+				'pulse-glow': {
+					'0%, 100%': {
+						opacity: '0.5',
+						transform: 'scale(1)'
+					},
+					'50%': {
+						opacity: '1',
+						transform: 'scale(1.05)'
+					}
+				},
+				'bounce-slow': {
+					'0%, 100%': {
+						transform: 'translateY(0)',
+						animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)'
+					},
+					'50%': {
+						transform: 'translateY(-15px)',
+						animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)'
+					}
+				},
+				'wiggle': {
+					'0%, 100%': {
+						transform: 'rotate(-3deg)'
+					},
+					'50%': {
+						transform: 'rotate(3deg)'
+					}
+				},
+				'shimmer': {
+					'0%': {
+						transform: 'translateX(-100%)'
+					},
+					'100%': {
+						transform: 'translateX(100%)'
+					}
+				},
+				'matrix-rain': {
+					'0%': {
+						transform: 'translateY(-100vh)',
+						opacity: '1'
+					},
+					'100%': {
+						transform: 'translateY(100vh)',
+						opacity: '0'
+					}
 				}
 			},
 			animation: {
@@ -178,9 +235,15 @@ export default {
 				'slide-in-right': 'slide-in-right 0.6s ease-out forwards',
 				'scale-in': 'scale-in 0.5s ease-out forwards',
 				'glow': 'glow 2s ease-in-out infinite alternate',
-				'float': 'float 3s ease-in-out infinite',
+				'float': 'float 4s ease-in-out infinite',
 				'typing': 'typing 3.5s steps(40, end)',
-				'blink': 'blink 1s infinite'
+				'blink': 'blink 1s infinite',
+				'spin-slow': 'spin-slow 8s linear infinite',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+				'bounce-slow': 'bounce-slow 3s ease-in-out infinite',
+				'wiggle': 'wiggle 1s ease-in-out infinite',
+				'shimmer': 'shimmer 2s ease-in-out infinite',
+				'matrix-rain': 'matrix-rain 3s linear infinite'
 			}
 		}
 	},
