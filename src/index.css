@@ -732,4 +732,65 @@ All colors MUST be HSL.
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
   }
+
+  /* Slower animation variants for splash screen and background */
+  .animate-float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin 4s linear infinite;
+  }
+
+  .animate-pulse-glow-slow {
+    animation: pulse-glow 8s ease-in-out infinite;
+  }
+
+  .animate-morph-ultra-slow {
+    animation: morph 15s ease-in-out infinite;
+  }
+
+  .animate-morph-reverse-slow {
+    animation: morph 12s ease-in-out infinite reverse;
+  }
+
+  .animate-liquid-motion-slow {
+    animation: liquid-motion 8s ease-in-out infinite;
+  }
+
+  .digital-rain-slow {
+    animation: digital-rain 8s linear infinite;
+  }
+
+  .cyber-grid-slow {
+    background-image: 
+      linear-gradient(rgba(59, 130, 246, 0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.15) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: grid-move-slow 40s linear infinite;
+  }
+
+  @keyframes grid-move-slow {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+  }
+
+  @keyframes loading-bar {
+    0% { width: 0%; }
+    50% { width: 60%; }
+    100% { width: 100%; }
+  }
+
+  .animate-loading-bar {
+    animation: loading-bar 2s ease-in-out;
+  }
+
+  @keyframes fade-in {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out;
+  }
 }

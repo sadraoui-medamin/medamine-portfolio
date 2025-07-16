@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Menu, X, Github, Linkedin, Mail, ExternalLink, Code, Database, Smartphone, Globe } from 'lucide-react';
 import Hero from '../components/Hero';
@@ -9,10 +10,12 @@ import Navigation from '../components/Navigation';
 import FloatingElements from '../components/FloatingElements';
 import ParticleSystem from '../components/ParticleSystem';
 import LightBeams from '../components/LightBeams';
+import SplashScreen from '../components/SplashScreen';
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [showSplashScreen, setShowSplashScreen] = useState(true);
 
   useEffect(() => {
     // Add smooth scrolling behavior
@@ -27,6 +30,10 @@ const Index = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  if (showSplashScreen) {
+    return <SplashScreen onComplete={() => setShowSplashScreen(false)} />;
+  }
+
   return (
     <div className="min-h-screen bg-gray-900 text-white relative overflow-x-hidden">
       {/* Enhanced Background System */}
@@ -34,23 +41,23 @@ const Index = () => {
       <LightBeams />
       <FloatingElements />
       
-      {/* Enhanced Animated Background */}
+      {/* Enhanced Animated Background with slower animations */}
       <div className="fixed inset-0 z-0">
         {/* Base gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900/20 to-blue-900/20"></div>
         
         {/* Interactive mouse follower */}
         <div 
-          className="absolute w-96 h-96 bg-gradient-radial from-blue-500/10 to-transparent rounded-full pointer-events-none transition-all duration-300 ease-out"
+          className="absolute w-96 h-96 bg-gradient-radial from-blue-500/10 to-transparent rounded-full pointer-events-none transition-all duration-500 ease-out"
           style={{
             left: mousePosition.x - 192,
             top: mousePosition.y - 192,
           }}
         ></div>
         
-        {/* Enhanced floating geometric shapes with more variety */}
+        {/* Enhanced floating geometric shapes with slower, more elegant animations */}
         <div className="absolute inset-0 opacity-10">
-          {[...Array(80)].map((_, i) => (
+          {[...Array(60)].map((_, i) => (
             <div
               key={i}
               className={`absolute ${
@@ -66,77 +73,77 @@ const Index = () => {
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 10}s`,
-                animationDuration: `${4 + Math.random() * 12}s`,
+                animationDelay: `${Math.random() * 15}s`,
+                animationDuration: `${8 + Math.random() * 20}s`,
               }}
             />
           ))}
         </div>
         
-        {/* Enhanced animated grid pattern */}
+        {/* Enhanced animated grid pattern with slower movement */}
         <div className="absolute inset-0 opacity-20">
-          <div className="cyber-grid"></div>
+          <div className="cyber-grid-slow"></div>
         </div>
         
-        {/* Multiple pulsing gradients */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-blue-500/5 to-transparent rounded-full animate-pulse-glow"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-radial from-purple-500/5 to-transparent rounded-full animate-pulse-glow" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-radial from-pink-500/5 to-transparent rounded-full animate-pulse-glow" style={{ animationDelay: '4s' }}></div>
+        {/* Multiple pulsing gradients with slower rhythm */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-blue-500/5 to-transparent rounded-full animate-pulse-glow-slow"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-radial from-purple-500/5 to-transparent rounded-full animate-pulse-glow-slow" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-radial from-pink-500/5 to-transparent rounded-full animate-pulse-glow-slow" style={{ animationDelay: '8s' }}></div>
         
-        {/* Moving light beams */}
+        {/* Moving light beams with slower, more elegant movement */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-slide-right" style={{ top: '20%', animationDuration: '15s' }}></div>
-          <div className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-purple-400 to-transparent animate-slide-left" style={{ top: '40%', animationDuration: '18s' }}></div>
-          <div className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-pink-400 to-transparent animate-slide-right" style={{ top: '60%', animationDuration: '20s' }}></div>
-          <div className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-slide-left" style={{ top: '80%', animationDuration: '22s' }}></div>
+          <div className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-slide-right" style={{ top: '20%', animationDuration: '25s' }}></div>
+          <div className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-purple-400 to-transparent animate-slide-left" style={{ top: '40%', animationDuration: '30s' }}></div>
+          <div className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-pink-400 to-transparent animate-slide-right" style={{ top: '60%', animationDuration: '35s' }}></div>
+          <div className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-slide-left" style={{ top: '80%', animationDuration: '40s' }}></div>
         </div>
         
-        {/* Vertical light beams */}
+        {/* Vertical light beams with slower movement */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute h-full w-0.5 bg-gradient-to-b from-transparent via-blue-400 to-transparent animate-slide-down" style={{ left: '25%', animationDuration: '12s' }}></div>
-          <div className="absolute h-full w-0.5 bg-gradient-to-b from-transparent via-purple-400 to-transparent animate-slide-down" style={{ left: '75%', animationDuration: '16s', animationDelay: '3s' }}></div>
+          <div className="absolute h-full w-0.5 bg-gradient-to-b from-transparent via-blue-400 to-transparent animate-slide-down" style={{ left: '25%', animationDuration: '20s' }}></div>
+          <div className="absolute h-full w-0.5 bg-gradient-to-b from-transparent via-purple-400 to-transparent animate-slide-down" style={{ left: '75%', animationDuration: '25s', animationDelay: '5s' }}></div>
         </div>
         
-        {/* Rotating elements */}
+        {/* Rotating elements with much slower rotation */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-1/3 left-1/6 w-32 h-32 border border-blue-400/30 rounded-full animate-spin" style={{ animationDuration: '20s' }}></div>
-          <div className="absolute bottom-1/3 right-1/6 w-24 h-24 border border-purple-400/30 rounded-full animate-spin" style={{ animationDuration: '25s', animationDirection: 'reverse' }}></div>
-          <div className="absolute top-2/3 left-2/3 w-16 h-16 border border-pink-400/30 rounded-lg rotate-45 animate-spin" style={{ animationDuration: '15s' }}></div>
+          <div className="absolute top-1/3 left-1/6 w-32 h-32 border border-blue-400/30 rounded-full animate-spin" style={{ animationDuration: '40s' }}></div>
+          <div className="absolute bottom-1/3 right-1/6 w-24 h-24 border border-purple-400/30 rounded-full animate-spin" style={{ animationDuration: '50s', animationDirection: 'reverse' }}></div>
+          <div className="absolute top-2/3 left-2/3 w-16 h-16 border border-pink-400/30 rounded-lg rotate-45 animate-spin" style={{ animationDuration: '30s' }}></div>
         </div>
         
-        {/* Digital rain effect */}
+        {/* Digital rain effect with slower drops */}
         <div className="absolute inset-0 opacity-5">
-          {[...Array(20)].map((_, i) => (
+          {[...Array(15)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-0.5 h-20 bg-gradient-to-b from-green-400 to-transparent digital-rain"
+              className="absolute w-0.5 h-20 bg-gradient-to-b from-green-400 to-transparent digital-rain-slow"
               style={{
                 left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${3 + Math.random() * 4}s`,
+                animationDelay: `${Math.random() * 8}s`,
+                animationDuration: `${6 + Math.random() * 8}s`,
               }}
             />
           ))}
         </div>
         
-        {/* Enhanced morphing blobs */}
+        {/* Enhanced morphing blobs with slower transformations */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-1/6 left-1/6 w-48 h-48 bg-gradient-radial from-blue-500/20 to-transparent animate-morph blur-3xl" />
-          <div className="absolute bottom-1/6 right-1/6 w-40 h-40 bg-gradient-radial from-purple-500/20 to-transparent animate-morph-reverse blur-2xl" />
+          <div className="absolute top-1/6 left-1/6 w-48 h-48 bg-gradient-radial from-blue-500/20 to-transparent animate-morph-ultra-slow blur-3xl" />
+          <div className="absolute bottom-1/6 right-1/6 w-40 h-40 bg-gradient-radial from-purple-500/20 to-transparent animate-morph-reverse-slow blur-2xl" />
           <div className="absolute top-2/3 left-1/2 w-32 h-32 bg-gradient-radial from-pink-500/20 to-transparent animate-morph-slow blur-xl" />
-          <div className="absolute top-1/2 right-1/4 w-56 h-56 bg-gradient-radial from-cyan-500/15 to-transparent animate-liquid-motion blur-3xl" />
+          <div className="absolute top-1/2 right-1/4 w-56 h-56 bg-gradient-radial from-cyan-500/15 to-transparent animate-liquid-motion-slow blur-3xl" />
         </div>
         
-        {/* Energy vortex effects */}
+        {/* Energy vortex effects with slower rotation */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 border-2 border-blue-400/30 rounded-full animate-spin" style={{ animationDuration: '20s' }}>
-            <div className="absolute inset-4 border border-blue-400/20 rounded-full animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}>
-              <div className="absolute inset-4 border border-blue-400/10 rounded-full animate-spin" style={{ animationDuration: '10s' }} />
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 border-2 border-blue-400/30 rounded-full animate-spin" style={{ animationDuration: '45s' }}>
+            <div className="absolute inset-4 border border-blue-400/20 rounded-full animate-spin" style={{ animationDuration: '35s', animationDirection: 'reverse' }}>
+              <div className="absolute inset-4 border border-blue-400/10 rounded-full animate-spin" style={{ animationDuration: '25s' }} />
             </div>
           </div>
           
-          <div className="absolute bottom-1/4 right-1/4 w-48 h-48 border-2 border-purple-400/30 rounded-full animate-spin" style={{ animationDuration: '25s', animationDirection: 'reverse' }}>
-            <div className="absolute inset-6 border border-purple-400/20 rounded-full animate-spin" style={{ animationDuration: '18s' }} />
+          <div className="absolute bottom-1/4 right-1/4 w-48 h-48 border-2 border-purple-400/30 rounded-full animate-spin" style={{ animationDuration: '55s', animationDirection: 'reverse' }}>
+            <div className="absolute inset-6 border border-purple-400/20 rounded-full animate-spin" style={{ animationDuration: '40s' }} />
           </div>
         </div>
       </div>
