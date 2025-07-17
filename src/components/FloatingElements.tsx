@@ -1,34 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Sparkles, Star, Zap, Diamond, Circle, Square, Triangle } from 'lucide-react';
 
 const FloatingElements = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const targetPosition = useRef({ x: 0, y: 0 });
 
-  // Smooth interpolation
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      targetPosition.current = { x: e.clientX, y: e.clientY };
-    };
-
-    let animationFrameId: number;
-
-    const smoothFollow = () => {
-      setMousePosition(prev => {
-        const dx = (targetPosition.current.x - prev.x) * 0.05;
-        const dy = (targetPosition.current.y - prev.y) * 0.05;
-        return { x: prev.x + dx, y: prev.y + dy };
-      });
-      animationFrameId = requestAnimationFrame(smoothFollow);
+      setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    animationFrameId = requestAnimationFrame(smoothFollow);
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const shapes = [
@@ -43,49 +25,55 @@ const FloatingElements = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-5 overflow-hidden">
-      {/* Smoothly following background blobs */}
+      {/* Advanced mouse follower with trail - much slower transition */}
       <div
-        className="absolute w-64 h-64 bg-gradient-radial from-blue-500/20 via-purple-500/10 to-transparent rounded-full blur-xl transition-transform duration-1000 ease-out"
+        className="absolute w-64 h-64 bg-gradient-radial from-blue-500/20 via-purple-500/10 to-transparent rounded-full transition-all duration-1000 ease-out blur-xl"
         style={{
-          transform: `translate(${mousePosition.x - 128}px, ${mousePosition.y - 128}px) scale(${1 + Math.sin(Date.now() * 0.001) * 0.1})`,
+          left: mousePosition.x - 128,
+          top: mousePosition.y - 128,
+          transform: scale(${1 + Math.sin(Date.now() * 0.001) * 0.1}),
         }}
       />
+      
+      {/* Secondary mouse follower - even slower */}
       <div
-        className="absolute w-32 h-32 bg-gradient-radial from-pink-500/15 to-transparent rounded-full transition-transform duration-1500 ease-out"
+        className="absolute w-32 h-32 bg-gradient-radial from-pink-500/15 to-transparent rounded-full transition-all duration-1500 ease-out"
         style={{
-          transform: `translate(${mousePosition.x - 64}px, ${mousePosition.y - 64}px) rotate(${Date.now() * 0.01}deg)`,
+          left: mousePosition.x - 64,
+          top: mousePosition.y - 64,
+          transform: rotate(${Date.now() * 0.01}deg),
         }}
       />
 
-      {/* Geometric shapes floating */}
+      {/* Floating geometric shapes with complex animations */}
       {[...Array(15)].map((_, i) => {
-        const { Icon, color, size } = shapes[i % shapes.length];
+        const ShapeIcon = shapes[i % shapes.length].Icon;
         return (
           <div
             key={i}
-            className={`absolute ${color} ${size} opacity-60 transition-transform duration-1000 ease-in-out`}
+            className={absolute ${shapes[i % shapes.length].color} ${shapes[i % shapes.length].size} animate-float-complex opacity-60}
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 8}s`,
-              animationDuration: `${6 + Math.random() * 10}s`,
-              transform: `rotate(${Math.random() * 360}deg)`,
+              left: ${Math.random() * 100}%,
+              top: ${Math.random() * 100}%,
+              animationDelay: ${Math.random() * 8}s,
+              animationDuration: ${6 + Math.random() * 10}s,
+              transform: rotate(${Math.random() * 360}deg),
             }}
           >
-            <Icon className="w-full h-full animate-spin-slow" />
+            <ShapeIcon className="w-full h-full animate-spin-slow" />
           </div>
         );
       })}
 
-      {/* Wave elements */}
+      {/* Wave motion elements */}
       {[...Array(8)].map((_, i) => (
         <div
-          key={`wave-${i}`}
+          key={wave-${i}}
           className="absolute w-1 h-20 bg-gradient-to-b from-blue-400/30 via-purple-400/20 to-transparent animate-wave-motion"
           style={{
-            left: `${(i * 12.5) + Math.random() * 10}%`,
-            animationDelay: `${i * 0.5}s`,
-            animationDuration: `${4 + Math.random() * 3}s`,
+            left: ${(i * 12.5) + Math.random() * 10}%,
+            animationDelay: ${i * 0.5}s,
+            animationDuration: ${4 + Math.random() * 3}s,
           }}
         />
       ))}
