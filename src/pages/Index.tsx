@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Menu, X, Github, Linkedin, Mail, ExternalLink, Code, Database, Smartphone, Globe } from 'lucide-react';
 import Hero from '../components/Hero';
@@ -13,20 +14,11 @@ import SplashScreen from '../components/SplashScreen';
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [showSplashScreen, setShowSplashScreen] = useState(true);
 
   useEffect(() => {
     // Add smooth scrolling behavior
     document.documentElement.style.scrollBehavior = 'smooth';
-
-    // Mouse tracking for interactive effects - slower transition
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   if (showSplashScreen) {
@@ -44,15 +36,6 @@ const Index = () => {
       <div className="fixed inset-0 z-0">
         {/* Base gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900/20 to-blue-900/20"></div>
-        
-        {/* Interactive mouse follower - much slower transition */}
-        <div 
-          className="absolute w-96 h-96 bg-gradient-radial from-blue-500/10 to-transparent rounded-full pointer-events-none transition-all duration-2000 ease-out"
-          style={{
-            left: mousePosition.x - 192,
-            top: mousePosition.y - 192,
-          }}
-        ></div>
         
         {/* Enhanced floating geometric shapes with slower, more elegant animations */}
         <div className="absolute inset-0 opacity-10">
