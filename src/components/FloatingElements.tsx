@@ -26,9 +26,9 @@ const FloatingElements = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-5 overflow-hidden">
-      {/* Advanced mouse follower with trail */}
+      {/* Advanced mouse follower with trail - much slower transition */}
       <div
-        className="absolute w-64 h-64 bg-gradient-radial from-blue-500/20 via-purple-500/10 to-transparent rounded-full transition-all duration-300 ease-out blur-xl"
+        className="absolute w-64 h-64 bg-gradient-radial from-blue-500/20 via-purple-500/10 to-transparent rounded-full transition-all duration-1000 ease-out blur-xl"
         style={{
           left: mousePosition.x - 128,
           top: mousePosition.y - 128,
@@ -36,9 +36,9 @@ const FloatingElements = () => {
         }}
       />
       
-      {/* Secondary mouse follower */}
+      {/* Secondary mouse follower - even slower */}
       <div
-        className="absolute w-32 h-32 bg-gradient-radial from-pink-500/15 to-transparent rounded-full transition-all duration-500 ease-out"
+        className="absolute w-32 h-32 bg-gradient-radial from-pink-500/15 to-transparent rounded-full transition-all duration-1500 ease-out"
         style={{
           left: mousePosition.x - 64,
           top: mousePosition.y - 64,

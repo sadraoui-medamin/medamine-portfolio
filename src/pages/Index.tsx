@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Menu, X, Github, Linkedin, Mail, ExternalLink, Code, Database, Smartphone, Globe } from 'lucide-react';
 import Hero from '../components/Hero';
@@ -21,7 +20,7 @@ const Index = () => {
     // Add smooth scrolling behavior
     document.documentElement.style.scrollBehavior = 'smooth';
 
-    // Mouse tracking for interactive effects
+    // Mouse tracking for interactive effects - slower transition
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -46,9 +45,9 @@ const Index = () => {
         {/* Base gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900/20 to-blue-900/20"></div>
         
-        {/* Interactive mouse follower */}
+        {/* Interactive mouse follower - much slower transition */}
         <div 
-          className="absolute w-96 h-96 bg-gradient-radial from-blue-500/10 to-transparent rounded-full pointer-events-none transition-all duration-500 ease-out"
+          className="absolute w-96 h-96 bg-gradient-radial from-blue-500/10 to-transparent rounded-full pointer-events-none transition-all duration-2000 ease-out"
           style={{
             left: mousePosition.x - 192,
             top: mousePosition.y - 192,
@@ -85,12 +84,10 @@ const Index = () => {
           <div className="cyber-grid-slow"></div>
         </div>
         
-        {/* Multiple pulsing gradients with slower rhythm */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-blue-500/5 to-transparent rounded-full animate-pulse-glow-slow"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-radial from-purple-500/5 to-transparent rounded-full animate-pulse-glow-slow" style={{ animationDelay: '4s' }}></div>
         <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-radial from-pink-500/5 to-transparent rounded-full animate-pulse-glow-slow" style={{ animationDelay: '8s' }}></div>
         
-        {/* Moving light beams with slower, more elegant movement */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-slide-right" style={{ top: '20%', animationDuration: '25s' }}></div>
           <div className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-purple-400 to-transparent animate-slide-left" style={{ top: '40%', animationDuration: '30s' }}></div>
@@ -98,20 +95,17 @@ const Index = () => {
           <div className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-slide-left" style={{ top: '80%', animationDuration: '40s' }}></div>
         </div>
         
-        {/* Vertical light beams with slower movement */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute h-full w-0.5 bg-gradient-to-b from-transparent via-blue-400 to-transparent animate-slide-down" style={{ left: '25%', animationDuration: '20s' }}></div>
           <div className="absolute h-full w-0.5 bg-gradient-to-b from-transparent via-purple-400 to-transparent animate-slide-down" style={{ left: '75%', animationDuration: '25s', animationDelay: '5s' }}></div>
         </div>
         
-        {/* Rotating elements with much slower rotation */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-1/3 left-1/6 w-32 h-32 border border-blue-400/30 rounded-full animate-spin" style={{ animationDuration: '40s' }}></div>
           <div className="absolute bottom-1/3 right-1/6 w-24 h-24 border border-purple-400/30 rounded-full animate-spin" style={{ animationDuration: '50s', animationDirection: 'reverse' }}></div>
           <div className="absolute top-2/3 left-2/3 w-16 h-16 border border-pink-400/30 rounded-lg rotate-45 animate-spin" style={{ animationDuration: '30s' }}></div>
         </div>
         
-        {/* Digital rain effect with slower drops */}
         <div className="absolute inset-0 opacity-5">
           {[...Array(15)].map((_, i) => (
             <div
@@ -126,7 +120,6 @@ const Index = () => {
           ))}
         </div>
         
-        {/* Enhanced morphing blobs with slower transformations */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-1/6 left-1/6 w-48 h-48 bg-gradient-radial from-blue-500/20 to-transparent animate-morph-ultra-slow blur-3xl" />
           <div className="absolute bottom-1/6 right-1/6 w-40 h-40 bg-gradient-radial from-purple-500/20 to-transparent animate-morph-reverse-slow blur-2xl" />
@@ -134,7 +127,6 @@ const Index = () => {
           <div className="absolute top-1/2 right-1/4 w-56 h-56 bg-gradient-radial from-cyan-500/15 to-transparent animate-liquid-motion-slow blur-3xl" />
         </div>
         
-        {/* Energy vortex effects with slower rotation */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-1/4 left-1/4 w-64 h-64 border-2 border-blue-400/30 rounded-full animate-spin" style={{ animationDuration: '45s' }}>
             <div className="absolute inset-4 border border-blue-400/20 rounded-full animate-spin" style={{ animationDuration: '35s', animationDirection: 'reverse' }}>

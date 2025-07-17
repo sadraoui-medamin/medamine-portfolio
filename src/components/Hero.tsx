@@ -50,14 +50,14 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Cursor glow effect */}
+      {/* Cursor glow effect - much slower transition */}
       <div
         className="fixed w-96 h-96 pointer-events-none z-10 opacity-20"
         style={{
           left: mousePosition.x - 192,
           top: mousePosition.y - 192,
           background: 'radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%)',
-          transition: 'all 0.1s ease-out'
+          transition: 'all 1s ease-out'
         }}
       />
 
