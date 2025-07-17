@@ -1,17 +1,34 @@
-
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Sparkles, Star, Zap, Diamond, Circle, Square, Triangle } from 'lucide-react';
 
 const FloatingElements = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const targetPosition = useRef({ x: 0, y: 0 });
 
+  // Smooth interpolation
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      targetPosition.current = { x: e.clientX, y: e.clientY };
+    };
+
+    let animationFrameId: number;
+
+    const smoothFollow = () => {
+      setMousePosition(prev => {
+        const dx = (targetPosition.current.x - prev.x) * 0.05;
+        const dy = (targetPosition.current.y - prev.y) * 0.05;
+        return { x: prev.x + dx, y: prev.y + dy };
+      });
+      animationFrameId = requestAnimationFrame(smoothFollow);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    animationFrameId = requestAnimationFrame(smoothFollow);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   const shapes = [
@@ -26,33 +43,27 @@ const FloatingElements = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-5 overflow-hidden">
-      {/* Advanced mouse follower with trail - much slower transition */}
+      {/* Smoothly following background blobs */}
       <div
-        className="absolute w-64 h-64 bg-gradient-radial from-blue-500/20 via-purple-500/10 to-transparent rounded-full transition-all duration-1000 ease-out blur-xl"
+        className="absolute w-64 h-64 bg-gradient-radial from-blue-500/20 via-purple-500/10 to-transparent rounded-full blur-xl transition-transform duration-1000 ease-out"
         style={{
-          left: mousePosition.x - 128,
-          top: mousePosition.y - 128,
-          transform: `scale(${1 + Math.sin(Date.now() * 0.001) * 0.1})`,
+          transform: `translate(${mousePosition.x - 128}px, ${mousePosition.y - 128}px) scale(${1 + Math.sin(Date.now() * 0.001) * 0.1})`,
         }}
       />
-      
-      {/* Secondary mouse follower - even slower */}
       <div
-        className="absolute w-32 h-32 bg-gradient-radial from-pink-500/15 to-transparent rounded-full transition-all duration-1500 ease-out"
+        className="absolute w-32 h-32 bg-gradient-radial from-pink-500/15 to-transparent rounded-full transition-transform duration-1500 ease-out"
         style={{
-          left: mousePosition.x - 64,
-          top: mousePosition.y - 64,
-          transform: `rotate(${Date.now() * 0.01}deg)`,
+          transform: `translate(${mousePosition.x - 64}px, ${mousePosition.y - 64}px) rotate(${Date.now() * 0.01}deg)`,
         }}
       />
 
-      {/* Floating geometric shapes with complex animations */}
+      {/* Geometric shapes floating */}
       {[...Array(15)].map((_, i) => {
-        const ShapeIcon = shapes[i % shapes.length].Icon;
+        const { Icon, color, size } = shapes[i % shapes.length];
         return (
           <div
             key={i}
-            className={`absolute ${shapes[i % shapes.length].color} ${shapes[i % shapes.length].size} animate-float-complex opacity-60`}
+            className={`absolute ${color} ${size} opacity-60 transition-transform duration-1000 ease-in-out`}
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -61,12 +72,12 @@ const FloatingElements = () => {
               transform: `rotate(${Math.random() * 360}deg)`,
             }}
           >
-            <ShapeIcon className="w-full h-full animate-spin-slow" />
+            <Icon className="w-full h-full animate-spin-slow" />
           </div>
         );
       })}
 
-      {/* Wave motion elements */}
+      {/* Wave elements */}
       {[...Array(8)].map((_, i) => (
         <div
           key={`wave-${i}`}
