@@ -32,7 +32,7 @@ const FloatingElements = () => {
         style={{
           left: mousePosition.x - 128,
           top: mousePosition.y - 128,
-          transform: `scale(${1 + Math.sin(Date.now() * 0.000000000001) * 0.0001})`,
+          transform: `scale(${1 + Math.sin(Date.now() * 0.001) * 0.1})`,
         }}
       />
       
