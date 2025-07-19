@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { ExternalLink, Github, Code, Smartphone, Globe, Database, Zap, Star, Eye, Sparkles } from 'lucide-react';
+import { ExternalLink, Github, Code, Smartphone, Globe, Database, Zap, Star, Eye, Sparkles, Calendar, Building2 } from 'lucide-react';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -9,78 +9,70 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A full-featured e-commerce platform with payment integration, admin dashboard, and real-time inventory management.',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-      category: 'Web App',
-      icon: Globe,
-      github: '#',
-      live: '#',
-      featured: true,
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      title: 'Task Management App',
-      description: 'A collaborative task management application with real-time updates, team workspaces, and advanced filtering.',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
-      technologies: ['React Native', 'Firebase', 'Redux', 'TypeScript'],
-      category: 'Mobile App',
-      icon: Smartphone,
-      github: '#',
-      live: '#',
-      featured: true,
-      color: 'from-green-500 to-emerald-500'
-    },
-    {
-      title: 'Analytics Dashboard',
-      description: 'A comprehensive analytics dashboard with interactive charts, real-time data visualization, and custom reporting.',
+      title: 'Debt Recovery Management System',
+      description: 'A comprehensive web application designed to digitalize debt recovery processes for SBA Company. Features responsive design and secure backend implementation.',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
-      technologies: ['Next.js', 'D3.js', 'MongoDB', 'TailwindCSS'],
-      category: 'Dashboard',
-      icon: Database,
-      github: '#',
-      live: '#',
-      featured: false,
-      color: 'from-purple-500 to-pink-500'
-    },
-    {
-      title: 'Social Media Platform',
-      description: 'A modern social media platform with real-time messaging, photo sharing, and advanced privacy controls.',
-      image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop',
-      technologies: ['React', 'GraphQL', 'AWS', 'PostgreSQL'],
-      category: 'Web App',
+      technologies: ['React.js', 'Spring Boot', 'MySQL', 'Bootstrap'],
+      category: 'Web Application',
       icon: Globe,
       github: '#',
       live: '#',
-      featured: false,
-      color: 'from-orange-500 to-red-500'
+      featured: true,
+      color: 'from-blue-500 to-cyan-500',
+      period: '3-4 months internship'
     },
     {
-      title: 'Fitness Tracker',
-      description: 'A comprehensive fitness tracking app with workout plans, progress tracking, and social features.',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop',
-      technologies: ['Flutter', 'Firebase', 'Health APIs', 'Charts'],
+      title: 'E-commerce Platform',
+      description: 'A modern, secure e-commerce website with integrated Stripe payment system, responsive design, and comprehensive product management.',
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
+      technologies: ['React.js', 'Node.js', 'Express', 'MongoDB'],
+      category: 'Web Application',
+      icon: Globe,
+      github: '#',
+      live: '#',
+      featured: true,
+      color: 'from-green-500 to-emerald-500',
+      period: 'Personal Project'
+    },
+    {
+      title: 'Employee Leave Management',
+      description: 'Android application for managing employee leave requests with intuitive interface, real-time tracking, and approval workflows.',
+      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
+      technologies: ['Android Studio', 'Java', 'SQLite', 'XML'],
       category: 'Mobile App',
       icon: Smartphone,
       github: '#',
       live: '#',
-      featured: false,
-      color: 'from-teal-500 to-blue-500'
+      featured: true,
+      color: 'from-purple-500 to-pink-500',
+      period: 'Academic Project'
     },
     {
-      title: 'AI Code Assistant',
-      description: 'An AI-powered code assistant that helps developers write better code with intelligent suggestions and analysis.',
-      image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=400&fit=crop',
-      technologies: ['Python', 'OpenAI API', 'React', 'Docker'],
-      category: 'AI Tool',
+      title: 'Product Management Desktop App',
+      description: 'JavaFX desktop application for inventory management with stock tracking, order management, and user-friendly interface.',
+      image: 'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=600&h=400&fit=crop',
+      technologies: ['JavaFX', 'MySQL', 'FXML', 'CSS'],
+      category: 'Desktop App',
       icon: Code,
       github: '#',
       live: '#',
-      featured: true,
-      color: 'from-indigo-500 to-purple-500'
-    },
+      featured: false,
+      color: 'from-orange-500 to-red-500',
+      period: 'Academic Project'
+    }
   ];
+
+  const experience = {
+    title: 'Final Year Internship',
+    company: 'SBA Company, Tunisia',
+    duration: '3-4 months',
+    description: 'Developed a responsive web application to digitalize debt recovery processes',
+    achievements: [
+      'Created responsive user interfaces',
+      'Implemented secure backend functionalities',
+      'Collaborated with team members on project requirements'
+    ]
+  };
 
   const featuredProjects = projects.filter(project => project.featured);
   const otherProjects = projects.filter(project => !project.featured);
@@ -149,7 +141,7 @@ const Projects = () => {
           <div className="relative inline-block">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 relative">
               <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent hover:from-purple-400 hover:to-cyan-400 transition-all duration-500 bg-[length:200%_100%] animate-shimmer">
-                Featured Projects
+                My Projects & Experience
               </span>
               
               {/* Floating icons around title */}
@@ -167,8 +159,39 @@ const Projects = () => {
           </div>
           
           <p className="text-gray-400 mt-6 text-lg max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            Here are some of my recent projects that showcase my skills and passion for development
+            Here are some projects I've worked on that showcase my skills and experience
           </p>
+        </div>
+
+        {/* Experience Section */}
+        <div className={`mb-20 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="max-w-4xl mx-auto bg-gray-800/30 backdrop-blur-lg border border-gray-700/50 rounded-xl p-8 hover:border-blue-500/50 transition-all duration-500 hover:scale-105">
+            <div className="flex items-start space-x-6">
+              <div className="p-4 rounded-lg bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30">
+                <Building2 className="h-8 w-8 text-blue-400" />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center space-x-4 mb-4">
+                  <h3 className="text-2xl font-bold text-white">{experience.title}</h3>
+                  <div className="flex items-center space-x-2 px-3 py-1 bg-blue-500/20 rounded-full border border-blue-500/30">
+                    <Calendar className="h-4 w-4 text-blue-400" />
+                    <span className="text-sm text-blue-300">{experience.duration}</span>
+                  </div>
+                </div>
+                <p className="text-lg text-blue-400 font-semibold mb-2">{experience.company}</p>
+                <p className="text-gray-300 mb-4">{experience.description}</p>
+                <div className="space-y-2">
+                  <h4 className="text-white font-semibold mb-3">Key Contributions:</h4>
+                  {experience.achievements.map((achievement, index) => (
+                    <div key={index} className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                      <span className="text-gray-300">{achievement}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Enhanced Featured Projects */}
@@ -176,7 +199,7 @@ const Projects = () => {
           <h3 className={`text-2xl font-bold text-white mb-8 text-center flex items-center justify-center transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-blue-400 mr-3 animate-pulse"></div>
             <span className="relative">
-              Featured Work
+              Featured Projects
               <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-20 blur-lg animate-glow"></div>
             </span>
             <div className="w-8 h-0.5 bg-gradient-to-r from-blue-400 to-transparent ml-3 animate-pulse"></div>
@@ -229,6 +252,11 @@ const Projects = () => {
                   <div className={`absolute top-4 left-4 flex items-center space-x-2 bg-black/70 backdrop-blur-sm rounded-full px-4 py-2 border border-gray-600/50 group-hover:border-blue-500/50 transition-all duration-300 group-hover:scale-110`}>
                     <project.icon className="h-4 w-4 text-blue-400 group-hover:animate-pulse" />
                     <span className="text-sm text-white font-medium">{project.category}</span>
+                  </div>
+
+                  {/* Period Badge */}
+                  <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm rounded-full px-3 py-1 border border-gray-600/50">
+                    <span className="text-xs text-gray-300">{project.period}</span>
                   </div>
 
                   {/* Enhanced Project Links with ripple effect */}
@@ -318,117 +346,119 @@ const Projects = () => {
         </div>
 
         {/* Enhanced Other Projects */}
-        <div>
-          <h3 className={`text-2xl font-bold text-white mb-8 text-center flex items-center justify-center transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-purple-400 mr-3 animate-pulse"></div>
-            <span className="relative">
-              Other Projects
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 opacity-20 blur-lg animate-glow"></div>
-            </span>
-            <div className="w-8 h-0.5 bg-gradient-to-r from-purple-400 to-transparent ml-3 animate-pulse"></div>
-          </h3>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {otherProjects.map((project, index) => (
-              <div
-                key={project.title}
-                className={`group bg-gray-800/30 backdrop-blur-lg border border-gray-700/50 rounded-xl overflow-hidden hover:border-blue-500/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer transform-gpu ${
-                  isVisible ? 'animate-fade-in-up' : 'opacity-0'
-                }`}
-                style={{ 
-                  animationDelay: `${1 + index * 0.1}s`,
-                  animationFillMode: 'forwards'
-                }}
-                onMouseMove={handleMouseMove}
-              >
-                {/* Mouse follow glow effect */}
-                <div 
-                  className="absolute pointer-events-none opacity-0 group-hover:opacity-20 transition-opacity duration-300 w-32 h-32 bg-gradient-radial from-blue-400/30 to-transparent rounded-full blur-xl"
-                  style={{
-                    left: mousePosition.x - 64,
-                    top: mousePosition.y - 64,
+        {otherProjects.length > 0 && (
+          <div>
+            <h3 className={`text-2xl font-bold text-white mb-8 text-center flex items-center justify-center transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-purple-400 mr-3 animate-pulse"></div>
+              <span className="relative">
+                Other Projects
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 opacity-20 blur-lg animate-glow"></div>
+              </span>
+              <div className="w-8 h-0.5 bg-gradient-to-r from-purple-400 to-transparent ml-3 animate-pulse"></div>
+            </h3>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {otherProjects.map((project, index) => (
+                <div
+                  key={project.title}
+                  className={`group bg-gray-800/30 backdrop-blur-lg border border-gray-700/50 rounded-xl overflow-hidden hover:border-blue-500/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer transform-gpu ${
+                    isVisible ? 'animate-fade-in-up' : 'opacity-0'
+                  }`}
+                  style={{ 
+                    animationDelay: `${1 + index * 0.1}s`,
+                    animationFillMode: 'forwards'
                   }}
-                />
-
-                {/* Project Image */}
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                  onMouseMove={handleMouseMove}
+                >
+                  {/* Mouse follow glow effect */}
+                  <div 
+                    className="absolute pointer-events-none opacity-0 group-hover:opacity-20 transition-opacity duration-300 w-32 h-32 bg-gradient-radial from-blue-400/30 to-transparent rounded-full blur-xl"
+                    style={{
+                      left: mousePosition.x - 64,
+                      top: mousePosition.y - 64,
+                    }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60"></div>
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-15 transition-opacity duration-500 mix-blend-multiply`}></div>
-                  
-                  {/* Scanning effect */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-scan"></div>
-                  </div>
-                  
-                  {/* Project Links */}
-                  <div className="absolute top-3 right-3 flex space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                    <a
-                      href={project.github}
-                      className="group/link relative p-2 bg-black/60 backdrop-blur-sm rounded-full text-white hover:text-blue-400 transition-all duration-300 hover:scale-110 border border-gray-600/50 overflow-hidden"
-                    >
-                      <Github className="h-4 w-4 relative z-10" />
-                      <div className="absolute inset-0 bg-blue-400/20 scale-0 group-hover/link:scale-100 transition-transform duration-300 rounded-full"></div>
-                    </a>
-                    <a
-                      href={project.live}
-                      className="group/link relative p-2 bg-black/60 backdrop-blur-sm rounded-full text-white hover:text-green-400 transition-all duration-300 hover:scale-110 border border-gray-600/50 overflow-hidden"
-                    >
-                      <ExternalLink className="h-4 w-4 relative z-10" />
-                      <div className="absolute inset-0 bg-green-400/20 scale-0 group-hover/link:scale-100 transition-transform duration-300 rounded-full"></div>
-                    </a>
-                  </div>
-                </div>
 
-                {/* Project Content */}
-                <div className="p-4 relative">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-                  
-                  <div className="flex items-center mb-2 relative z-10">
-                    <project.icon className="h-4 w-4 text-blue-400 mr-2 group-hover:animate-pulse" />
-                    <span className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300">{project.category}</span>
-                  </div>
-                  
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300 relative z-10">
-                    {project.title}
-                  </h3>
-                  
-                  <p className="text-gray-400 text-sm mb-3 leading-relaxed group-hover:text-gray-300 transition-colors duration-300 relative z-10">
-                    {project.description}
-                  </p>
-
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-1 relative z-10">
-                    {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 bg-gray-700/50 rounded text-xs text-gray-300 group-hover:text-white transition-all duration-300 hover:scale-105"
-                        style={{ transitionDelay: `${techIndex * 0.05}s` }}
+                  {/* Project Image */}
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60"></div>
+                    <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-15 transition-opacity duration-500 mix-blend-multiply`}></div>
+                    
+                    {/* Scanning effect */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-scan"></div>
+                    </div>
+                    
+                    {/* Project Links */}
+                    <div className="absolute top-3 right-3 flex space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                      <a
+                        href={project.github}
+                        className="group/link relative p-2 bg-black/60 backdrop-blur-sm rounded-full text-white hover:text-blue-400 transition-all duration-300 hover:scale-110 border border-gray-600/50 overflow-hidden"
                       >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 3 && (
-                      <span className="px-2 py-1 text-xs text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
-                        +{project.technologies.length - 3}
-                      </span>
-                    )}
+                        <Github className="h-4 w-4 relative z-10" />
+                        <div className="absolute inset-0 bg-blue-400/20 scale-0 group-hover/link:scale-100 transition-transform duration-300 rounded-full"></div>
+                      </a>
+                      <a
+                        href={project.live}
+                        className="group/link relative p-2 bg-black/60 backdrop-blur-sm rounded-full text-white hover:text-green-400 transition-all duration-300 hover:scale-110 border border-gray-600/50 overflow-hidden"
+                      >
+                        <ExternalLink className="h-4 w-4 relative z-10" />
+                        <div className="absolute inset-0 bg-green-400/20 scale-0 group-hover/link:scale-100 transition-transform duration-300 rounded-full"></div>
+                      </a>
+                    </div>
                   </div>
 
-                  {/* Animated border bottom */}
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-x-0 group-hover:scale-x-100 origin-left"></div>
-                </div>
+                  {/* Project Content */}
+                  <div className="p-4 relative">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+                    
+                    <div className="flex items-center mb-2 relative z-10">
+                      <project.icon className="h-4 w-4 text-blue-400 mr-2 group-hover:animate-pulse" />
+                      <span className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300">{project.category}</span>
+                    </div>
+                    
+                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300 relative z-10">
+                      {project.title}
+                    </h3>
+                    
+                    <p className="text-gray-400 text-sm mb-3 leading-relaxed group-hover:text-gray-300 transition-colors duration-300 relative z-10">
+                      {project.description}
+                    </p>
 
-                {/* Corner accent */}
-                <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-blue-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              </div>
-            ))}
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-1 relative z-10">
+                      {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                        <span
+                          key={tech}
+                          className="px-2 py-1 bg-gray-700/50 rounded text-xs text-gray-300 group-hover:text-white transition-all duration-300 hover:scale-105"
+                          style={{ transitionDelay: `${techIndex * 0.05}s` }}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies.length > 3 && (
+                        <span className="px-2 py-1 text-xs text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                          +{project.technologies.length - 3}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Animated border bottom */}
+                    <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-x-0 group-hover:scale-x-100 origin-left"></div>
+                  </div>
+
+                  {/* Corner accent */}
+                  <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-blue-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

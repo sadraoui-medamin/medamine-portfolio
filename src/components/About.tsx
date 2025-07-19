@@ -1,6 +1,5 @@
-
 import React, { useRef, useEffect, useState } from 'react';
-import { Code, Coffee, Gamepad2, Music, Zap, Star, Rocket } from 'lucide-react';
+import { Code, Coffee, Gamepad2, Music, Zap, Star, Rocket, GraduationCap, MapPin } from 'lucide-react';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -70,14 +69,14 @@ const About = () => {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
             {/* Text Content with staggered animations */}
             <div className={`space-y-6 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
               <div className="relative">
                 <p className="text-lg text-gray-300 leading-relaxed relative z-10">
-                  I'm a passionate full-stack developer with over 3 years of experience in creating 
-                  digital solutions that make a difference. I love turning complex problems into 
-                  simple, beautiful, and intuitive designs.
+                  Hi, I'm <span className="text-blue-400 font-semibold">Mohamed Amine Sadraoui</span>, 
+                  a passionate full-stack developer with a Bachelor's degree in Business Information Systems 
+                  from the Faculty of Economic Sciences and Management of Nabeul (2024).
                 </p>
                 
                 {/* Highlight effect */}
@@ -86,12 +85,36 @@ const About = () => {
               
               <div className="relative">
                 <p className="text-lg text-gray-300 leading-relaxed relative z-10">
-                  When I'm not coding, you'll find me exploring new technologies, contributing to 
-                  open-source projects, or enjoying a good gaming session. I believe in continuous 
-                  learning and staying up-to-date with the latest industry trends.
+                  I specialize in creating digital solutions that make a difference, with experience in 
+                  web development, mobile applications, and database management. I love turning complex 
+                  problems into simple, beautiful, and intuitive designs.
                 </p>
                 
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-pink-500/5 rounded-lg -z-10 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+
+              {/* Education & Location Info */}
+              <div className="grid grid-cols-1 gap-4 mt-8">
+                <div className="group flex items-center space-x-4 p-4 bg-gray-800/50 rounded-xl backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 transition-all duration-500 hover:scale-105">
+                  <div className="p-3 rounded-lg bg-gradient-to-r from-blue-500/20 to-cyan-500/20">
+                    <GraduationCap className="h-6 w-6 text-blue-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold">Education</h4>
+                    <p className="text-gray-400 text-sm">Bachelor's in Business Information Systems</p>
+                    <p className="text-gray-500 text-xs">Faculty of Economic Sciences - Nabeul (2024)</p>
+                  </div>
+                </div>
+
+                <div className="group flex items-center space-x-4 p-4 bg-gray-800/50 rounded-xl backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-500 hover:scale-105">
+                  <div className="p-3 rounded-lg bg-gradient-to-r from-purple-500/20 to-pink-500/20">
+                    <MapPin className="h-6 w-6 text-purple-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold">Location</h4>
+                    <p className="text-gray-400 text-sm">Ariana, Soukra - Tunisia</p>
+                  </div>
+                </div>
               </div>
               
               {/* Enhanced Stats */}
@@ -100,12 +123,11 @@ const About = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
                   <div className="text-4xl font-bold text-blue-400 group-hover:scale-125 transition-transform duration-500 relative z-10">
-                    50+
+                    10+
                     <Rocket className="inline-block w-6 h-6 ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
                   <div className="text-gray-400 relative z-10">Projects Completed</div>
                   
-                  {/* Particle burst effect */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     {[...Array(6)].map((_, i) => (
                       <div
@@ -125,7 +147,7 @@ const About = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
                   <div className="text-4xl font-bold text-purple-400 group-hover:scale-125 transition-transform duration-500 relative z-10">
-                    3+
+                    2+
                     <Zap className="inline-block w-6 h-6 ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
                   <div className="text-gray-400 relative z-10">Years Experience</div>
@@ -201,9 +223,9 @@ const About = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 <blockquote className="text-gray-300 italic text-center relative z-10 group-hover:text-white transition-colors duration-500">
-                  "Code is like humor. When you have to explain it, it's bad."
+                  "The best way to predict the future is to create it."
                 </blockquote>
-                <cite className="block text-right text-blue-400 mt-2 relative z-10 group-hover:text-blue-300 transition-colors duration-500">- Cory House</cite>
+                <cite className="block text-right text-blue-400 mt-2 relative z-10 group-hover:text-blue-300 transition-colors duration-500">- Peter Drucker</cite>
                 
                 {/* Quote decoration */}
                 <div className="absolute top-2 left-4 text-6xl text-blue-400/20 font-serif">"</div>

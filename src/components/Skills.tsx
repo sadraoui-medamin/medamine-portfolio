@@ -1,6 +1,6 @@
 
 import React, { useRef, useEffect, useState } from 'react';
-import { Code, Database, Smartphone, Globe, Server, Palette, Zap, Star, Sparkles } from 'lucide-react';
+import { Code, Database, Smartphone, Globe, Server, Palette, Zap, Star, Sparkles, Brain, Users, Clock } from 'lucide-react';
 
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -9,77 +9,87 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      title: 'Frontend',
+      title: 'Programming Languages',
       icon: Code,
       color: 'from-blue-400 to-cyan-400',
       borderColor: 'border-blue-500/50',
       skills: [
-        { name: 'React', level: 95 },
-        { name: 'TypeScript', level: 90 },
-        { name: 'Next.js', level: 85 },
-        { name: 'Tailwind CSS', level: 92 },
+        { name: 'JavaScript', level: 90 },
+        { name: 'Java', level: 85 },
+        { name: 'Python', level: 80 },
+        { name: 'C/C#', level: 75 },
+        { name: 'PHP', level: 70 },
       ]
     },
     {
-      title: 'Backend',
-      icon: Server,
+      title: 'Frontend Development',
+      icon: Globe,
       color: 'from-green-400 to-emerald-400',
       borderColor: 'border-green-500/50',
       skills: [
-        { name: 'Node.js', level: 88 },
-        { name: 'Express', level: 85 },
-        { name: 'Python', level: 80 },
-        { name: 'GraphQL', level: 75 },
+        { name: 'React.js', level: 95 },
+        { name: 'HTML5', level: 95 },
+        { name: 'CSS3', level: 90 },
+        { name: 'Tailwind CSS', level: 90 },
+        { name: 'Ant Design', level: 85 },
+        { name: 'Material-UI', level: 85 },
       ]
     },
     {
-      title: 'Database',
-      icon: Database,
+      title: 'Backend Development',
+      icon: Server,
       color: 'from-purple-400 to-pink-400',
       borderColor: 'border-purple-500/50',
       skills: [
-        { name: 'PostgreSQL', level: 85 },
-        { name: 'MongoDB', level: 80 },
-        { name: 'Redis', level: 70 },
-        { name: 'Prisma', level: 85 },
+        { name: 'Node.js', level: 85 },
+        { name: 'Express.js', level: 85 },
+        { name: 'Spring Boot', level: 80 },
+        { name: 'Laravel', level: 75 },
+        { name: 'ASP.NET Core', level: 70 },
+        { name: 'RESTful APIs', level: 90 },
       ]
     },
     {
-      title: 'Mobile',
+      title: 'Mobile Development',
       icon: Smartphone,
       color: 'from-orange-400 to-red-400',
       borderColor: 'border-orange-500/50',
       skills: [
-        { name: 'React Native', level: 80 },
-        { name: 'Flutter', level: 75 },
-        { name: 'Expo', level: 85 },
-        { name: 'PWA', level: 90 },
+        { name: 'Android (Java)', level: 80 },
+        { name: 'Android Studio', level: 85 },
+        { name: 'Mobile UI/UX', level: 75 },
       ]
     },
     {
-      title: 'DevOps',
-      icon: Globe,
+      title: 'Databases',
+      icon: Database,
       color: 'from-teal-400 to-blue-400',
       borderColor: 'border-teal-500/50',
       skills: [
-        { name: 'Docker', level: 80 },
-        { name: 'AWS', level: 75 },
-        { name: 'Vercel', level: 90 },
-        { name: 'GitHub Actions', level: 85 },
+        { name: 'MongoDB', level: 85 },
+        { name: 'MySQL', level: 90 },
+        { name: 'Oracle', level: 75 },
+        { name: 'SQLite', level: 80 },
       ]
     },
     {
-      title: 'Design',
+      title: 'Tools & Methodologies',
       icon: Palette,
       color: 'from-pink-400 to-purple-400',
       borderColor: 'border-pink-500/50',
       skills: [
-        { name: 'Figma', level: 85 },
-        { name: 'UI/UX', level: 80 },
-        { name: 'Photoshop', level: 75 },
-        { name: 'Framer Motion', level: 88 },
+        { name: 'Git/GitHub', level: 90 },
+        { name: 'Agile/Scrum', level: 85 },
+        { name: 'PowerBI', level: 75 },
+        { name: 'Postman', level: 85 },
       ]
     },
+  ];
+
+  const behavioralSkills = [
+    { name: 'Team Collaboration', icon: Users, color: 'text-blue-400' },
+    { name: 'Complex Problem Solving', icon: Brain, color: 'text-purple-400' },
+    { name: 'Time Management', icon: Clock, color: 'text-green-400' },
   ];
 
   useEffect(() => {
@@ -127,7 +137,7 @@ const Skills = () => {
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           <h2 className="text-4xl md:text-5xl font-bold mb-4 relative">
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent hover:from-purple-400 hover:to-pink-400 transition-all duration-500">
-              Skills & Technologies
+              Skills & Expertise
             </span>
             
             {/* Floating decorations */}
@@ -233,17 +243,48 @@ const Skills = () => {
           ))}
         </div>
 
+        {/* Behavioral Skills Section */}
+        <div className={`mt-16 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h3 className="text-2xl font-bold text-white mb-8 text-center flex items-center justify-center">
+            <span>Behavioral Skills</span>
+            <div className="ml-3 w-12 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 animate-pulse"></div>
+          </h3>
+          
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {behavioralSkills.map((skill, index) => (
+              <div
+                key={skill.name}
+                className="group relative flex items-center space-x-4 p-6 bg-gray-800/50 rounded-xl backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer overflow-hidden"
+                style={{ 
+                  animationDelay: `${0.8 + index * 0.1}s`,
+                  animationFillMode: 'forwards'
+                }}
+              >
+                <div className={`relative z-10 p-3 rounded-lg bg-gray-700/50 group-hover:bg-gray-600/50 transition-all duration-500 group-hover:scale-110`}>
+                  <skill.icon className={`h-6 w-6 ${skill.color} group-hover:animate-pulse`} />
+                </div>
+                
+                <span className="relative z-10 text-gray-300 group-hover:text-white transition-colors duration-500 font-medium">
+                  {skill.name}
+                </span>
+                
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Enhanced Additional Technologies */}
         <div className={`mt-16 text-center transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h3 className="text-2xl font-bold text-white mb-8 flex items-center justify-center">
-            <span>Other Technologies</span>
+            <span>Development Tools</span>
             <div className="ml-3 w-12 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 animate-pulse"></div>
           </h3>
           
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              'Git', 'Linux', 'VS Code', 'Postman', 'Jest', 'Cypress', 
-              'Webpack', 'Vite', 'Sass', 'Firebase', 'Supabase', 'Stripe'
+              'Visual Studio Code', 'Eclipse', 'IntelliJ IDEA', 'Android Studio', 
+              'StarUML', 'Cloudinary', 'Prelude', 'Odoo'
             ].map((tech, index) => (
               <span
                 key={tech}
