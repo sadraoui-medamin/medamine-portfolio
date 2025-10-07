@@ -110,7 +110,7 @@ const Skills = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="skills" className="py-20 relative bg-gray-800/20 overflow-hidden">
+    <section ref={sectionRef} id="skills" className="py-20 relative bg-secondary/20 overflow-hidden">
       {/* Animated grid background */}
       <div className="absolute inset-0 opacity-10">
         <div className="cyber-grid w-full h-full"></div>
@@ -164,7 +164,7 @@ const Skills = () => {
           {skillCategories.map((category, index) => (
             <div
               key={category.title}
-              className={`group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 hover:${category.borderColor} rounded-xl p-6 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer overflow-hidden ${
+              className={`group relative bg-card/80 backdrop-blur-sm border border-border hover:${category.borderColor} rounded-xl p-6 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer overflow-hidden ${
                 isVisible ? 'animate-scale-in opacity-100' : 'opacity-0'
               }`}
               style={{ 
@@ -199,7 +199,7 @@ const Skills = () => {
                 <div className={`p-3 rounded-lg bg-gradient-to-r ${category.color} mr-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg`}>
                   <category.icon className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white group-hover:text-blue-100 transition-colors duration-300">{category.title}</h3>
+                <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">{category.title}</h3>
               </div>
 
               {/* Enhanced Skills List */}
@@ -207,11 +207,11 @@ const Skills = () => {
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skill.name} className="space-y-2 group/skill">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-300 font-medium group-hover:text-white transition-colors duration-300">{skill.name}</span>
-                      <span className="text-sm text-gray-400 group-hover:text-gray-200 transition-colors duration-300">{skill.level}%</span>
+                      <span className="text-muted-foreground font-medium group-hover:text-foreground transition-colors duration-300">{skill.name}</span>
+                      <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">{skill.level}%</span>
                     </div>
                     
-                    <div className="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden">
+                    <div className="relative w-full bg-muted rounded-full h-2 overflow-hidden">
                       {/* Progress bar with animation */}
                       <div
                         className={`h-full bg-gradient-to-r ${category.color} rounded-full transition-all duration-1000 ease-out relative overflow-hidden`}
@@ -245,7 +245,7 @@ const Skills = () => {
 
         {/* Behavioral Skills Section */}
         <div className={`mt-16 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-2xl font-bold text-white mb-8 text-center flex items-center justify-center">
+          <h3 className="text-2xl font-bold text-foreground mb-8 text-center flex items-center justify-center">
             <span>Behavioral Skills</span>
             <div className="ml-3 w-12 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 animate-pulse"></div>
           </h3>
@@ -254,17 +254,17 @@ const Skills = () => {
             {behavioralSkills.map((skill, index) => (
               <div
                 key={skill.name}
-                className="group relative flex items-center space-x-4 p-6 bg-gray-800/50 rounded-xl backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer overflow-hidden"
+                className="group relative flex items-center space-x-4 p-6 bg-card/80 rounded-xl backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer overflow-hidden"
                 style={{ 
                   animationDelay: `${0.8 + index * 0.1}s`,
                   animationFillMode: 'forwards'
                 }}
               >
-                <div className={`relative z-10 p-3 rounded-lg bg-gray-700/50 group-hover:bg-gray-600/50 transition-all duration-500 group-hover:scale-110`}>
+                <div className={`relative z-10 p-3 rounded-lg bg-muted group-hover:bg-accent transition-all duration-500 group-hover:scale-110`}>
                   <skill.icon className={`h-6 w-6 ${skill.color} group-hover:animate-pulse`} />
                 </div>
                 
-                <span className="relative z-10 text-gray-300 group-hover:text-white transition-colors duration-500 font-medium">
+                <span className="relative z-10 text-muted-foreground group-hover:text-foreground transition-colors duration-500 font-medium">
                   {skill.name}
                 </span>
                 
@@ -274,35 +274,48 @@ const Skills = () => {
           </div>
         </div>
 
-        {/* Enhanced Additional Technologies */}
-        <div className={`mt-16 text-center transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-2xl font-bold text-white mb-8 flex items-center justify-center">
+        {/* Infinite Scrolling Development Tools */}
+        <div className={`mt-16 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h3 className="text-2xl font-bold text-foreground mb-8 flex items-center justify-center">
             <span>Development Tools</span>
             <div className="ml-3 w-12 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 animate-pulse"></div>
           </h3>
           
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              'Visual Studio Code', 'Eclipse', 'IntelliJ IDEA', 'Android Studio', 
-              'StarUML', 'Cloudinary', 'Prelude', 'Odoo'
-            ].map((tech, index) => (
-              <span
-                key={tech}
-                className="group relative px-4 py-2 bg-gray-800/50 rounded-full text-gray-300 border border-gray-700/50 hover:border-blue-500/50 hover:text-white transition-all duration-300 cursor-pointer hover:scale-110 hover:-translate-y-1 animate-fade-in-up overflow-hidden"
-                style={{ 
-                  animationDelay: `${0.8 + index * 0.05}s`,
-                  animationFillMode: 'forwards'
-                }}
-              >
-                {tech}
-                
-                {/* Hover effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
-                {/* Ripple effect */}
-                <div className="absolute inset-0 rounded-full bg-blue-500/20 scale-0 group-hover:scale-150 transition-transform duration-500 opacity-0 group-hover:opacity-100"></div>
-              </span>
-            ))}
+          <div className="relative overflow-hidden">
+            {/* Gradient overlays for fade effect */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10"></div>
+            
+            {/* Scrolling container */}
+            <div className="flex animate-infinite-scroll">
+              {/* First set */}
+              {[
+                'Visual Studio Code', 'Eclipse', 'IntelliJ IDEA', 'Android Studio', 
+                'StarUML', 'Cloudinary', 'Prelude', 'Odoo'
+              ].map((tech, index) => (
+                <span
+                  key={`first-${tech}`}
+                  className="group relative px-6 py-3 mx-2 bg-card rounded-full text-card-foreground border border-border hover:border-primary/50 transition-all duration-300 cursor-pointer hover:scale-110 whitespace-nowrap flex-shrink-0"
+                >
+                  {tech}
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </span>
+              ))}
+              
+              {/* Duplicate set for seamless loop */}
+              {[
+                'Visual Studio Code', 'Eclipse', 'IntelliJ IDEA', 'Android Studio', 
+                'StarUML', 'Cloudinary', 'Prelude', 'Odoo'
+              ].map((tech, index) => (
+                <span
+                  key={`second-${tech}`}
+                  className="group relative px-6 py-3 mx-2 bg-card rounded-full text-card-foreground border border-border hover:border-primary/50 transition-all duration-300 cursor-pointer hover:scale-110 whitespace-nowrap flex-shrink-0"
+                >
+                  {tech}
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>

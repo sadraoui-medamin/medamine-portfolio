@@ -224,6 +224,14 @@ export default {
 						transform: 'translateY(100vh)',
 						opacity: '0'
 					}
+				},
+				'infinite-scroll': {
+					'0%': {
+						transform: 'translateX(0)'
+					},
+					'100%': {
+						transform: 'translateX(-50%)'
+					}
 				}
 			},
 			animation: {
@@ -243,7 +251,8 @@ export default {
 				'bounce-slow': 'bounce-slow 3s ease-in-out infinite',
 				'wiggle': 'wiggle 1s ease-in-out infinite',
 				'shimmer': 'shimmer 2s ease-in-out infinite',
-				'matrix-rain': 'matrix-rain 3s linear infinite'
+				'matrix-rain': 'matrix-rain 3s linear infinite',
+				'infinite-scroll': 'infinite-scroll 30s linear infinite'
 			}
 		}
 	},

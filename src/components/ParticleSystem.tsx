@@ -89,17 +89,15 @@ const ParticleSystem = () => {
       canvas.height = window.innerHeight;
     };
 
-    // Create initial particles
-    for (let i = 0; i < 50; i++) {
+    // Create initial particles - reduced for performance
+    for (let i = 0; i < 15; i++) {
       createParticle(Math.random() * canvas.width, Math.random() * canvas.height);
     }
 
-    window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('resize', handleResize);
     animate();
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', handleResize);
     };
   }, []);
