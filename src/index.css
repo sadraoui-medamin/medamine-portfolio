@@ -95,22 +95,22 @@ All colors MUST be HSL.
 }
 
 @layer components {
-  /* Gaming-themed scrollbar */
+  /* Scrollbar with theme support */
   ::-webkit-scrollbar {
     width: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    background: hsl(222.2 84% 4.9%);
+    background: hsl(var(--background));
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, hsl(217.2 91.2% 59.8%), hsl(271.5 81.3% 55.9%));
+    background: linear-gradient(180deg, hsl(var(--primary)), hsl(var(--primary) / 0.7));
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, hsl(217.2 91.2% 69.8%), hsl(271.5 81.3% 65.9%));
+    background: linear-gradient(180deg, hsl(var(--primary) / 0.9), hsl(var(--primary) / 0.6));
   }
 
   /* Enhanced Cyberpunk grid animation */

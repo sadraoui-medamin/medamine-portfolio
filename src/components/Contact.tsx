@@ -129,8 +129,8 @@ const Contact = () => {
             {/* Contact Information */}
             <div className={`space-y-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
               <div>
-                <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-                  <User className="h-6 w-6 mr-3 text-blue-400" />
+                <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center">
+                  <User className="h-6 w-6 mr-3 text-primary" />
                   Contact Information
                 </h3>
                 
@@ -139,7 +139,7 @@ const Contact = () => {
                     <a
                       key={info.label}
                       href={info.href}
-                      className={`group flex items-center space-x-4 p-4 bg-gray-800/50 rounded-xl backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 transition-all duration-500 hover:scale-105 hover:-translate-y-1 ${
+                      className={`group flex items-center space-x-4 p-4 bg-card/50 rounded-xl backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:-translate-y-1 ${
                         info.href === '#' ? 'cursor-default' : 'cursor-pointer'
                       }`}
                       style={{ animationDelay: `${index * 0.1}s` }}
@@ -148,10 +148,10 @@ const Contact = () => {
                         <info.icon className="h-6 w-6 text-white" />
                       </div>
                       <div>
-                        <h4 className="text-white font-semibold group-hover:text-blue-400 transition-colors duration-300">
+                        <h4 className="text-foreground font-semibold group-hover:text-primary transition-colors duration-300">
                           {info.label}
                         </h4>
-                        <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                        <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
                           {info.value}
                         </p>
                       </div>
@@ -162,7 +162,7 @@ const Contact = () => {
 
               {/* Social Links */}
               <div>
-                <h3 className="text-xl font-bold text-white mb-4">Follow Me</h3>
+                <h3 className="text-xl font-bold text-foreground mb-4">Follow Me</h3>
                 <div className="flex space-x-4">
                   {socialLinks.map((social) => (
                     <a
@@ -170,9 +170,9 @@ const Contact = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`group p-4 bg-gray-800/50 rounded-xl backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:scale-110 hover:-translate-y-2 ${social.color}`}
+                      className={`group p-4 bg-card/50 rounded-xl backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-300 hover:scale-110 hover:-translate-y-2 ${social.color}`}
                     >
-                      <social.icon className="h-6 w-6 text-gray-400 group-hover:text-current transition-colors duration-300" />
+                      <social.icon className="h-6 w-6 text-muted-foreground group-hover:text-current transition-colors duration-300" />
                     </a>
                   ))}
                 </div>
@@ -181,15 +181,15 @@ const Contact = () => {
 
             {/* Contact Form */}
             <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-              <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-8 hover:border-blue-500/30 transition-all duration-500">
-                <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-                  <MessageSquare className="h-6 w-6 mr-3 text-blue-400" />
+              <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-8 hover:border-primary/30 transition-all duration-500">
+                <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center">
+                  <MessageSquare className="h-6 w-6 mr-3 text-primary" />
                   Send Message
                 </h3>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label htmlFor="name" className="block text-gray-300 font-medium mb-2">
+                    <label htmlFor="name" className="block text-foreground font-medium mb-2">
                       Name
                     </label>
                     <input
@@ -199,13 +199,13 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:border-blue-500/50 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all duration-300"
+                      className="w-full px-4 py-3 bg-background border border-input rounded-lg text-foreground placeholder-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300"
                       placeholder="Your Name"
                     />
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-gray-300 font-medium mb-2">
+                    <label htmlFor="email" className="block text-foreground font-medium mb-2">
                       Email
                     </label>
                     <input
@@ -215,13 +215,13 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:border-blue-500/50 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all duration-300"
+                      className="w-full px-4 py-3 bg-background border border-input rounded-lg text-foreground placeholder-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300"
                       placeholder="your.email@example.com"
                     />
                   </div>
                   
                   <div>
-                    <label htmlFor="message" className="block text-gray-300 font-medium mb-2">
+                    <label htmlFor="message" className="block text-foreground font-medium mb-2">
                       Message
                     </label>
                     <textarea
@@ -231,7 +231,7 @@ const Contact = () => {
                       onChange={handleInputChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:border-blue-500/50 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 resize-none"
+                      className="w-full px-4 py-3 bg-background border border-input rounded-lg text-foreground placeholder-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300 resize-none"
                       placeholder="Your message here..."
                     />
                   </div>
@@ -239,7 +239,7 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="group w-full flex items-center justify-center space-x-2 px-6 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-purple-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 hover:scale-105 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:translate-y-0"
+                    className="group w-full flex items-center justify-center space-x-2 px-6 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300 hover:scale-105 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:translate-y-0"
                   >
                     {isSubmitting ? (
                       <>

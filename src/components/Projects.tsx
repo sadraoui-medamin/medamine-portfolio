@@ -158,34 +158,34 @@ const Projects = () => {
             </div>
           </div>
           
-          <p className="text-gray-400 mt-6 text-lg max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+          <p className="text-muted-foreground mt-6 text-lg max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
             Here are some projects I've worked on that showcase my skills and experience
           </p>
         </div>
 
         {/* Experience Section */}
         <div className={`mb-20 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="max-w-4xl mx-auto bg-gray-800/30 backdrop-blur-lg border border-gray-700/50 rounded-xl p-8 hover:border-blue-500/50 transition-all duration-500 hover:scale-105">
+          <div className="max-w-4xl mx-auto bg-card/30 backdrop-blur-lg border border-border rounded-xl p-8 hover:border-primary/50 transition-all duration-500 hover:scale-105">
             <div className="flex items-start space-x-6">
-              <div className="p-4 rounded-lg bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30">
-                <Building2 className="h-8 w-8 text-blue-400" />
+              <div className="p-4 rounded-lg bg-primary/20 border border-primary/30">
+                <Building2 className="h-8 w-8 text-primary" />
               </div>
               <div className="flex-1">
                 <div className="flex items-center space-x-4 mb-4">
-                  <h3 className="text-2xl font-bold text-white">{experience.title}</h3>
-                  <div className="flex items-center space-x-2 px-3 py-1 bg-blue-500/20 rounded-full border border-blue-500/30">
-                    <Calendar className="h-4 w-4 text-blue-400" />
-                    <span className="text-sm text-blue-300">{experience.duration}</span>
+                  <h3 className="text-2xl font-bold text-foreground">{experience.title}</h3>
+                  <div className="flex items-center space-x-2 px-3 py-1 bg-primary/20 rounded-full border border-primary/30">
+                    <Calendar className="h-4 w-4 text-primary" />
+                    <span className="text-sm text-primary">{experience.duration}</span>
                   </div>
                 </div>
-                <p className="text-lg text-blue-400 font-semibold mb-2">{experience.company}</p>
-                <p className="text-gray-300 mb-4">{experience.description}</p>
+                <p className="text-lg text-primary font-semibold mb-2">{experience.company}</p>
+                <p className="text-muted-foreground mb-4">{experience.description}</p>
                 <div className="space-y-2">
-                  <h4 className="text-white font-semibold mb-3">Key Contributions:</h4>
+                  <h4 className="text-foreground font-semibold mb-3">Key Contributions:</h4>
                   {experience.achievements.map((achievement, index) => (
                     <div key={index} className="flex items-center space-x-3">
-                      <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                      <span className="text-gray-300">{achievement}</span>
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-muted-foreground">{achievement}</span>
                     </div>
                   ))}
                 </div>
@@ -209,7 +209,7 @@ const Projects = () => {
             {featuredProjects.map((project, index) => (
               <div
                 key={project.title}
-                className={`group relative bg-gray-800/30 backdrop-blur-lg border border-gray-700/50 rounded-xl overflow-hidden hover:border-blue-500/50 transition-all duration-700 hover:scale-105 hover:-translate-y-3 cursor-pointer transform-gpu ${
+                className={`group relative bg-card/30 backdrop-blur-lg border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-700 hover:scale-105 hover:-translate-y-3 cursor-pointer transform-gpu ${
                   isVisible ? 'animate-scale-in' : 'opacity-0'
                 }`}
                 style={{ 
@@ -291,11 +291,11 @@ const Projects = () => {
                   {/* Animated gradient background */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-b-xl`}></div>
                   
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300 relative z-10">
+                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300 relative z-10">
                     {project.title}
                   </h3>
                   
-                  <p className="text-gray-400 mb-4 leading-relaxed group-hover:text-gray-300 transition-colors duration-300 relative z-10">
+                  <p className="text-muted-foreground mb-4 leading-relaxed group-hover:text-foreground transition-colors duration-300 relative z-10">
                     {project.description}
                   </p>
 
@@ -304,7 +304,7 @@ const Projects = () => {
                     {project.technologies.map((tech, techIndex) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-gray-700/50 rounded-full text-sm text-gray-300 border border-gray-600/50 hover:border-blue-500/50 hover:text-white transition-all duration-300 group-hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25"
+                        className="px-3 py-1 bg-secondary rounded-full text-sm text-muted-foreground border border-border hover:border-primary/50 hover:text-foreground transition-all duration-300 group-hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
                         style={{ transitionDelay: `${techIndex * 0.1}s` }}
                       >
                         {tech}
@@ -313,7 +313,7 @@ const Projects = () => {
                   </div>
 
                   {/* Animated progress indicator */}
-                  <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-all duration-700 transform scale-x-0 group-hover:scale-x-100 origin-left"></div>
+                  <div className="absolute bottom-0 left-0 h-1 bg-primary opacity-0 group-hover:opacity-100 transition-all duration-700 transform scale-x-0 group-hover:scale-x-100 origin-left"></div>
                 </div>
 
                 {/* Enhanced sparkle effects */}
