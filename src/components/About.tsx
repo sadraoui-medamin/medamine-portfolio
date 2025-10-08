@@ -95,7 +95,7 @@ const About = () => {
 
               {/* Education & Location Info */}
               <div className="grid grid-cols-1 gap-4 mt-8">
-                <div className="group flex items-center space-x-4 p-4 bg-card/50 rounded-xl backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-500 hover:scale-105">
+                <div className="group flex items-center space-x-4 p-4 bg-card/40 rounded-xl backdrop-blur-md border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-500 hover:scale-105">
                   <div className="p-3 rounded-lg bg-primary/20">
                     <GraduationCap className="h-6 w-6 text-primary" />
                   </div>
@@ -106,7 +106,7 @@ const About = () => {
                   </div>
                 </div>
 
-                <div className="group flex items-center space-x-4 p-4 bg-card/50 rounded-xl backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-500 hover:scale-105">
+                <div className="group flex items-center space-x-4 p-4 bg-card/40 rounded-xl backdrop-blur-md border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-500 hover:scale-105">
                   <div className="p-3 rounded-lg bg-primary/20">
                     <MapPin className="h-6 w-6 text-primary" />
                   </div>
@@ -119,7 +119,7 @@ const About = () => {
               
               {/* Enhanced Stats */}
               <div className="grid grid-cols-2 gap-6 mt-8">
-                <div className="group text-center p-6 bg-card/50 rounded-xl backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 relative overflow-hidden">
+                <div className="group text-center p-6 bg-card/40 rounded-xl backdrop-blur-md border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:-translate-y-2 relative overflow-hidden">
                   <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
                   <div className="text-4xl font-bold text-primary group-hover:scale-125 transition-transform duration-500 relative z-10">
@@ -143,7 +143,7 @@ const About = () => {
                   </div>
                 </div>
                 
-                <div className="group text-center p-6 bg-card/50 rounded-xl backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 relative overflow-hidden">
+                <div className="group text-center p-6 bg-card/40 rounded-xl backdrop-blur-md border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:-translate-y-2 relative overflow-hidden">
                   <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
                   <div className="text-4xl font-bold text-primary group-hover:scale-125 transition-transform duration-500 relative z-10">
@@ -180,7 +180,7 @@ const About = () => {
                 {interests.map((interest, index) => (
                   <div
                     key={interest.label}
-                    className={`group relative flex items-center space-x-3 p-4 bg-card/50 rounded-xl backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-500 hover:scale-110 hover:-translate-y-2 cursor-pointer overflow-hidden ${
+                    className={`group relative flex items-center space-x-3 p-4 bg-card/40 rounded-xl backdrop-blur-md border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-500 hover:scale-110 hover:-translate-y-2 cursor-pointer overflow-hidden ${
                       hoveredInterest === index ? 'shadow-2xl shadow-primary/25' : ''
                     }`}
                     style={{ animationDelay: `${0.7 + index * 0.1}s` }}
@@ -219,7 +219,7 @@ const About = () => {
               </div>
 
               {/* Enhanced Quote */}
-              <div className={`group mt-8 p-6 bg-card/50 rounded-xl border border-border backdrop-blur-sm hover:border-primary/30 transition-all duration-500 hover:scale-105 relative overflow-hidden ${isVisible ? 'animate-fade-in-up' : ''}`} style={{ animationDelay: '1.2s' }}>
+              <div className={`group mt-8 p-6 bg-card/40 rounded-xl border border-border/50 backdrop-blur-md hover:border-primary/30 hover:bg-card/60 transition-all duration-500 hover:scale-105 relative overflow-hidden ${isVisible ? 'animate-fade-in-up' : ''}`} style={{ animationDelay: '1.2s' }}>
                 <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 <blockquote className="text-muted-foreground italic text-center relative z-10 group-hover:text-foreground transition-colors duration-500">

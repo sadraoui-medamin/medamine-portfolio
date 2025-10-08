@@ -57,7 +57,7 @@ const Navigation = ({ isMenuOpen, setIsMenuOpen }: NavigationProps) => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-500 ${
       isVisible ? 'translate-y-0' : '-translate-y-full'
     }`}>
-      <div className="bg-background/60 backdrop-blur-xl border-b border-border/50 shadow-lg">
+      <div className="bg-background/70 backdrop-blur-xl border-b border-border/50 shadow-lg">
         <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}

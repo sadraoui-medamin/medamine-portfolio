@@ -79,12 +79,21 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
+    // Create mailto link with form data
+    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    const mailtoLink = `mailto:medaminsadraou111i@gmail.com?subject=${subject}&body=${body}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Reset form after a short delay
     setTimeout(() => {
-      console.log('Form submitted:', formData);
       setIsSubmitting(false);
       setFormData({ name: '', email: '', message: '' });
-    }, 2000);
+    }, 1000);
   };
 
   return (
@@ -139,7 +148,7 @@ const Contact = () => {
                     <a
                       key={info.label}
                       href={info.href}
-                      className={`group flex items-center space-x-4 p-4 bg-card/50 rounded-xl backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:-translate-y-1 ${
+                      className={`group flex items-center space-x-4 p-4 bg-card/40 rounded-xl backdrop-blur-md border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:-translate-y-1 ${
                         info.href === '#' ? 'cursor-default' : 'cursor-pointer'
                       }`}
                       style={{ animationDelay: `${index * 0.1}s` }}
@@ -170,7 +179,7 @@ const Contact = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`group p-4 bg-card/50 rounded-xl backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-300 hover:scale-110 hover:-translate-y-2 ${social.color}`}
+                      className={`group p-4 bg-card/40 rounded-xl backdrop-blur-md border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-300 hover:scale-110 hover:-translate-y-2 ${social.color}`}
                     >
                       <social.icon className="h-6 w-6 text-muted-foreground group-hover:text-current transition-colors duration-300" />
                     </a>
@@ -181,7 +190,7 @@ const Contact = () => {
 
             {/* Contact Form */}
             <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-              <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-8 hover:border-primary/30 transition-all duration-500">
+              <div className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-8 hover:border-primary/30 hover:bg-card/60 transition-all duration-500">
                 <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center">
                   <MessageSquare className="h-6 w-6 mr-3 text-primary" />
                   Send Message

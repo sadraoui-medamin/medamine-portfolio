@@ -164,7 +164,7 @@ const Skills = () => {
           {skillCategories.map((category, index) => (
             <div
               key={category.title}
-              className={`group relative bg-card/80 backdrop-blur-sm border border-border hover:${category.borderColor} rounded-xl p-6 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer overflow-hidden ${
+              className={`group relative bg-card/40 backdrop-blur-md border border-border/50 hover:${category.borderColor} rounded-xl p-6 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer overflow-hidden ${
                 isVisible ? 'animate-scale-in opacity-100' : 'opacity-0'
               }`}
               style={{ 
@@ -254,7 +254,7 @@ const Skills = () => {
             {behavioralSkills.map((skill, index) => (
               <div
                 key={skill.name}
-                className="group relative flex items-center space-x-4 p-6 bg-card/80 rounded-xl backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer overflow-hidden"
+                className="group relative flex items-center space-x-4 p-6 bg-card/40 rounded-xl backdrop-blur-md border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer overflow-hidden"
                 style={{ 
                   animationDelay: `${0.8 + index * 0.1}s`,
                   animationFillMode: 'forwards'
@@ -295,7 +295,7 @@ const Skills = () => {
               ].map((tech, index) => (
                 <span
                   key={`first-${tech}`}
-                  className="group relative px-6 py-3 mx-2 bg-card rounded-full text-card-foreground border border-border hover:border-primary/50 transition-all duration-300 cursor-pointer hover:scale-110 whitespace-nowrap flex-shrink-0"
+                  className="group relative px-6 py-3 mx-2 bg-card/40 rounded-full text-card-foreground border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-300 cursor-pointer hover:scale-110 whitespace-nowrap flex-shrink-0 backdrop-blur-md"
                 >
                   {tech}
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -309,7 +309,7 @@ const Skills = () => {
               ].map((tech, index) => (
                 <span
                   key={`second-${tech}`}
-                  className="group relative px-6 py-3 mx-2 bg-card rounded-full text-card-foreground border border-border hover:border-primary/50 transition-all duration-300 cursor-pointer hover:scale-110 whitespace-nowrap flex-shrink-0"
+                  className="group relative px-6 py-3 mx-2 bg-card/40 rounded-full text-card-foreground border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-300 cursor-pointer hover:scale-110 whitespace-nowrap flex-shrink-0 backdrop-blur-md"
                 >
                   {tech}
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

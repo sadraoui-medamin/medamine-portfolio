@@ -165,7 +165,7 @@ const Projects = () => {
 
         {/* Experience Section */}
         <div className={`mb-20 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="max-w-4xl mx-auto bg-card/30 backdrop-blur-lg border border-border rounded-xl p-8 hover:border-primary/50 transition-all duration-500 hover:scale-105">
+          <div className="max-w-4xl mx-auto bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-8 hover:border-primary/50 hover:bg-card/60 transition-all duration-500 hover:scale-105">
             <div className="flex items-start space-x-6">
               <div className="p-4 rounded-lg bg-primary/20 border border-primary/30">
                 <Building2 className="h-8 w-8 text-primary" />
@@ -209,7 +209,7 @@ const Projects = () => {
             {featuredProjects.map((project, index) => (
               <div
                 key={project.title}
-                className={`group relative bg-card/30 backdrop-blur-lg border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-700 hover:scale-105 hover:-translate-y-3 cursor-pointer transform-gpu ${
+                className={`group relative bg-card/40 backdrop-blur-md border border-border/50 rounded-xl overflow-hidden hover:border-primary/50 hover:bg-card/60 transition-all duration-700 hover:scale-105 hover:-translate-y-3 cursor-pointer transform-gpu ${
                   isVisible ? 'animate-scale-in' : 'opacity-0'
                 }`}
                 style={{ 

@@ -128,7 +128,8 @@ const Hero = () => {
           </a>
           
           <a
-            href="#"
+            href="/Profile.pdf"
+            download="Mohamed_Amine_Sadraoui_CV.pdf"
             className="group relative px-8 py-4 border-2 border-primary rounded-full font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-500 hover:scale-110 flex items-center justify-center gap-2 overflow-hidden"
           >
             <span className="relative z-10 flex items-center gap-2">
