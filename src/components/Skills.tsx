@@ -1,6 +1,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
-import { Code, Database, Smartphone, Globe, Server, Palette, Zap, Star, Sparkles, Brain, Users, Clock } from 'lucide-react';
+import { Code, Database, Smartphone, Globe, Server, Palette, Zap, Star, Sparkles, Brain, Users, Clock, 
+  FileCode, Coffee, Package, Box, Boxes, Wrench, GitBranch, Terminal, Cloud, Settings } from 'lucide-react';
 
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -14,11 +15,11 @@ const Skills = () => {
       color: 'from-blue-400 to-cyan-400',
       borderColor: 'border-blue-500/50',
       skills: [
-        { name: 'JavaScript', level: 90 },
-        { name: 'Java', level: 85 },
-        { name: 'Python', level: 80 },
-        { name: 'C/C#', level: 75 },
-        { name: 'PHP', level: 70 },
+        { name: 'JavaScript', level: 90, icon: FileCode },
+        { name: 'Java', level: 85, icon: Coffee },
+        { name: 'Python', level: 80, icon: Terminal },
+        { name: 'C/C#', level: 75, icon: Code },
+        { name: 'PHP', level: 70, icon: Server },
       ]
     },
     {
@@ -27,12 +28,12 @@ const Skills = () => {
       color: 'from-green-400 to-emerald-400',
       borderColor: 'border-green-500/50',
       skills: [
-        { name: 'React.js', level: 95 },
-        { name: 'HTML5', level: 95 },
-        { name: 'CSS3', level: 90 },
-        { name: 'Tailwind CSS', level: 90 },
-        { name: 'Ant Design', level: 85 },
-        { name: 'Material-UI', level: 85 },
+        { name: 'React.js', level: 95, icon: Globe },
+        { name: 'HTML5', level: 95, icon: FileCode },
+        { name: 'CSS3', level: 90, icon: Palette },
+        { name: 'Tailwind CSS', level: 90, icon: Wrench },
+        { name: 'Ant Design', level: 85, icon: Box },
+        { name: 'Material-UI', level: 85, icon: Package },
       ]
     },
     {
@@ -41,12 +42,12 @@ const Skills = () => {
       color: 'from-purple-400 to-pink-400',
       borderColor: 'border-purple-500/50',
       skills: [
-        { name: 'Node.js', level: 85 },
-        { name: 'Express.js', level: 85 },
-        { name: 'Spring Boot', level: 80 },
-        { name: 'Laravel', level: 75 },
-        { name: 'ASP.NET Core', level: 70 },
-        { name: 'RESTful APIs', level: 90 },
+        { name: 'Node.js', level: 85, icon: Server },
+        { name: 'Express.js', level: 85, icon: Zap },
+        { name: 'Spring Boot', level: 80, icon: Coffee },
+        { name: 'Laravel', level: 75, icon: Code },
+        { name: 'ASP.NET Core', level: 70, icon: Terminal },
+        { name: 'RESTful APIs', level: 90, icon: Cloud },
       ]
     },
     {
@@ -55,9 +56,9 @@ const Skills = () => {
       color: 'from-orange-400 to-red-400',
       borderColor: 'border-orange-500/50',
       skills: [
-        { name: 'Android (Java)', level: 80 },
-        { name: 'Android Studio', level: 85 },
-        { name: 'Mobile UI/UX', level: 75 },
+        { name: 'Android (Java)', level: 80, icon: Smartphone },
+        { name: 'Android Studio', level: 85, icon: Code },
+        { name: 'Mobile UI/UX', level: 75, icon: Palette },
       ]
     },
     {
@@ -66,10 +67,10 @@ const Skills = () => {
       color: 'from-teal-400 to-blue-400',
       borderColor: 'border-teal-500/50',
       skills: [
-        { name: 'MongoDB', level: 85 },
-        { name: 'MySQL', level: 90 },
-        { name: 'Oracle', level: 75 },
-        { name: 'SQLite', level: 80 },
+        { name: 'MongoDB', level: 85, icon: Database },
+        { name: 'MySQL', level: 90, icon: Database },
+        { name: 'Oracle', level: 75, icon: Database },
+        { name: 'SQLite', level: 80, icon: Database },
       ]
     },
     {
@@ -78,10 +79,10 @@ const Skills = () => {
       color: 'from-pink-400 to-purple-400',
       borderColor: 'border-pink-500/50',
       skills: [
-        { name: 'Git/GitHub', level: 90 },
-        { name: 'Agile/Scrum', level: 85 },
-        { name: 'PowerBI', level: 75 },
-        { name: 'Postman', level: 85 },
+        { name: 'Git/GitHub', level: 90, icon: GitBranch },
+        { name: 'Agile/Scrum', level: 85, icon: Users },
+        { name: 'PowerBI', level: 75, icon: Boxes },
+        { name: 'Postman', level: 85, icon: Settings },
       ]
     },
   ];
@@ -164,7 +165,7 @@ const Skills = () => {
           {skillCategories.map((category, index) => (
             <div
               key={category.title}
-              className={`group relative bg-card/40 backdrop-blur-md border border-border/50 hover:${category.borderColor} rounded-xl p-6 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer overflow-hidden ${
+              className={`group relative bg-card/40 backdrop-blur-md border border-border/50 hover:${category.borderColor} rounded-xl p-6 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl cursor-pointer overflow-hidden ${
                 isVisible ? 'animate-scale-in opacity-100' : 'opacity-0'
               }`}
               style={{ 
@@ -207,7 +208,10 @@ const Skills = () => {
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skill.name} className="space-y-2 group/skill">
                     <div className="flex justify-between items-center">
-                      <span className="text-muted-foreground font-medium group-hover:text-foreground transition-colors duration-300">{skill.name}</span>
+                      <div className="flex items-center space-x-2">
+                        {skill.icon && <skill.icon className="h-4 w-4 text-primary" />}
+                        <span className="text-muted-foreground font-medium group-hover:text-foreground transition-colors duration-300">{skill.name}</span>
+                      </div>
                       <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">{skill.level}%</span>
                     </div>
                     

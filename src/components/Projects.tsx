@@ -1,7 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ExternalLink, Github, Code, Smartphone, Globe, Database, Zap, Star, Eye, Sparkles, Calendar, Building2 } from 'lucide-react';
 
 const Projects = () => {
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -9,6 +11,7 @@ const Projects = () => {
 
   const projects = [
     {
+      id: 'debt-recovery',
       title: 'Debt Recovery Management System',
       description: 'A comprehensive web application designed to digitalize debt recovery processes for SBA Company. Features responsive design and secure backend implementation.',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
@@ -22,6 +25,7 @@ const Projects = () => {
       period: '3-4 months internship'
     },
     {
+      id: 'ecommerce',
       title: 'E-commerce Platform',
       description: 'A modern, secure e-commerce website with integrated Stripe payment system, responsive design, and comprehensive product management.',
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
@@ -35,6 +39,7 @@ const Projects = () => {
       period: 'Personal Project'
     },
     {
+      id: 'leave-management',
       title: 'Employee Leave Management',
       description: 'Android application for managing employee leave requests with intuitive interface, real-time tracking, and approval workflows.',
       image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
@@ -48,6 +53,7 @@ const Projects = () => {
       period: 'Academic Project'
     },
     {
+      id: 'product-management',
       title: 'Product Management Desktop App',
       description: 'JavaFX desktop application for inventory management with stock tracking, order management, and user-friendly interface.',
       image: 'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=600&h=400&fit=crop',
@@ -216,6 +222,7 @@ const Projects = () => {
                   animationDelay: `${0.5 + index * 0.2}s`,
                   animationFillMode: 'forwards'
                 }}
+                onClick={() => navigate(`/project/${project.id}`)}
                 onMouseEnter={() => setHoveredProject(index)}
                 onMouseLeave={() => setHoveredProject(null)}
                 onMouseMove={handleMouseMove}
