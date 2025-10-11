@@ -4,7 +4,6 @@ import { Code, Database, Smartphone, Globe, Server, Palette, Zap, Star, Sparkles
   FileCode, Coffee, Package, Box, Boxes, Wrench, GitBranch, Terminal, Cloud, Settings } from 'lucide-react';
 
 const Skills = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [activeCategory, setActiveCategory] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -13,76 +12,74 @@ const Skills = () => {
       title: 'Programming Languages',
       icon: Code,
       color: 'from-blue-400 to-cyan-400',
-      borderColor: 'border-blue-500/50',
       skills: [
-        { name: 'JavaScript', level: 90, icon: FileCode },
-        { name: 'Java', level: 85, icon: Coffee },
-        { name: 'Python', level: 80, icon: Terminal },
-        { name: 'C/C#', level: 75, icon: Code },
-        { name: 'PHP', level: 70, icon: Server },
+        'JavaScript',
+        'TypeScript',
+        'Java',
+        'Python',
+        'C/C#',
+        'PHP',
       ]
     },
     {
       title: 'Frontend Development',
       icon: Globe,
       color: 'from-green-400 to-emerald-400',
-      borderColor: 'border-green-500/50',
       skills: [
-        { name: 'React.js', level: 95, icon: Globe },
-        { name: 'HTML5', level: 95, icon: FileCode },
-        { name: 'CSS3', level: 90, icon: Palette },
-        { name: 'Tailwind CSS', level: 90, icon: Wrench },
-        { name: 'Ant Design', level: 85, icon: Box },
-        { name: 'Material-UI', level: 85, icon: Package },
+        'React.js',
+        'HTML5/CSS3',
+        'Tailwind CSS',
+        'Ant Design',
+        'Material-UI',
+        'Bootstrap',
       ]
     },
     {
       title: 'Backend Development',
       icon: Server,
       color: 'from-purple-400 to-pink-400',
-      borderColor: 'border-purple-500/50',
       skills: [
-        { name: 'Node.js', level: 85, icon: Server },
-        { name: 'Express.js', level: 85, icon: Zap },
-        { name: 'Spring Boot', level: 80, icon: Coffee },
-        { name: 'Laravel', level: 75, icon: Code },
-        { name: 'ASP.NET Core', level: 70, icon: Terminal },
-        { name: 'RESTful APIs', level: 90, icon: Cloud },
+        'Node.js',
+        'Express.js',
+        'Spring Boot',
+        'Laravel',
+        'ASP.NET Core',
+        'RESTful APIs',
       ]
     },
     {
       title: 'Mobile Development',
       icon: Smartphone,
       color: 'from-orange-400 to-red-400',
-      borderColor: 'border-orange-500/50',
       skills: [
-        { name: 'Android (Java)', level: 80, icon: Smartphone },
-        { name: 'Android Studio', level: 85, icon: Code },
-        { name: 'Mobile UI/UX', level: 75, icon: Palette },
+        'Android (Java)',
+        'Android Studio',
+        'Mobile UI/UX',
+        'SQLite',
       ]
     },
     {
       title: 'Databases',
       icon: Database,
       color: 'from-teal-400 to-blue-400',
-      borderColor: 'border-teal-500/50',
       skills: [
-        { name: 'MongoDB', level: 85, icon: Database },
-        { name: 'MySQL', level: 90, icon: Database },
-        { name: 'Oracle', level: 75, icon: Database },
-        { name: 'SQLite', level: 80, icon: Database },
+        'MongoDB',
+        'MySQL',
+        'Oracle',
+        'SQLite',
+        'PostgreSQL',
       ]
     },
     {
       title: 'Tools & Methodologies',
-      icon: Palette,
+      icon: Wrench,
       color: 'from-pink-400 to-purple-400',
-      borderColor: 'border-pink-500/50',
       skills: [
-        { name: 'Git/GitHub', level: 90, icon: GitBranch },
-        { name: 'Agile/Scrum', level: 85, icon: Users },
-        { name: 'PowerBI', level: 75, icon: Boxes },
-        { name: 'Postman', level: 85, icon: Settings },
+        'Git/GitHub',
+        'Agile/Scrum',
+        'PowerBI',
+        'Postman',
+        'Docker',
       ]
     },
   ];
@@ -95,16 +92,24 @@ const Skills = () => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-scale-in');
+            entry.target.classList.remove('opacity-0');
+          }
+        });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
     if (sectionRef.current) {
+      // Observe the section itself
       observer.observe(sectionRef.current);
+      
+      // Observe each skill category card
+      const cards = sectionRef.current.querySelectorAll('.skill-card');
+      cards.forEach((card) => observer.observe(card));
     }
 
     return () => observer.disconnect();
@@ -135,7 +140,7 @@ const Skills = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Enhanced Section Header */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+        <div className="section-header text-center mb-16 transition-all duration-1000 opacity-0">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 relative">
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent hover:from-purple-400 hover:to-pink-400 transition-all duration-500">
               Skills & Expertise
@@ -161,13 +166,11 @@ const Skills = () => {
         </div>
 
         {/* Enhanced Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((category, index) => (
             <div
               key={category.title}
-              className={`group relative bg-card/40 backdrop-blur-md border border-border/50 hover:${category.borderColor} rounded-xl p-6 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl cursor-pointer overflow-hidden ${
-                isVisible ? 'animate-scale-in opacity-100' : 'opacity-0'
-              }`}
+              className="skill-card group relative bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 cursor-pointer overflow-hidden opacity-0"
               style={{ 
                 animationDelay: `${index * 0.1}s`,
                 animationFillMode: 'forwards'
@@ -196,48 +199,25 @@ const Skills = () => {
               )}
 
               {/* Category Header */}
-              <div className="flex items-center mb-6 relative z-10">
-                <div className={`p-3 rounded-lg bg-gradient-to-r ${category.color} mr-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg`}>
-                  <category.icon className="h-6 w-6 text-white" />
+              <div className="flex flex-col items-center text-center mb-6 relative z-10">
+                <div className={`p-4 rounded-2xl bg-gradient-to-r ${category.color} mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}>
+                  <category.icon className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">{category.title}</h3>
+                <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300">{category.title}</h3>
               </div>
 
               {/* Enhanced Skills List */}
-              <div className="space-y-4 relative z-10">
+              <div className="flex flex-wrap gap-2 relative z-10 justify-center">
                 {category.skills.map((skill, skillIndex) => (
-                  <div key={skill.name} className="space-y-2 group/skill">
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center space-x-2">
-                        {skill.icon && <skill.icon className="h-4 w-4 text-primary" />}
-                        <span className="text-muted-foreground font-medium group-hover:text-foreground transition-colors duration-300">{skill.name}</span>
-                      </div>
-                      <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">{skill.level}%</span>
-                    </div>
-                    
-                    <div className="relative w-full bg-muted rounded-full h-2 overflow-hidden">
-                      {/* Progress bar with animation */}
-                      <div
-                        className={`h-full bg-gradient-to-r ${category.color} rounded-full transition-all duration-1000 ease-out relative overflow-hidden`}
-                        style={{ 
-                          width: isVisible ? `${skill.level}%` : '0%',
-                          transitionDelay: `${(index * 0.1) + (skillIndex * 0.1)}s`
-                        }}
-                      >
-                        {/* Shimmer effect */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-shimmer"></div>
-                      </div>
-                      
-                      {/* Glow effect */}
-                      <div
-                        className={`absolute top-0 h-full bg-gradient-to-r ${category.color} rounded-full blur-sm opacity-50 transition-all duration-1000 ease-out`}
-                        style={{ 
-                          width: isVisible ? `${skill.level}%` : '0%',
-                          transitionDelay: `${(index * 0.1) + (skillIndex * 0.1)}s`
-                        }}
-                      ></div>
-                    </div>
-                  </div>
+                  <span
+                    key={skill}
+                    className={`px-3 py-1.5 bg-gradient-to-r ${category.color} bg-opacity-10 backdrop-blur-sm rounded-full text-sm text-foreground border border-border hover:border-primary/50 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/25`}
+                    style={{ 
+                      animationDelay: `${(index * 0.1) + (skillIndex * 0.05)}s`
+                    }}
+                  >
+                    {skill}
+                  </span>
                 ))}
               </div>
 
@@ -248,7 +228,7 @@ const Skills = () => {
         </div>
 
         {/* Behavioral Skills Section */}
-        <div className={`mt-16 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="mt-16 transition-all duration-1000 opacity-0 section-header">
           <h3 className="text-2xl font-bold text-foreground mb-8 text-center flex items-center justify-center">
             <span>Behavioral Skills</span>
             <div className="ml-3 w-12 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 animate-pulse"></div>
@@ -279,7 +259,7 @@ const Skills = () => {
         </div>
 
         {/* Infinite Scrolling Development Tools */}
-        <div className={`mt-16 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="mt-16 transition-all duration-1000 opacity-0 section-header">
           <h3 className="text-2xl font-bold text-foreground mb-8 flex items-center justify-center">
             <span>Development Tools</span>
             <div className="ml-3 w-12 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 animate-pulse"></div>

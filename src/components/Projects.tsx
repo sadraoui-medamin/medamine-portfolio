@@ -4,7 +4,6 @@ import { ExternalLink, Github, Code, Smartphone, Globe, Database, Zap, Star, Eye
 
 const Projects = () => {
   const navigate = useNavigate();
-  const [isVisible, setIsVisible] = useState(false);
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLElement>(null);
@@ -85,16 +84,24 @@ const Projects = () => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-scale-in');
+            entry.target.classList.remove('opacity-0');
+          }
+        });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
     );
 
     if (sectionRef.current) {
+      // Observe section header
       observer.observe(sectionRef.current);
+      
+      // Observe each animated element
+      const elements = sectionRef.current.querySelectorAll('.project-card, .experience-card, .section-header');
+      elements.forEach((el) => observer.observe(el));
     }
 
     return () => observer.disconnect();
@@ -143,7 +150,7 @@ const Projects = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Enhanced Section Header with particles */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+        <div className="section-header text-center mb-16 transition-all duration-1000 opacity-0">
           <div className="relative inline-block">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 relative">
               <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent hover:from-purple-400 hover:to-cyan-400 transition-all duration-500 bg-[length:200%_100%] animate-shimmer">
@@ -170,8 +177,8 @@ const Projects = () => {
         </div>
 
         {/* Experience Section */}
-        <div className={`mb-20 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="max-w-4xl mx-auto bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-8 hover:border-primary/50 hover:bg-card/60 transition-all duration-500 hover:scale-105">
+        <div className="mb-20 transition-all duration-1000 opacity-0 experience-card">
+          <div className="max-w-4xl mx-auto bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-8 hover:border-primary/50 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20">
             <div className="flex items-start space-x-6">
               <div className="p-4 rounded-lg bg-primary/20 border border-primary/30">
                 <Building2 className="h-8 w-8 text-primary" />
@@ -202,7 +209,7 @@ const Projects = () => {
 
         {/* Enhanced Featured Projects */}
         <div className="mb-20">
-          <h3 className={`text-2xl font-bold text-white mb-8 text-center flex items-center justify-center transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h3 className="section-header text-2xl font-bold text-white mb-8 text-center flex items-center justify-center transition-all duration-1000 opacity-0">
             <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-blue-400 mr-3 animate-pulse"></div>
             <span className="relative">
               Featured Projects
@@ -215,13 +222,7 @@ const Projects = () => {
             {featuredProjects.map((project, index) => (
               <div
                 key={project.title}
-                className={`group relative bg-card/40 backdrop-blur-md border border-border/50 rounded-xl overflow-hidden hover:border-primary/50 hover:bg-card/60 transition-all duration-700 hover:scale-105 hover:-translate-y-3 cursor-pointer transform-gpu ${
-                  isVisible ? 'animate-scale-in' : 'opacity-0'
-                }`}
-                style={{ 
-                  animationDelay: `${0.5 + index * 0.2}s`,
-                  animationFillMode: 'forwards'
-                }}
+                className="project-card group relative bg-card/40 backdrop-blur-md border border-border/50 rounded-xl overflow-hidden hover:border-primary/50 hover:bg-card/60 transition-all duration-700 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 cursor-pointer transform-gpu opacity-0"
                 onClick={() => navigate(`/project/${project.id}`)}
                 onMouseEnter={() => setHoveredProject(index)}
                 onMouseLeave={() => setHoveredProject(null)}
@@ -355,7 +356,7 @@ const Projects = () => {
         {/* Enhanced Other Projects */}
         {otherProjects.length > 0 && (
           <div>
-            <h3 className={`text-2xl font-bold text-white mb-8 text-center flex items-center justify-center transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <h3 className="section-header text-2xl font-bold text-white mb-8 text-center flex items-center justify-center transition-all duration-1000 opacity-0">
               <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-purple-400 mr-3 animate-pulse"></div>
               <span className="relative">
                 Other Projects
@@ -368,13 +369,7 @@ const Projects = () => {
               {otherProjects.map((project, index) => (
                 <div
                   key={project.title}
-                  className={`group bg-gray-800/30 backdrop-blur-lg border border-gray-700/50 rounded-xl overflow-hidden hover:border-blue-500/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer transform-gpu ${
-                    isVisible ? 'animate-fade-in-up' : 'opacity-0'
-                  }`}
-                  style={{ 
-                    animationDelay: `${1 + index * 0.1}s`,
-                    animationFillMode: 'forwards'
-                  }}
+                  className="project-card group bg-card/40 backdrop-blur-md border border-border/50 rounded-xl overflow-hidden hover:border-primary/50 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 cursor-pointer transform-gpu opacity-0"
                   onMouseMove={handleMouseMove}
                 >
                   {/* Mouse follow glow effect */}
