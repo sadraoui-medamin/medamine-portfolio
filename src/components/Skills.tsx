@@ -1,5 +1,6 @@
 
 import React, { useRef, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Code, Database, Smartphone, Globe, Server, Palette, Zap, Star, Sparkles, Brain, Users, Clock, 
   FileCode, Coffee, Package, Box, Boxes, Wrench, GitBranch, Terminal, Cloud, Settings } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
@@ -7,6 +8,11 @@ import { Progress } from '@/components/ui/progress';
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const navigate = useNavigate();
+
+  const convertToSlug = (name: string) => {
+    return name.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '').replace(/\//g, '-');
+  };
 
   const getColorClasses = (color: string) => {
     const colorMap: Record<string, { bg: string, text: string, border: string }> = {
@@ -214,6 +220,7 @@ const Skills = () => {
                   }}
                   onMouseEnter={() => setActiveCategory(categoryIndex * 100 + skillIndex)}
                   onMouseLeave={() => setActiveCategory(null)}
+                  onClick={() => navigate(`/skill/${convertToSlug(skill.name)}`)}
                 >
                   {/* Animated background overlay */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${category.lineColor} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
