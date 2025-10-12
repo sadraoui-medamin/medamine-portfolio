@@ -252,105 +252,109 @@ const SkillDetails = () => {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Animated background */}
-      <div className="absolute inset-0 opacity-10">
+      {/* Gradient Background */}
+      <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-5`}></div>
+      
+      {/* Animated Grid */}
+      <div className="absolute inset-0 opacity-[0.03]">
         <div className="cyber-grid w-full h-full"></div>
       </div>
 
-      {/* Floating particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className={`absolute w-1 h-1 bg-gradient-to-r ${skill.color} rounded-full animate-float opacity-40`}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${5 + Math.random() * 3}s`
-            }}
-          />
-        ))}
+      {/* Floating Orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className={`absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br ${skill.color} rounded-full blur-3xl opacity-10 animate-pulse`}></div>
+        <div className={`absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl ${skill.color} rounded-full blur-3xl opacity-10 animate-pulse`} style={{ animationDelay: '1s' }}></div>
       </div>
 
-      <div className="container mx-auto px-6 py-12 relative z-10">
-        {/* Back Button */}
-        <Button 
-          variant="ghost" 
-          onClick={() => navigate('/')}
-          className="mb-8 hover:bg-card/40"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Skills
-        </Button>
+      <div className="relative z-10">
+        {/* Navigation */}
+        <div className="container mx-auto px-6 py-8">
+          <Button 
+            variant="ghost" 
+            onClick={() => navigate('/')}
+            className="group hover:bg-card/40 backdrop-blur-sm"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+            Back to Portfolio
+          </Button>
+        </div>
 
-        {/* Main Content */}
-        <div className="max-w-4xl mx-auto">
-          {/* Header Section */}
-          <div className="text-center mb-12 animate-fade-in">
-            {/* Logo */}
-            <div className={`inline-block text-8xl mb-6 p-8 rounded-3xl bg-gradient-to-br ${skill.color} bg-opacity-10 backdrop-blur-md border border-border/50`}>
-              {skill.logo}
-            </div>
-
-            {/* Skill Name */}
-            <h1 className={`text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r ${skill.color} bg-clip-text text-transparent`}>
-              {skill.name}
-            </h1>
-
-            {/* Decorative line */}
-            <div className="relative">
-              <div className={`w-32 h-1 bg-gradient-to-r ${skill.color} mx-auto rounded-full`}></div>
-              <div className={`absolute inset-0 w-32 h-1 bg-gradient-to-r ${skill.color} mx-auto rounded-full blur-md animate-pulse`}></div>
-            </div>
-          </div>
-
-          {/* Info Cards */}
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            {/* Belongs To Card */}
-            <div className="group relative bg-card/40 backdrop-blur-md border border-border/50 rounded-2xl p-8 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`}></div>
-              
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`p-3 rounded-lg bg-gradient-to-br ${skill.color} bg-opacity-20`}>
-                    <Building2 className="w-6 h-6 text-foreground" />
-                  </div>
-                  <h2 className="text-2xl font-bold text-foreground">Belongs To</h2>
+        {/* Hero Section */}
+        <div className="container mx-auto px-6 py-12">
+          <div className="max-w-5xl mx-auto">
+            {/* Logo & Title */}
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="relative inline-block mb-8">
+                <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} blur-2xl opacity-30 animate-pulse`}></div>
+                <div className={`relative text-9xl p-12 rounded-3xl bg-gradient-to-br ${skill.color} bg-opacity-10 backdrop-blur-xl border border-border/30 shadow-2xl`}>
+                  {skill.logo}
                 </div>
-                <p className="text-lg text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                  {skill.belongsTo}
-                </p>
+              </div>
+              
+              <h1 className={`text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r ${skill.color} bg-clip-text text-transparent drop-shadow-2xl`}>
+                {skill.name}
+              </h1>
+              
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className={`h-px w-24 bg-gradient-to-r ${skill.color}`}></div>
+                <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${skill.color} animate-pulse`}></div>
+                <div className={`h-px w-24 bg-gradient-to-l ${skill.color}`}></div>
+              </div>
+              
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                A comprehensive look at my experience and learnings
+              </p>
+            </div>
+
+            {/* Content Grid */}
+            <div className="grid lg:grid-cols-3 gap-6 mb-12">
+              {/* Organization Card */}
+              <div className="lg:col-span-1 group animate-fade-in" style={{ animationDelay: '0.1s' }}>
+                <div className="relative h-full bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl p-8 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}></div>
+                  
+                  <div className="relative z-10">
+                    <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${skill.color} bg-opacity-20 mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                      <Building2 className="w-8 h-8 text-foreground" />
+                    </div>
+                    
+                    <h2 className="text-2xl font-bold text-foreground mb-3">Organization</h2>
+                    <p className="text-lg text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                      {skill.belongsTo}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Learning Card */}
+              <div className="lg:col-span-2 group animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                <div className="relative h-full bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl p-8 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}></div>
+                  
+                  <div className="relative z-10">
+                    <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${skill.color} bg-opacity-20 mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                      <Lightbulb className="w-8 h-8 text-foreground" />
+                    </div>
+                    
+                    <h2 className="text-2xl font-bold text-foreground mb-4">Key Learnings</h2>
+                    <p className="text-lg text-muted-foreground group-hover:text-foreground transition-colors duration-300 leading-relaxed">
+                      {skill.whatLearned}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* What I Learned Card */}
-            <div className="group relative bg-card/40 backdrop-blur-md border border-border/50 rounded-2xl p-8 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 animate-fade-in md:col-span-2" style={{ animationDelay: '0.3s' }}>
-              <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`}></div>
-              
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`p-3 rounded-lg bg-gradient-to-br ${skill.color} bg-opacity-20`}>
-                    <Lightbulb className="w-6 h-6 text-foreground" />
-                  </div>
-                  <h2 className="text-2xl font-bold text-foreground">What I Learned</h2>
-                </div>
-                <p className="text-lg text-muted-foreground group-hover:text-foreground transition-colors duration-300 leading-relaxed">
-                  {skill.whatLearned}
-                </p>
-              </div>
+            {/* CTA Section */}
+            <div className="text-center animate-fade-in" style={{ animationDelay: '0.3s' }}>
+              <Button 
+                size="lg"
+                onClick={() => navigate('/')}
+                className={`bg-gradient-to-r ${skill.color} hover:opacity-90 text-white hover:scale-105 transition-all duration-300 shadow-lg px-8 py-6 text-lg`}
+              >
+                Explore More Skills
+              </Button>
             </div>
-          </div>
-
-          {/* Return Button */}
-          <div className="text-center mt-12 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <Button 
-              size="lg"
-              onClick={() => navigate('/')}
-              className={`bg-gradient-to-r ${skill.color} hover:opacity-90 transition-opacity duration-300`}
-            >
-              Explore More Skills
-            </Button>
           </div>
         </div>
       </div>
