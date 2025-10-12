@@ -123,10 +123,15 @@ const Skills = () => {
     );
 
     if (sectionRef.current) {
-      // Observe the section itself
-      observer.observe(sectionRef.current);
+      // Observe section headers
+      const headers = sectionRef.current.querySelectorAll('.section-header');
+      headers.forEach((header) => observer.observe(header));
       
-      // Observe each skill category card
+      // Observe each skill category
+      const categories = sectionRef.current.querySelectorAll('.skill-category');
+      categories.forEach((category) => observer.observe(category));
+      
+      // Observe each skill card
       const cards = sectionRef.current.querySelectorAll('.skill-card');
       cards.forEach((card) => observer.observe(card));
     }
