@@ -1,231 +1,162 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Building2, Lightbulb } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 // Skill details data structure
 const skillDetails: Record<string, {
   name: string;
   belongsTo: string;
-  whatLearned: string;
-  logo: string;
+  definition: string;
+  keyLearnings: string[];
+  iconUrl: string;
   color: string;
+  website?: string;
+  documentation?: string;
+  companyWebsite?: string;
 }> = {
   'javascript': {
     name: 'JavaScript',
     belongsTo: 'Ecma International',
-    whatLearned: 'Mastered dynamic programming, event-driven architecture, and asynchronous patterns. Built interactive web applications with modern ES6+ features.',
-    logo: '☕',
-    color: 'from-yellow-400 to-orange-400'
+    definition: 'A versatile, high-level programming language that enables interactive web pages and is an essential part of web applications. It runs on both client-side and server-side environments.',
+    keyLearnings: [
+      'Mastered dynamic programming and event-driven architecture',
+      'Built interactive web applications with modern ES6+ features',
+      'Implemented asynchronous patterns with Promises and async/await',
+      'Developed single-page applications with modern frameworks'
+    ],
+    iconUrl: 'https://techicons.dev/icons/javascript',
+    color: 'from-yellow-400 to-orange-400',
+    website: 'https://www.javascript.com/',
+    documentation: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+    companyWebsite: 'https://www.ecma-international.org/'
   },
   'typescript': {
     name: 'TypeScript',
     belongsTo: 'Microsoft',
-    whatLearned: 'Learned type-safe development practices, interface design, and advanced type system features. Improved code quality and maintainability in large projects.',
-    logo: '🔷',
-    color: 'from-blue-400 to-blue-600'
-  },
-  'java': {
-    name: 'Java',
-    belongsTo: 'Oracle Corporation',
-    whatLearned: 'Developed expertise in object-oriented programming, design patterns, and enterprise application development with Spring framework.',
-    logo: '☕',
-    color: 'from-red-500 to-orange-500'
-  },
-  'python': {
-    name: 'Python',
-    belongsTo: 'Python Software Foundation',
-    whatLearned: 'Gained proficiency in data structures, algorithms, and backend development. Built automation scripts and web applications with Django/Flask.',
-    logo: '🐍',
-    color: 'from-blue-400 to-yellow-400'
-  },
-  'c-c#': {
-    name: 'C/C#',
-    belongsTo: 'Microsoft',
-    whatLearned: 'Learned low-level programming concepts, memory management, and high-performance application development with .NET framework.',
-    logo: '🔧',
-    color: 'from-purple-400 to-blue-500'
-  },
-  'php': {
-    name: 'PHP',
-    belongsTo: 'The PHP Group',
-    whatLearned: 'Built dynamic server-side applications, managed databases, and developed RESTful APIs with Laravel framework.',
-    logo: '🐘',
-    color: 'from-purple-500 to-blue-500'
+    definition: 'A strongly typed superset of JavaScript that compiles to plain JavaScript, providing optional static typing, classes, and interfaces for building robust applications.',
+    keyLearnings: [
+      'Learned type-safe development practices',
+      'Mastered interface design and advanced type system features',
+      'Improved code quality and maintainability in large projects',
+      'Implemented generic types and utility types effectively'
+    ],
+    iconUrl: 'https://techicons.dev/icons/typescript',
+    color: 'from-blue-400 to-blue-600',
+    website: 'https://www.typescriptlang.org/',
+    documentation: 'https://www.typescriptlang.org/docs/',
+    companyWebsite: 'https://www.microsoft.com/'
   },
   'react.js': {
     name: 'React.js',
     belongsTo: 'Meta (Facebook)',
-    whatLearned: 'Mastered component-based architecture, state management with hooks, and building responsive single-page applications with modern React patterns.',
-    logo: '⚛️',
-    color: 'from-cyan-400 to-blue-500'
+    definition: 'A JavaScript library for building user interfaces with a component-based architecture. It enables developers to create reusable UI components and manage application state efficiently.',
+    keyLearnings: [
+      'Mastered component-based architecture',
+      'Implemented state management with hooks',
+      'Built responsive single-page applications',
+      'Optimized performance with React best practices'
+    ],
+    iconUrl: 'https://techicons.dev/icons/react-dark',
+    color: 'from-cyan-400 to-blue-500',
+    website: 'https://react.dev/',
+    documentation: 'https://react.dev/learn',
+    companyWebsite: 'https://www.meta.com/'
   },
   'html5-css3': {
     name: 'HTML5/CSS3',
     belongsTo: 'W3C (World Wide Web Consortium)',
-    whatLearned: 'Learned semantic markup, responsive design principles, CSS animations, and modern layout techniques like Flexbox and Grid.',
-    logo: '🌐',
-    color: 'from-orange-500 to-blue-500'
+    definition: 'The latest evolution of web standards for structuring and presenting content on the web. HTML5 provides semantic markup while CSS3 enables sophisticated styling and animations.',
+    keyLearnings: [
+      'Learned semantic markup and accessibility best practices',
+      'Mastered responsive design principles',
+      'Implemented CSS animations and transitions',
+      'Utilized modern layout techniques like Flexbox and Grid'
+    ],
+    iconUrl: 'https://techicons.dev/icons/html',
+    color: 'from-orange-500 to-blue-500',
+    website: 'https://html.spec.whatwg.org/',
+    documentation: 'https://developer.mozilla.org/en-US/docs/Web',
+    companyWebsite: 'https://www.w3.org/'
   },
   'tailwind-css': {
     name: 'Tailwind CSS',
     belongsTo: 'Tailwind Labs',
-    whatLearned: 'Adopted utility-first CSS approach, rapid UI development, and custom design system creation with consistent styling.',
-    logo: '💨',
-    color: 'from-cyan-400 to-blue-500'
-  },
-  'ant-design': {
-    name: 'Ant Design',
-    belongsTo: 'Ant Group',
-    whatLearned: 'Built enterprise-level applications with pre-built components, learned design system principles and component customization.',
-    logo: '🐜',
-    color: 'from-blue-500 to-cyan-500'
-  },
-  'material-ui': {
-    name: 'Material-UI',
-    belongsTo: 'Google',
-    whatLearned: 'Implemented Material Design principles, created consistent user interfaces, and customized theme configurations.',
-    logo: '📦',
-    color: 'from-blue-500 to-purple-500'
-  },
-  'bootstrap': {
-    name: 'Bootstrap',
-    belongsTo: 'Twitter (X)',
-    whatLearned: 'Developed responsive websites quickly using pre-built components and grid system, learned mobile-first design approach.',
-    logo: '🅱️',
-    color: 'from-purple-500 to-pink-500'
+    definition: 'A utility-first CSS framework that provides low-level utility classes to build custom designs without leaving your HTML.',
+    keyLearnings: [
+      'Adopted utility-first CSS approach',
+      'Achieved rapid UI development',
+      'Created custom design systems with consistent styling',
+      'Mastered responsive design with Tailwind utilities'
+    ],
+    iconUrl: 'https://techicons.dev/icons/tailwindcss-dark',
+    color: 'from-cyan-400 to-blue-500',
+    website: 'https://tailwindcss.com/',
+    documentation: 'https://tailwindcss.com/docs',
+    companyWebsite: 'https://tailwindlabs.com/'
   },
   'node.js': {
     name: 'Node.js',
     belongsTo: 'OpenJS Foundation',
-    whatLearned: 'Built scalable server-side applications, RESTful APIs, and real-time systems using JavaScript runtime environment.',
-    logo: '🟢',
-    color: 'from-green-500 to-emerald-500'
-  },
-  'express.js': {
-    name: 'Express.js',
-    belongsTo: 'OpenJS Foundation',
-    whatLearned: 'Created robust web servers, implemented middleware patterns, and developed RESTful API architectures.',
-    logo: '🚂',
-    color: 'from-gray-500 to-green-500'
-  },
-  'spring-boot': {
-    name: 'Spring Boot',
-    belongsTo: 'VMware (Spring)',
-    whatLearned: 'Built enterprise Java applications, implemented dependency injection, and created microservices architectures.',
-    logo: '🍃',
-    color: 'from-green-500 to-emerald-600'
-  },
-  'laravel': {
-    name: 'Laravel',
-    belongsTo: 'Taylor Otwell',
-    whatLearned: 'Developed elegant web applications with MVC architecture, learned Eloquent ORM, and implemented authentication systems.',
-    logo: '🔴',
-    color: 'from-red-500 to-orange-500'
-  },
-  'asp.net-core': {
-    name: 'ASP.NET Core',
-    belongsTo: 'Microsoft',
-    whatLearned: 'Built cross-platform web applications, implemented MVC patterns, and developed cloud-ready enterprise solutions.',
-    logo: '💜',
-    color: 'from-purple-500 to-blue-500'
-  },
-  'restful-apis': {
-    name: 'RESTful APIs',
-    belongsTo: 'Industry Standard',
-    whatLearned: 'Designed scalable API architectures, implemented HTTP methods, and ensured proper status codes and authentication.',
-    logo: '🔌',
-    color: 'from-blue-400 to-cyan-400'
-  },
-  'android-(java)': {
-    name: 'Android (Java)',
-    belongsTo: 'Google',
-    whatLearned: 'Developed native Android applications, learned activity lifecycle, and implemented material design principles.',
-    logo: '🤖',
-    color: 'from-green-500 to-lime-500'
-  },
-  'android-studio': {
-    name: 'Android Studio',
-    belongsTo: 'Google',
-    whatLearned: 'Mastered Android development IDE, debugging tools, emulator usage, and Gradle build system.',
-    logo: '📱',
-    color: 'from-green-400 to-blue-500'
-  },
-  'mobile-ui-ux': {
-    name: 'Mobile UI/UX',
-    belongsTo: 'Industry Best Practices',
-    whatLearned: 'Designed intuitive mobile interfaces, learned gesture navigation, and optimized for touch interactions.',
-    logo: '📱',
-    color: 'from-pink-400 to-purple-500'
-  },
-  'sqlite': {
-    name: 'SQLite',
-    belongsTo: 'D. Richard Hipp',
-    whatLearned: 'Implemented local database storage, managed data persistence, and optimized query performance for mobile apps.',
-    logo: '💾',
-    color: 'from-blue-500 to-cyan-500'
+    definition: 'A JavaScript runtime built on Chrome\'s V8 engine that enables JavaScript to run on the server-side, allowing full-stack JavaScript development.',
+    keyLearnings: [
+      'Built scalable server-side applications',
+      'Developed RESTful APIs and real-time systems',
+      'Implemented event-driven architectures',
+      'Managed asynchronous operations efficiently'
+    ],
+    iconUrl: 'https://techicons.dev/icons/nodejs-dark',
+    color: 'from-green-500 to-emerald-500',
+    website: 'https://nodejs.org/',
+    documentation: 'https://nodejs.org/docs/',
+    companyWebsite: 'https://openjsf.org/'
   },
   'mongodb': {
     name: 'MongoDB',
     belongsTo: 'MongoDB Inc.',
-    whatLearned: 'Worked with NoSQL databases, document-oriented data modeling, and aggregation pipelines for complex queries.',
-    logo: '🍃',
-    color: 'from-green-500 to-emerald-500'
-  },
-  'mysql': {
-    name: 'MySQL',
-    belongsTo: 'Oracle Corporation',
-    whatLearned: 'Designed relational database schemas, optimized queries, and implemented indexes for better performance.',
-    logo: '🐬',
-    color: 'from-blue-500 to-orange-500'
-  },
-  'oracle': {
-    name: 'Oracle',
-    belongsTo: 'Oracle Corporation',
-    whatLearned: 'Managed enterprise-level databases, learned PL/SQL programming, and implemented complex stored procedures.',
-    logo: '🔴',
-    color: 'from-red-500 to-orange-500'
-  },
-  'postgresql': {
-    name: 'PostgreSQL',
-    belongsTo: 'PostgreSQL Global Development Group',
-    whatLearned: 'Used advanced database features, learned complex queries, and implemented JSONB for flexible data storage.',
-    logo: '🐘',
-    color: 'from-blue-500 to-cyan-500'
-  },
-  'git-github': {
-    name: 'Git/GitHub',
-    belongsTo: 'GitHub (Microsoft)',
-    whatLearned: 'Mastered version control workflows, branching strategies, code reviews, and collaborative development practices.',
-    logo: '🔱',
-    color: 'from-orange-500 to-red-500'
-  },
-  'agile-scrum': {
-    name: 'Agile/Scrum',
-    belongsTo: 'Agile Alliance',
-    whatLearned: 'Applied iterative development, daily standups, sprint planning, and continuous improvement methodologies.',
-    logo: '🔄',
-    color: 'from-blue-400 to-purple-500'
-  },
-  'powerbi': {
-    name: 'PowerBI',
-    belongsTo: 'Microsoft',
-    whatLearned: 'Created interactive dashboards, data visualizations, and business intelligence reports for data-driven decisions.',
-    logo: '📊',
-    color: 'from-yellow-500 to-orange-500'
-  },
-  'postman': {
-    name: 'Postman',
-    belongsTo: 'Postman Inc.',
-    whatLearned: 'Tested and documented APIs, automated testing workflows, and collaborated on API development.',
-    logo: '📮',
-    color: 'from-orange-500 to-red-500'
+    definition: 'A NoSQL document-oriented database that stores data in flexible, JSON-like documents, enabling rapid development and horizontal scaling.',
+    keyLearnings: [
+      'Worked with NoSQL database concepts',
+      'Implemented document-oriented data modeling',
+      'Created aggregation pipelines for complex queries',
+      'Optimized database performance and indexing'
+    ],
+    iconUrl: 'https://techicons.dev/icons/mongodb',
+    color: 'from-green-500 to-emerald-500',
+    website: 'https://www.mongodb.com/',
+    documentation: 'https://www.mongodb.com/docs/',
+    companyWebsite: 'https://www.mongodb.com/'
   },
   'docker': {
     name: 'Docker',
     belongsTo: 'Docker Inc.',
-    whatLearned: 'Containerized applications, learned Docker Compose, and ensured consistent development environments.',
-    logo: '🐳',
-    color: 'from-blue-500 to-cyan-500'
+    definition: 'A platform for developing, shipping, and running applications in containers, providing consistent environments across development and production.',
+    keyLearnings: [
+      'Containerized applications for consistency',
+      'Learned Docker Compose for multi-container apps',
+      'Ensured reproducible development environments',
+      'Implemented container orchestration basics'
+    ],
+    iconUrl: 'https://techicons.dev/icons/docker',
+    color: 'from-blue-500 to-cyan-500',
+    website: 'https://www.docker.com/',
+    documentation: 'https://docs.docker.com/',
+    companyWebsite: 'https://www.docker.com/'
+  },
+  'git-github': {
+    name: 'Git/GitHub',
+    belongsTo: 'GitHub (Microsoft)',
+    definition: 'Git is a distributed version control system, and GitHub is a cloud-based platform for hosting and collaborating on Git repositories.',
+    keyLearnings: [
+      'Mastered version control workflows',
+      'Implemented branching strategies',
+      'Conducted code reviews and pull requests',
+      'Applied collaborative development practices'
+    ],
+    iconUrl: 'https://techicons.dev/icons/git',
+    color: 'from-orange-500 to-red-500',
+    website: 'https://github.com/',
+    documentation: 'https://docs.github.com/',
+    companyWebsite: 'https://github.com/'
   },
 };
 
@@ -279,74 +210,127 @@ const SkillDetails = () => {
           </Button>
         </div>
 
-        {/* Hero Section */}
         <div className="container mx-auto px-6 py-12">
-          <div className="max-w-5xl mx-auto">
-            {/* Logo & Title */}
-            <div className="text-center mb-16 animate-fade-in">
-              <div className="relative inline-block mb-8">
-                <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} blur-2xl opacity-30 animate-pulse`}></div>
-                <div className={`relative text-9xl p-12 rounded-3xl bg-gradient-to-br ${skill.color} bg-opacity-10 backdrop-blur-xl border border-border/30 shadow-2xl`}>
-                  {skill.logo}
-                </div>
-              </div>
-              
-              <h1 className={`text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r ${skill.color} bg-clip-text text-transparent drop-shadow-2xl`}>
-                {skill.name}
-              </h1>
-              
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className={`h-px w-24 bg-gradient-to-r ${skill.color}`}></div>
-                <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${skill.color} animate-pulse`}></div>
-                <div className={`h-px w-24 bg-gradient-to-l ${skill.color}`}></div>
-              </div>
-              
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                A comprehensive look at my experience and learnings
-              </p>
-            </div>
-
-            {/* Content Grid */}
-            <div className="grid lg:grid-cols-3 gap-6 mb-12">
-              {/* Organization Card */}
-              <div className="lg:col-span-1 group animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                <div className="relative h-full bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl p-8 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}></div>
-                  
-                  <div className="relative z-10">
-                    <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${skill.color} bg-opacity-20 mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                      <Building2 className="w-8 h-8 text-foreground" />
-                    </div>
-                    
-                    <h2 className="text-2xl font-bold text-foreground mb-3">Organization</h2>
-                    <p className="text-lg text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                      {skill.belongsTo}
-                    </p>
+          <div className="max-w-6xl mx-auto space-y-12">
+            
+            {/* Section 1: Icon & Technology Info */}
+            <section className="grid md:grid-cols-2 gap-8 animate-fade-in">
+              {/* Left: Icon */}
+              <div className="flex items-center justify-center">
+                <div className="relative">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} blur-3xl opacity-30 animate-pulse`}></div>
+                  <div className={`relative w-64 h-64 rounded-3xl bg-card/40 backdrop-blur-xl border border-border/50 flex items-center justify-center shadow-2xl`}>
+                    <img 
+                      src={skill.iconUrl} 
+                      alt={`${skill.name} logo`}
+                      className="w-40 h-40 object-contain"
+                    />
                   </div>
                 </div>
               </div>
 
-              {/* Learning Card */}
-              <div className="lg:col-span-2 group animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                <div className="relative h-full bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl p-8 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}></div>
-                  
-                  <div className="relative z-10">
-                    <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${skill.color} bg-opacity-20 mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                      <Lightbulb className="w-8 h-8 text-foreground" />
-                    </div>
-                    
-                    <h2 className="text-2xl font-bold text-foreground mb-4">Key Learnings</h2>
-                    <p className="text-lg text-muted-foreground group-hover:text-foreground transition-colors duration-300 leading-relaxed">
-                      {skill.whatLearned}
-                    </p>
-                  </div>
+              {/* Right: Technology Info */}
+              <div className="flex flex-col justify-center space-y-4">
+                <h1 className={`text-5xl md:text-6xl font-bold bg-gradient-to-r ${skill.color} bg-clip-text text-transparent`}>
+                  {skill.name}
+                </h1>
+                
+                <div className="flex items-center gap-3">
+                  <div className={`h-px w-16 bg-gradient-to-r ${skill.color}`}></div>
+                  <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${skill.color} animate-pulse`}></div>
+                </div>
+
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  {skill.definition}
+                </p>
+
+                <div className="pt-4">
+                  <p className="text-sm text-muted-foreground mb-2">Maintained by</p>
+                  <p className="text-xl font-semibold text-foreground">{skill.belongsTo}</p>
                 </div>
               </div>
-            </div>
+            </section>
 
-            {/* CTA Section */}
-            <div className="text-center animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            {/* Section 2: Key Learnings */}
+            <section className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <div className="bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl p-8">
+                <h2 className="text-3xl font-bold text-foreground mb-6 flex items-center gap-3">
+                  <div className={`w-1 h-8 bg-gradient-to-b ${skill.color} rounded-full`}></div>
+                  Key Learnings
+                </h2>
+                <ul className="space-y-3">
+                  {skill.keyLearnings.map((learning, index) => (
+                    <li key={index} className="flex items-start gap-3 text-lg text-muted-foreground">
+                      <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${skill.color} mt-2 flex-shrink-0`}></div>
+                      <span>{learning}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+
+            {/* Section 3: Resources & Company Contact */}
+            <section className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
+              <div className="bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl p-8">
+                <h2 className="text-3xl font-bold text-foreground mb-6 flex items-center gap-3">
+                  <div className={`w-1 h-8 bg-gradient-to-b ${skill.color} rounded-full`}></div>
+                  Resources & Links
+                </h2>
+                
+                <div className="grid md:grid-cols-3 gap-6">
+                  {skill.website && (
+                    <a 
+                      href={skill.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex flex-col gap-3 p-6 bg-card/40 border border-border/50 rounded-xl hover:bg-card/60 transition-all duration-300 hover:scale-105"
+                    >
+                      <Globe className="w-8 h-8 text-muted-foreground group-hover:text-foreground transition-colors" />
+                      <div>
+                        <h3 className="font-semibold text-foreground mb-1">Official Website</h3>
+                        <p className="text-sm text-muted-foreground">Visit the main site</p>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-muted-foreground ml-auto" />
+                    </a>
+                  )}
+
+                  {skill.documentation && (
+                    <a 
+                      href={skill.documentation}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex flex-col gap-3 p-6 bg-card/40 border border-border/50 rounded-xl hover:bg-card/60 transition-all duration-300 hover:scale-105"
+                    >
+                      <Globe className="w-8 h-8 text-muted-foreground group-hover:text-foreground transition-colors" />
+                      <div>
+                        <h3 className="font-semibold text-foreground mb-1">Documentation</h3>
+                        <p className="text-sm text-muted-foreground">Learn more</p>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-muted-foreground ml-auto" />
+                    </a>
+                  )}
+
+                  {skill.companyWebsite && (
+                    <a 
+                      href={skill.companyWebsite}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex flex-col gap-3 p-6 bg-card/40 border border-border/50 rounded-xl hover:bg-card/60 transition-all duration-300 hover:scale-105"
+                    >
+                      <Globe className="w-8 h-8 text-muted-foreground group-hover:text-foreground transition-colors" />
+                      <div>
+                        <h3 className="font-semibold text-foreground mb-1">Company</h3>
+                        <p className="text-sm text-muted-foreground">{skill.belongsTo}</p>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-muted-foreground ml-auto" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </section>
+
+            {/* CTA */}
+            <div className="text-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
               <Button 
                 size="lg"
                 onClick={() => navigate('/')}
