@@ -142,7 +142,7 @@ const Skills = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Enhanced Section Header */}
-        <div className="section-header text-center mb-16 transition-all duration-1000 animate-fade-in-up">
+        <div className="section-header text-center mb-16 transition-all duration-300 animate-fade-in-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 relative">
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent hover:from-purple-400 hover:to-pink-400 transition-all duration-500">
               Skills & Expertise
