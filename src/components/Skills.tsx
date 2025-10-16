@@ -184,46 +184,61 @@ const Skills = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {category.skills.map((skill, skillIndex) => (
                 <div
-                    key={skill.name}
-                    className="skill-card group relative bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6
-                              hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105
-                              cursor-pointer overflow-hidden animate-fade-in-up"
-                    style={{ animationDelay: `${skillIndex * 0.1}s` }}
-                  >
-                    
-                  {/* Animated  background overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${category.lineColor} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-                  
-                  {/* Sparkle effects */}
-                  {/* {activeCategory === (categoryIndex * 100 + skillIndex) && (
-                    <div className="absolute inset-0 pointer-events-none">
-                      {[...Array(3)].map((_, i) => (
-                        <Sparkles
-                          key={i}
-                          className="absolute w-3 h-3 text-white animate-ping opacity-60"
-                          style={{
-                            left: `${10 + Math.random() * 80}%`,
-                            top: `${10 + Math.random() * 80}%`,
-                            animationDelay: `${i * 0.2}s`,
-                            willChange: 'transform, opacity',
-                            transform: 'translateZ(0)'
-                          }}
-                        />
-                      ))}
-                    </div>
-                  )} */}
+                  key={skill.name}
+                  className="skill-card group relative bg-card/40 border border-border/50 rounded-xl p-6 
+                            hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl 
+                            hover:shadow-primary/20 cursor-pointer overflow-hidden 
+                            animate-fade-in-up"
+                  style={{ 
+                    animationDelay: `${(categoryIndex * 0.2) + (skillIndex * 0.1)}s`,
+                    animationFillMode: 'forwards',
+                    willChange: 'transform, opacity',
+                    transform: 'translateZ(0)',
+                  }}
+                  onClick={() => navigate(`/skill/${convertToSlug(skill.name)}`)}
+                >
+                  {/* Animated background overlay */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${category.lineColor} opacity-0 
+                                group-hover:opacity-10 transition-opacity duration-500`}
+                  ></div>
+
+                  {/* Sparkle effects (CSS-only hover, no state re-render) */}
+                  <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-60 transition-opacity duration-500">
+                    {[...Array(3)].map((_, i) => (
+                      <Sparkles
+                        key={i}
+                        className="absolute w-3 h-3 text-white animate-ping"
+                        style={{
+                          left: `${10 + Math.random() * 80}%`,
+                          top: `${10 + Math.random() * 80}%`,
+                          animationDelay: `${i * 0.2}s`,
+                          willChange: 'transform, opacity',
+                          transform: 'translateZ(0)',
+                        }}
+                      />
+                    ))}
+                  </div>
 
                   {/* Skill Header */}
                   <div className="flex items-center justify-between mb-4 relative z-10">
                     <div className="flex items-center gap-3">
-                      <div className={`p-2 rounded-lg ${getColorClasses(category.color).bg} border ${getColorClasses(category.color).border}`}>
+                      <div
+                        className={`p-2 rounded-lg ${getColorClasses(category.color).bg} 
+                                    border ${getColorClasses(category.color).border}`}
+                      >
                         <skill.icon className={`w-5 h-5 ${getColorClasses(category.color).text}`} />
                       </div>
                       <h4 className="font-bold text-foreground group-hover:text-primary transition-colors duration-300">
                         {skill.name}
                       </h4>
                     </div>
-                    <span className={`px-3 py-1 rounded-full text-sm font-semibold ${getColorClasses(category.color).bg} ${getColorClasses(category.color).text} border ${getColorClasses(category.color).border}`}>
+                    <span
+                      className={`px-3 py-1 rounded-full text-sm font-semibold 
+                                  ${getColorClasses(category.color).bg} 
+                                  ${getColorClasses(category.color).text} 
+                                  border ${getColorClasses(category.color).border}`}
+                    >
                       {skill.level}%
                     </span>
                   </div>
@@ -231,7 +246,7 @@ const Skills = () => {
                   {/* Progress Bar */}
                   <div className="relative z-10 mb-4">
                     <div className="h-2 w-full bg-muted/50 rounded-full overflow-hidden">
-                      <div 
+                      <div
                         className={`h-full bg-gradient-to-r ${category.lineColor} transition-all duration-1000 ease-out rounded-full`}
                         style={{ width: `${skill.level}%` }}
                       />
@@ -244,7 +259,11 @@ const Skills = () => {
                   </p>
 
                   {/* Hover border glow */}
-                  <div className={`absolute inset-0 rounded-xl border-2 border-transparent bg-gradient-to-r ${category.lineColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none`}></div>
+                  <div
+                    className={`absolute inset-0 rounded-xl border-2 border-transparent bg-gradient-to-r 
+                                ${category.lineColor} opacity-0 group-hover:opacity-20 transition-opacity 
+                                duration-500 pointer-events-none`}
+                  ></div>
                 </div>
               ))}
             </div>
