@@ -227,10 +227,10 @@ export default {
 				},
 				'infinite-scroll': {
 					'0%': {
-						transform: 'translateX(0)'
+						transform: 'translate3d(0,0,0)'
 					},
 					'100%': {
-						transform: 'translateX(-50%)'
+						transform: 'translate3d(-50%, 0, 0)'
 					}
 				}
 			},
@@ -252,7 +252,7 @@ export default {
 				'wiggle': 'wiggle 1s ease-in-out infinite',
 				'shimmer': 'shimmer 2s ease-in-out infinite',
 				'matrix-rain': 'matrix-rain 3s linear infinite',
-				'infinite-scroll': 'infinite-scroll 30s linear infinite'
+				'infinite-scroll': 'infinite-scroll 45s linear infinite'
 			}
 		}
 	},

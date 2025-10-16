@@ -154,7 +154,7 @@ const Skills = () => {
 
       {/* Floating elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(25)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <div
             key={i}
             className="absolute w-1 h-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-float opacity-40"
@@ -162,7 +162,9 @@ const Skills = () => {
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${5 + Math.random() * 3}s`
+              animationDuration: `${5 + Math.random() * 3}s`,
+              willChange: 'transform',
+              transform: 'translateZ(0)'
             }}
           />
         ))}
@@ -213,10 +215,12 @@ const Skills = () => {
               {category.skills.map((skill, skillIndex) => (
                 <div
                   key={skill.name}
-                  className="skill-card group relative bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 cursor-pointer overflow-hidden opacity-0"
+                  className="skill-card group relative bg-card/40 border border-border/50 rounded-xl p-6 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 cursor-pointer overflow-hidden opacity-0"
                   style={{ 
                     animationDelay: `${(categoryIndex * 0.2) + (skillIndex * 0.1)}s`,
-                    animationFillMode: 'forwards'
+                    animationFillMode: 'forwards',
+                    willChange: 'transform, opacity',
+                    transform: 'translateZ(0)'
                   }}
                   onMouseEnter={() => setActiveCategory(categoryIndex * 100 + skillIndex)}
                   onMouseLeave={() => setActiveCategory(null)}
@@ -228,14 +232,16 @@ const Skills = () => {
                   {/* Sparkle effects */}
                   {activeCategory === (categoryIndex * 100 + skillIndex) && (
                     <div className="absolute inset-0 pointer-events-none">
-                      {[...Array(6)].map((_, i) => (
+                      {[...Array(3)].map((_, i) => (
                         <Sparkles
                           key={i}
                           className="absolute w-3 h-3 text-white animate-ping opacity-60"
                           style={{
                             left: `${10 + Math.random() * 80}%`,
                             top: `${10 + Math.random() * 80}%`,
-                            animationDelay: `${i * 0.2}s`
+                            animationDelay: `${i * 0.2}s`,
+                            willChange: 'transform, opacity',
+                            transform: 'translateZ(0)'
                           }}
                         />
                       ))}
@@ -291,10 +297,12 @@ const Skills = () => {
             {behavioralSkills.map((skill, index) => (
               <div
                 key={skill.name}
-                className="group relative flex items-center space-x-4 p-6 bg-card/40 rounded-xl backdrop-blur-md border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer overflow-hidden"
+                className="group relative flex items-center space-x-4 p-6 bg-card/40 rounded-xl border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer overflow-hidden"
                 style={{ 
                   animationDelay: `${0.8 + index * 0.1}s`,
-                  animationFillMode: 'forwards'
+                  animationFillMode: 'forwards',
+                  willChange: 'transform, opacity',
+                  transform: 'translateZ(0)'
                 }}
               >
                 <div className={`relative z-10 p-3 rounded-lg bg-muted group-hover:bg-accent transition-all duration-500 group-hover:scale-110`}>
@@ -324,7 +332,7 @@ const Skills = () => {
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10"></div>
             
             {/* Scrolling container */}
-            <div className="flex animate-infinite-scroll">
+            <div className="flex animate-infinite-scroll" style={{ willChange: 'transform', transform: 'translateZ(0)', animationDuration: '45s' }}>
               {/* First set */}
               {[
                 'Visual Studio Code', 'Eclipse', 'IntelliJ IDEA', 'Android Studio', 
@@ -332,7 +340,7 @@ const Skills = () => {
               ].map((tech, index) => (
                 <span
                   key={`first-${tech}`}
-                  className="group relative px-6 py-3 mx-2 bg-card/40 rounded-full text-card-foreground border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-300 cursor-pointer hover:scale-110 whitespace-nowrap flex-shrink-0 backdrop-blur-md"
+                  className="group relative px-6 py-3 mx-2 bg-card/40 rounded-full text-card-foreground border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-300 cursor-pointer hover:scale-110 whitespace-nowrap flex-shrink-0"
                 >
                   {tech}
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -346,7 +354,7 @@ const Skills = () => {
               ].map((tech, index) => (
                 <span
                   key={`second-${tech}`}
-                  className="group relative px-6 py-3 mx-2 bg-card/40 rounded-full text-card-foreground border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-300 cursor-pointer hover:scale-110 whitespace-nowrap flex-shrink-0 backdrop-blur-md"
+                  className="group relative px-6 py-3 mx-2 bg-card/40 rounded-full text-card-foreground border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-300 cursor-pointer hover:scale-110 whitespace-nowrap flex-shrink-0"
                 >
                   {tech}
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
