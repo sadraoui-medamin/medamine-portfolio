@@ -115,38 +115,8 @@ const Skills = () => {
     { name: 'Time Management', icon: Clock, color: 'text-green-400' },
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-scale-in');
-            entry.target.classList.remove('opacity-0');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-
-    if (sectionRef.current) {
-      // Observe section headers
-      const headers = sectionRef.current.querySelectorAll('.section-header');
-      headers.forEach((header) => observer.observe(header));
-      
-      // Observe each skill category
-      const categories = sectionRef.current.querySelectorAll('.skill-category');
-      categories.forEach((category) => observer.observe(category));
-      
-      // Observe each skill card
-      const cards = sectionRef.current.querySelectorAll('.skill-card');
-      cards.forEach((card) => observer.observe(card));
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section ref={sectionRef} id="skills" className="py-20 relative bg-secondary/20 overflow-hidden">
+<section ref={sectionRef} id="skills" className="py-20 relative bg-secondary/20 overflow-hidden animate-fade-in-up">
       {/* Animated grid background */}
       <div className="absolute inset-0 opacity-10">
         <div className="cyber-grid w-full h-full"></div>
@@ -214,23 +184,18 @@ const Skills = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {category.skills.map((skill, skillIndex) => (
                 <div
-                  key={skill.name}
-                  className="skill-card group relative bg-card/40 border border-border/50 rounded-xl p-6 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 cursor-pointer overflow-hidden opacity-0"
-                  style={{ 
-                    animationDelay: `${(categoryIndex * 0.2) + (skillIndex * 0.1)}s`,
-                    animationFillMode: 'forwards',
-                    willChange: 'transform, opacity',
-                    transform: 'translateZ(0)'
-                  }}
-                  onMouseEnter={() => setActiveCategory(categoryIndex * 100 + skillIndex)}
-                  onMouseLeave={() => setActiveCategory(null)}
-                  onClick={() => navigate(`/skill/${convertToSlug(skill.name)}`)}
-                >
-                  {/* Animated background overlay */}
+                    key={skill.name}
+                    className="skill-card group relative bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6
+                              hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105
+                              cursor-pointer overflow-hidden animate-fade-in-up"
+                    style={{ animationDelay: `${skillIndex * 0.1}s` }}
+                  >
+                    
+                  {/* Animated  background overlay */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${category.lineColor} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
                   
                   {/* Sparkle effects */}
-                  {activeCategory === (categoryIndex * 100 + skillIndex) && (
+                  {/* {activeCategory === (categoryIndex * 100 + skillIndex) && (
                     <div className="absolute inset-0 pointer-events-none">
                       {[...Array(3)].map((_, i) => (
                         <Sparkles
@@ -246,7 +211,7 @@ const Skills = () => {
                         />
                       ))}
                     </div>
-                  )}
+                  )} */}
 
                   {/* Skill Header */}
                   <div className="flex items-center justify-between mb-4 relative z-10">
