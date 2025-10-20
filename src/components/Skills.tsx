@@ -136,11 +136,9 @@ const Skills = () => {
       const elements = sectionRef.current.querySelectorAll('.section-header, skill-card, .skill-category');
        elements.forEach((el) => observer.observe(el));
     }
-
-    }
-
     return () => observer.disconnect();
   }, []);
+
   return (
 <section ref={sectionRef} id="skills" className="py-20 relative bg-secondary/20 overflow-hidden animate-fade-in-up">
       {/* Animated grid background */}
