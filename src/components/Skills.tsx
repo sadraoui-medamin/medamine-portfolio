@@ -133,7 +133,7 @@ const Skills = () => {
       observer.observe(sectionRef.current);
       
       // Observe each animated element
-      const elements = sectionRef.current.querySelectorAll('.section-header, skill-card, .skill-category');
+      const elements = sectionRef.current.querySelectorAll(' .skill-card, .section-header, .skill-category');
        elements.forEach((el) => observer.observe(el));
     }
     return () => observer.disconnect();
