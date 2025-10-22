@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { ArrowLeft, ExternalLink, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -163,6 +164,10 @@ const skillDetails: Record<string, {
 const SkillDetails = () => {
   const { nameOfSkill } = useParams<{ nameOfSkill: string }>();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [nameOfSkill]);
 
   const skill = nameOfSkill ? skillDetails[nameOfSkill.toLowerCase()] : null;
 

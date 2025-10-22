@@ -17,6 +17,7 @@ const Index = () => {
   const [showSplashScreen, setShowSplashScreen] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     // Add smooth scrolling behavior
     document.documentElement.style.scrollBehavior = 'smooth';
   }, []);
