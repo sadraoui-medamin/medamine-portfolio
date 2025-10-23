@@ -193,7 +193,7 @@ const Skills = () => {
 
         {/* Skills by Category */}
         {skillCategories.map((category) => (
-          <div key={category.title} className="mb-16 transition-all duration-1000 opacity-0  skill-category" style={{ animationDelay: '0.5s' }}>
+          <div key={category.title} className="mb-16 transition-all duration-1000 opacity-0  skill-category">
             {/* Category Header */}
             <div className="flex items-center mb-8">
               <div className={`w-1 h-8 bg-gradient-to-b ${category.lineColor} rounded-full mr-4`}></div>
@@ -213,12 +213,6 @@ const Skills = () => {
                             hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl 
                             hover:shadow-primary/20 cursor-pointer overflow-hidden 
                             animate-fade-in-up"
-                  style={{ 
-                    animationDelay: '0.5s',
-                    animationFillMode: 'forwards',
-                    willChange: 'transform, opacity',
-                    transform: 'translateZ(0)',
-                  }}
                   onClick={() => navigate(`/skill/${convertToSlug(skill.name)}`)}
                 >
                   {/* Animated background overlay */}
