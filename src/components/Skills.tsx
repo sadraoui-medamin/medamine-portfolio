@@ -166,7 +166,7 @@ const Skills = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Enhanced Section Header */}
-        <div className="section-header text-center mb-16 transition-all duration-300 animate-fade-in-up">
+        <div className="mt-16 transition-all duration-1000 opacity-0 section-header text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 relative">
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent hover:from-purple-400 hover:to-pink-400 transition-all duration-500">
               Skills & Expertise
@@ -192,8 +192,8 @@ const Skills = () => {
         </div>
 
         {/* Skills by Category */}
-        {skillCategories.map((category, categoryIndex) => (
-          <div key={category.title} className="mb-16 animate-fade-in-up skill-category" style={{ animationDelay: `${categoryIndex * 0.2}s` }}>
+        {skillCategories.map((category) => (
+          <div key={category.title} className="mb-16 transition-all duration-1000 opacity-0  skill-category" style={{ animationDelay: '0.5s' }}>
             {/* Category Header */}
             <div className="flex items-center mb-8">
               <div className={`w-1 h-8 bg-gradient-to-b ${category.lineColor} rounded-full mr-4`}></div>
@@ -206,7 +206,7 @@ const Skills = () => {
 
             {/* Skills Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {category.skills.map((skill, skillIndex) => (
+              {category.skills.map((skill, ) => (
                 <div
                   key={skill.name}
                   className="skill-card group relative bg-card/40 border border-border/50 rounded-xl p-6 
@@ -214,7 +214,7 @@ const Skills = () => {
                             hover:shadow-primary/20 cursor-pointer overflow-hidden 
                             animate-fade-in-up"
                   style={{ 
-                    animationDelay: `${(categoryIndex * 0.2) + (skillIndex * 0.1)}s`,
+                    animationDelay: '0.5s',
                     animationFillMode: 'forwards',
                     willChange: 'transform, opacity',
                     transform: 'translateZ(0)',
