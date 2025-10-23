@@ -1,8 +1,12 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Code, Database, Smartphone, Globe, Server, Palette, Zap, Star, Sparkles, Brain, Users, Clock, 
-  FileCode, Coffee, Package, Box, Boxes, Wrench, GitBranch, Terminal, Cloud, Settings } from 'lucide-react';
+import { FaCode, FaDatabase, FaMobileAlt, FaGlobe, FaServer, FaPalette, FaBolt, FaStar, FaBrain, FaUsers, FaClock, 
+  FaFileCode, FaCoffee, FaBox, FaLayerGroup, FaWrench, FaGitAlt, FaTerminal, FaCloud, FaCog, FaReact, FaHtml5, FaCss3Alt, 
+  FaNodeJs, FaJava, FaPython, FaPhp, FaDocker, FaGithub, FaChartBar } from 'react-icons/fa';
+import { SiTailwindcss, SiAntdesign, SiMui, SiBootstrap, SiExpress, SiSpring, SiLaravel, SiDotnet, SiMongodb, 
+  SiMysql, SiOracle, SiSqlite, SiPostgresql, SiPostman, SiAndroid, SiAndroidstudio, SiCloudinary, SiOdoo } from 'react-icons/si';
+import { AiFillStar } from 'react-icons/ai';
 import { Progress } from '@/components/ui/progress';
 
 const Skills = () => {
@@ -12,6 +16,13 @@ const Skills = () => {
 
   const convertToSlug = (name: string) => {
     return name.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '').replace(/\//g, '-');
+  };
+
+  const getLevelText = (percentage: number): string => {
+    if (percentage >= 90) return 'Expert';
+    if (percentage >= 80) return 'Advanced';
+    if (percentage >= 70) return 'Good';
+    return 'Intermediate';
   };
 
   const getColorClasses = (color: string) => {
@@ -29,90 +40,90 @@ const Skills = () => {
   const skillCategories = [
     {
       title: 'Programming Languages',
-      icon: Code,
+      icon: FaCode,
       color: 'blue',
       lineColor: 'from-blue-400 to-cyan-400',
       skills: [
-        { name: 'JavaScript', icon: FileCode, level: 90, description: 'Core web development language' },
-        { name: 'TypeScript', icon: FileCode, level: 85, description: 'Type-safe JavaScript development' },
-        { name: 'Java', icon: Coffee, level: 85, description: 'Enterprise-grade applications' },
-        { name: 'Python', icon: Terminal, level: 80, description: 'Versatile backend programming' },
-        { name: 'C/C#', icon: Code, level: 75, description: 'System and application development' },
-        { name: 'PHP', icon: Server, level: 80, description: 'Server-side web development' },
+        { name: 'JavaScript', icon: FaFileCode, level: 90, description: 'Core web development language' },
+        { name: 'TypeScript', icon: FaFileCode, level: 85, description: 'Type-safe JavaScript development' },
+        { name: 'Java', icon: FaJava, level: 85, description: 'Enterprise-grade applications' },
+        { name: 'Python', icon: FaPython, level: 80, description: 'Versatile backend programming' },
+        { name: 'C/C#', icon: FaCode, level: 75, description: 'System and application development' },
+        { name: 'PHP', icon: FaPhp, level: 80, description: 'Server-side web development' },
       ]
     },
     {
       title: 'Frontend Development',
-      icon: Globe,
+      icon: FaGlobe,
       color: 'green',
       lineColor: 'from-green-400 to-emerald-400',
       skills: [
-        { name: 'React.js', icon: Box, level: 90, description: 'Building responsive and interactive user interfaces' },
-        { name: 'HTML5/CSS3', icon: FileCode, level: 95, description: 'Semantic markup and structure' },
-        { name: 'Tailwind CSS', icon: Palette, level: 90, description: 'Utility-first CSS framework' },
-        { name: 'Ant Design', icon: Boxes, level: 85, description: 'Enterprise UI design system' },
-        { name: 'Material-UI', icon: Boxes, level: 85, description: 'React component library' },
-        { name: 'Bootstrap', icon: Boxes, level: 85, description: 'Responsive framework' },
+        { name: 'React.js', icon: FaReact, level: 90, description: 'Building responsive and interactive user interfaces' },
+        { name: 'HTML5/CSS3', icon: FaHtml5, level: 95, description: 'Semantic markup and structure' },
+        { name: 'Tailwind CSS', icon: SiTailwindcss, level: 90, description: 'Utility-first CSS framework' },
+        { name: 'Ant Design', icon: SiAntdesign, level: 85, description: 'Enterprise UI design system' },
+        { name: 'Material-UI', icon: SiMui, level: 85, description: 'React component library' },
+        { name: 'Bootstrap', icon: SiBootstrap, level: 85, description: 'Responsive framework' },
       ]
     },
     {
       title: 'Backend Development',
-      icon: Server,
+      icon: FaServer,
       color: 'purple',
       lineColor: 'from-purple-400 to-pink-400',
       skills: [
-        { name: 'Node.js', icon: Server, level: 85, description: 'Server-side JavaScript runtime' },
-        { name: 'Express.js', icon: Server, level: 80, description: 'Node.js web framework' },
-        { name: 'Spring Boot', icon: Coffee, level: 85, description: 'Java-based framework' },
-        { name: 'Laravel', icon: Server, level: 80, description: 'PHP web framework' },
-        { name: 'ASP.NET Core', icon: Cloud, level: 75, description: 'Cross-platform framework' },
-        { name: 'RESTful APIs', icon: GitBranch, level: 90, description: 'API design and development' },
+        { name: 'Node.js', icon: FaNodeJs, level: 85, description: 'Server-side JavaScript runtime' },
+        { name: 'Express.js', icon: SiExpress, level: 80, description: 'Node.js web framework' },
+        { name: 'Spring Boot', icon: SiSpring, level: 85, description: 'Java-based framework' },
+        { name: 'Laravel', icon: SiLaravel, level: 80, description: 'PHP web framework' },
+        { name: 'ASP.NET Core', icon: SiDotnet, level: 75, description: 'Cross-platform framework' },
+        { name: 'RESTful APIs', icon: FaGitAlt, level: 90, description: 'API design and development' },
       ]
     },
     {
       title: 'Mobile Development',
-      icon: Smartphone,
+      icon: FaMobileAlt,
       color: 'orange',
       lineColor: 'from-orange-400 to-red-400',
       skills: [
-        { name: 'Android (Java)', icon: Smartphone, level: 85, description: 'Native Android applications' },
-        { name: 'Android Studio', icon: Settings, level: 85, description: 'Official Android IDE' },
-        { name: 'Mobile UI/UX', icon: Palette, level: 80, description: 'Mobile-first design patterns' },
-        { name: 'SQLite', icon: Database, level: 80, description: 'Lightweight database' },
+        { name: 'Android (Java)', icon: SiAndroid, level: 85, description: 'Native Android applications' },
+        { name: 'Android Studio', icon: SiAndroidstudio, level: 85, description: 'Official Android IDE' },
+        { name: 'Mobile UI/UX', icon: FaPalette, level: 80, description: 'Mobile-first design patterns' },
+        { name: 'SQLite', icon: SiSqlite, level: 80, description: 'Lightweight database' },
       ]
     },
     {
       title: 'Databases',
-      icon: Database,
+      icon: FaDatabase,
       color: 'teal',
       lineColor: 'from-teal-400 to-blue-400',
       skills: [
-        { name: 'MongoDB', icon: Database, level: 85, description: 'NoSQL database' },
-        { name: 'MySQL', icon: Database, level: 85, description: 'Relational database' },
-        { name: 'Oracle', icon: Database, level: 75, description: 'Enterprise database system' },
-        { name: 'SQLite', icon: Database, level: 80, description: 'Lightweight database' },
-        { name: 'PostgreSQL', icon: Database, level: 80, description: 'Advanced open-source database' },
+        { name: 'MongoDB', icon: SiMongodb, level: 85, description: 'NoSQL database' },
+        { name: 'MySQL', icon: SiMysql, level: 85, description: 'Relational database' },
+        { name: 'Oracle', icon: SiOracle, level: 75, description: 'Enterprise database system' },
+        { name: 'SQLite', icon: SiSqlite, level: 80, description: 'Lightweight database' },
+        { name: 'PostgreSQL', icon: SiPostgresql, level: 80, description: 'Advanced open-source database' },
       ]
     },
     {
       title: 'Tools & Methodologies',
-      icon: Wrench,
+      icon: FaWrench,
       color: 'pink',
       lineColor: 'from-pink-400 to-purple-400',
       skills: [
-        { name: 'Git/GitHub', icon: GitBranch, level: 90, description: 'Version control system' },
-        { name: 'Agile/Scrum', icon: Users, level: 85, description: 'Project management methodology' },
-        { name: 'PowerBI', icon: Box, level: 80, description: 'Business analytics tool' },
-        { name: 'Postman', icon: Package, level: 85, description: 'API testing platform' },
-        { name: 'Docker', icon: Box, level: 75, description: 'Containerization platform' },
+        { name: 'Git/GitHub', icon: FaGithub, level: 90, description: 'Version control system' },
+        { name: 'Agile/Scrum', icon: FaUsers, level: 85, description: 'Project management methodology' },
+        { name: 'PowerBI', icon: FaChartBar, level: 80, description: 'Business analytics tool' },
+        { name: 'Postman', icon: SiPostman, level: 85, description: 'API testing platform' },
+        { name: 'Docker', icon: FaDocker, level: 75, description: 'Containerization platform' },
       ]
     },
   ];
 
   const behavioralSkills = [
-    { name: 'Team Collaboration', icon: Users, color: 'text-blue-400' },
-    { name: 'Complex Problem Solving', icon: Brain, color: 'text-purple-400' },
-    { name: 'Time Management', icon: Clock, color: 'text-green-400' },
+    { name: 'Team Collaboration', icon: FaUsers, color: 'text-blue-400' },
+    { name: 'Complex Problem Solving', icon: FaBrain, color: 'text-purple-400' },
+    { name: 'Time Management', icon: FaClock, color: 'text-green-400' },
   ];
 
   useEffect(() => {
@@ -174,10 +185,10 @@ const Skills = () => {
             
             {/* Floating decorations */}
             <div className="absolute -top-6 left-1/4 transform -translate-x-1/2">
-              <Zap className="w-5 h-5 text-yellow-400 animate-bounce opacity-60" />
+              <FaBolt className="w-5 h-5 text-yellow-400 animate-bounce opacity-60" />
             </div>
             <div className="absolute -top-4 right-1/4 transform translate-x-1/2">
-              <Star className="w-4 h-4 text-blue-400 animate-pulse opacity-60" />
+              <FaStar className="w-4 h-4 text-blue-400 animate-pulse opacity-60" />
             </div>
           </h2>
           
@@ -204,15 +215,15 @@ const Skills = () => {
               <div className={`flex-1 h-0.5 ml-4 bg-gradient-to-r ${category.lineColor} opacity-30`}></div>
             </div>
 
-            {/* Skills Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {category.skills.map((skill, ) => (
+            {/* Skills Grid - Responsive: compact on mobile, full on desktop */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+              {category.skills.map((skill) => (
                 <div
                   key={skill.name}
-                  className="skill-card group relative bg-card/40 border border-border/50 rounded-xl p-6 
+                  className="skill-card group relative bg-card/40 border border-border/50 rounded-xl 
                             hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl 
                             hover:shadow-primary/20 cursor-pointer overflow-hidden 
-                            animate-fade-in-up"
+                            animate-fade-in-up p-4 md:p-6"
                   onClick={() => navigate(`/skill/${convertToSlug(skill.name)}`)}
                 >
                   {/* Animated background overlay */}
@@ -221,10 +232,10 @@ const Skills = () => {
                                 group-hover:opacity-10 transition-opacity duration-500`}
                   ></div>
 
-                  {/* Sparkle effects (CSS-only hover, no state re-render) */}
-                  <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-60 transition-opacity duration-500">
+                  {/* Sparkle effects - hidden on mobile */}
+                  <div className="hidden md:block absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-60 transition-opacity duration-500">
                     {[...Array(3)].map((_, i) => (
-                      <Sparkles
+                      <AiFillStar
                         key={i}
                         className="absolute w-3 h-3 text-white animate-ping"
                         style={{
@@ -238,43 +249,67 @@ const Skills = () => {
                     ))}
                   </div>
 
-                  {/* Skill Header */}
-                  <div className="flex items-center justify-between mb-4 relative z-10">
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`p-2 rounded-lg ${getColorClasses(category.color).bg} 
-                                    border ${getColorClasses(category.color).border}`}
-                      >
-                        <skill.icon className={`w-5 h-5 ${getColorClasses(category.color).text}`} />
-                      </div>
-                      <h4 className="font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                        {skill.name}
-                      </h4>
+                  {/* Mobile Layout: Icon + Name + Level */}
+                  <div className="md:hidden flex flex-col items-center gap-3 relative z-10">
+                    <div
+                      className={`p-3 rounded-lg ${getColorClasses(category.color).bg} 
+                                  border ${getColorClasses(category.color).border}`}
+                    >
+                      <skill.icon className={`w-6 h-6 ${getColorClasses(category.color).text}`} />
                     </div>
+                    <h4 className="font-bold text-foreground text-center text-sm group-hover:text-primary transition-colors duration-300">
+                      {skill.name}
+                    </h4>
                     <span
-                      className={`px-3 py-1 rounded-full text-sm font-semibold 
+                      className={`px-3 py-1 rounded-full text-xs font-semibold 
                                   ${getColorClasses(category.color).bg} 
                                   ${getColorClasses(category.color).text} 
                                   border ${getColorClasses(category.color).border}`}
                     >
-                      {skill.level}%
+                      {getLevelText(skill.level)}
                     </span>
                   </div>
 
-                  {/* Progress Bar */}
-                  <div className="relative z-10 mb-4">
-                    <div className="h-2 w-full bg-muted/50 rounded-full overflow-hidden">
-                      <div
-                        className={`h-full bg-gradient-to-r ${category.lineColor} transition-all duration-1000 ease-out rounded-full`}
-                        style={{ width: `${skill.level}%` }}
-                      />
+                  {/* Desktop Layout: Full details with progress bar */}
+                  <div className="hidden md:block relative z-10">
+                    {/* Skill Header */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-3">
+                        <div
+                          className={`p-2 rounded-lg ${getColorClasses(category.color).bg} 
+                                      border ${getColorClasses(category.color).border}`}
+                        >
+                          <skill.icon className={`w-5 h-5 ${getColorClasses(category.color).text}`} />
+                        </div>
+                        <h4 className="font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                          {skill.name}
+                        </h4>
+                      </div>
+                      <span
+                        className={`px-3 py-1 rounded-full text-sm font-semibold 
+                                    ${getColorClasses(category.color).bg} 
+                                    ${getColorClasses(category.color).text} 
+                                    border ${getColorClasses(category.color).border}`}
+                      >
+                        {skill.level}%
+                      </span>
                     </div>
-                  </div>
 
-                  {/* Description */}
-                  <p className="text-sm text-muted-foreground relative z-10 group-hover:text-foreground transition-colors duration-300">
-                    {skill.description}
-                  </p>
+                    {/* Progress Bar */}
+                    <div className="mb-4">
+                      <div className="h-2 w-full bg-muted/50 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full bg-gradient-to-r ${category.lineColor} transition-all duration-1000 ease-out rounded-full`}
+                          style={{ width: `${skill.level}%` }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                      {skill.description}
+                    </p>
+                  </div>
 
                   {/* Hover border glow */}
                   <div
@@ -352,8 +387,8 @@ const Skills = () => {
               {/* Duplicate set for seamless loop */}
               {[
                 'Visual Studio Code', 'Eclipse', 'IntelliJ IDEA', 'Android Studio', 
-                'StarUML', 'Cloudinary', 'Prelude', 'Odoo'
-              ].map((tech, index) => (
+                'Cloudinary', 'Odoo'
+              ].map((tech) => (
                 <span
                   key={`second-${tech}`}
                   className="group relative px-6 py-3 mx-2 bg-card/40 rounded-full text-card-foreground border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-300 cursor-pointer hover:scale-110 whitespace-nowrap flex-shrink-0"
