@@ -40,7 +40,7 @@ const Contact = () => {
     {
       icon: Github,
       label: 'GitHub',
-      href: 'https://github.com/Medamin890',
+      href: 'https://github.com/sadraoui-medamin',
       color: 'hover:text-gray-300'
     },
     {

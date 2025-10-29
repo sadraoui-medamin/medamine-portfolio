@@ -87,9 +87,9 @@ const Hero = () => {
         {/* Enhanced Social Links */}
         <div className="flex justify-center space-x-6 mb-8">
           {[
-            { icon: Github, href: '#', label: 'GitHub', color: 'hover:text-gray-300' },
-            { icon: Linkedin, href: '#', label: 'LinkedIn', color: 'hover:text-blue-400' },
-            { icon: Mail, href: '#contact', label: 'Email', color: 'hover:text-red-400' },
+            { icon: Github, href: 'https://github.com/sadraoui-medamin/', label: 'GitHub', color: 'hover:text-gray-300' },
+            { icon: Linkedin, href: 'https://linkedin.com/in/sadraouiMedamin/', label: 'LinkedIn', color: 'hover:text-blue-400' },
+            { icon: Mail, href: 'https://mail.google.com/mail/u/0/#inbox?compose=DmwnWtDrRxqsKzQBPmLQNCPKMBPBprtBZZMmHMMJrQhJnNXnfzHqbVrHKjdSQjNtxGbJzzfNcNlB', label: 'Email', color: 'hover:text-red-400' },
           ].map((social, index) => (
             <a
               key={social.label}

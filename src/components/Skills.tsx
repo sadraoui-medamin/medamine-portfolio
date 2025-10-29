@@ -7,7 +7,6 @@ import { FaCode, FaDatabase, FaMobileAlt, FaGlobe, FaServer, FaPalette, FaBolt, 
 import { SiTailwindcss, SiAntdesign, SiMui, SiBootstrap, SiExpress, SiSpring, SiLaravel, SiDotnet, SiMongodb, 
   SiMysql, SiOracle, SiSqlite, SiPostgresql, SiPostman, SiAndroid, SiAndroidstudio, SiCloudinary, SiOdoo } from 'react-icons/si';
 import { AiFillStar } from 'react-icons/ai';
-import { Progress } from '@/components/ui/progress';
 
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState<number | null>(null);
