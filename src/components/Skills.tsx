@@ -3,10 +3,15 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaCode, FaDatabase, FaMobileAlt, FaGlobe, FaServer, FaPalette, FaBolt, FaStar, FaBrain, FaUsers, FaClock, 
   FaFileCode, FaCoffee, FaBox, FaLayerGroup, FaWrench, FaGitAlt, FaTerminal, FaCloud, FaCog, FaReact, FaHtml5, FaCss3Alt, 
-  FaNodeJs, FaJava, FaPython, FaPhp, FaDocker, FaGithub, FaChartBar } from 'react-icons/fa';
+  FaNodeJs, FaJava, FaPython, FaPhp, FaDocker, FaGithub, FaChartBar, FaLaptopCode, FaTools } from 'react-icons/fa';
 import { SiTailwindcss, SiAntdesign, SiMui, SiBootstrap, SiExpress, SiSpring, SiLaravel, SiDotnet, SiMongodb, 
-  SiMysql, SiOracle, SiSqlite, SiPostgresql, SiPostman, SiAndroid, SiAndroidstudio, SiCloudinary, SiOdoo } from 'react-icons/si';
+  SiMysql, SiOracle, SiSqlite, SiPostgresql, SiPostman, SiAndroid, SiAndroidstudio, SiCloudinary, SiOdoo,
+  SiEclipseide, SiIntellijidea, SiFigma } from 'react-icons/si';
 import { AiFillStar } from 'react-icons/ai';
+import { VscCode } from 'react-icons/vsc';
+
+
+
 
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState<number | null>(null);
@@ -355,44 +360,90 @@ const Skills = () => {
           </div>
         </div>
 
-        {/* Infinite Scrolling Development Tools */}
+        {/* Enhanced Development Tools Section */}
         <div className="mt-16 transition-all duration-1000 opacity-0 section-header">
           <h3 className="text-2xl font-bold text-foreground mb-8 flex items-center justify-center">
             <span>Development Tools</span>
             <div className="ml-3 w-12 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 animate-pulse"></div>
           </h3>
           
-          <div className="relative overflow-hidden">
+          {/* Mobile-friendly grid for phones */}
+          <div className="md:hidden grid grid-cols-3 gap-3">
+            {[
+              { name: 'VS Code', icon: <VscCode className="h-8 w-8" /> },
+              { name: 'Eclipse', icon: <SiEclipseide className="h-8 w-8" /> },
+              { name: 'IntelliJ', icon: <SiIntellijidea className="h-8 w-8" /> },
+              { name: 'Android', icon: <SiAndroidstudio className="h-8 w-8" /> },
+              { name: 'Git', icon: <FaGitAlt className="h-8 w-8" /> },
+              { name: 'GitHub', icon: <FaGithub className="h-8 w-8" /> },
+              { name: 'Postman', icon: <SiPostman className="h-8 w-8" /> },
+              { name: 'Figma', icon: <SiFigma className="h-8 w-8" /> },
+              { name: 'Odoo', icon: <SiOdoo className="h-8 w-8" /> }
+            ].map((tool) => (
+              <div
+                key={tool.name}
+                className="group bg-card/40 backdrop-blur-sm rounded-lg p-3 border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-300 flex flex-col items-center justify-center space-y-2"
+              >
+                <div className="text-primary group-hover:scale-110 transition-transform duration-300">
+                  {tool.icon}
+                </div>
+                <span className="text-xs text-muted-foreground text-center">{tool.name}</span>
+              </div>
+            ))}
+          </div>
+          
+          {/* Desktop scrolling view */}
+          <div className="hidden md:block relative overflow-hidden">
             {/* Gradient overlays for fade effect */}
             <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10"></div>
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10"></div>
             
-            {/* Scrolling container */}
-            <div className="flex animate-infinite-scroll" style={{ willChange: 'transform', transform: 'translateZ(0)', animationDuration: '45s' }}>
+            {/* Scrolling container - faster animation */}
+            <div className="flex animate-infinite-scroll" style={{ willChange: 'transform', transform: 'translateZ(0)', animationDuration: '25s' }}>
               {/* First set */}
               {[
-                'Visual Studio Code', 'Eclipse', 'IntelliJ IDEA', 'Android Studio', 
-                'StarUML', 'Cloudinary', 'Prelude', 'Odoo'
-              ].map((tech, index) => (
+                { name: 'Visual Studio Code', icon: <VscCode className="h-5 w-5" /> },
+                { name: 'Eclipse', icon: <SiEclipseide className="h-5 w-5" /> },
+                { name: 'IntelliJ IDEA', icon: <SiIntellijidea className="h-5 w-5" /> },
+                { name: 'Android Studio', icon: <SiAndroidstudio className="h-5 w-5" /> },
+                { name: 'Git', icon: <FaGitAlt className="h-5 w-5" /> },
+                { name: 'GitHub', icon: <FaGithub className="h-5 w-5" /> },
+                { name: 'Postman', icon: <SiPostman className="h-5 w-5" /> },
+                { name: 'Figma', icon: <SiFigma className="h-5 w-5" /> },
+                { name: 'Odoo', icon: <SiOdoo className="h-5 w-5" /> }
+              ].map((tool, index) => (
                 <span
-                  key={`first-${tech}`}
-                  className="group relative px-6 py-3 mx-2 bg-card/40 rounded-full text-card-foreground border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-300 cursor-pointer hover:scale-110 whitespace-nowrap flex-shrink-0"
+                  key={`first-${tool.name}`}
+                  className="group relative px-5 py-3 mx-2 bg-card/40 rounded-full text-card-foreground border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-300 cursor-pointer hover:scale-110 whitespace-nowrap flex-shrink-0 flex items-center gap-2"
                 >
-                  {tech}
+                  <span className="text-primary group-hover:rotate-12 transition-transform duration-300">
+                    {tool.icon}
+                  </span>
+                  {tool.name}
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </span>
               ))}
               
               {/* Duplicate set for seamless loop */}
               {[
-                'Visual Studio Code', 'Eclipse', 'IntelliJ IDEA', 'Android Studio', 
-                'Cloudinary', 'Odoo'
-              ].map((tech) => (
+                { name: 'Visual Studio Code', icon: <VscCode className="h-5 w-5" /> },
+                { name: 'Eclipse', icon: <SiEclipseide className="h-5 w-5" /> },
+                { name: 'IntelliJ IDEA', icon: <SiIntellijidea className="h-5 w-5" /> },
+                { name: 'Android Studio', icon: <SiAndroidstudio className="h-5 w-5" /> },
+                { name: 'Git', icon: <FaGitAlt className="h-5 w-5" /> },
+                { name: 'GitHub', icon: <FaGithub className="h-5 w-5" /> },
+                { name: 'Postman', icon: <SiPostman className="h-5 w-5" /> },
+                { name: 'Figma', icon: <SiFigma className="h-5 w-5" /> },
+                { name: 'Odoo', icon: <SiOdoo className="h-5 w-5" /> }
+              ].map((tool) => (
                 <span
-                  key={`second-${tech}`}
-                  className="group relative px-6 py-3 mx-2 bg-card/40 rounded-full text-card-foreground border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-300 cursor-pointer hover:scale-110 whitespace-nowrap flex-shrink-0"
+                  key={`second-${tool.name}`}
+                  className="group relative px-5 py-3 mx-2 bg-card/40 rounded-full text-card-foreground border border-border/50 hover:border-primary/50 hover:bg-card/60 transition-all duration-300 cursor-pointer hover:scale-110 whitespace-nowrap flex-shrink-0 flex items-center gap-2"
                 >
-                  {tech}
+                  <span className="text-primary group-hover:rotate-12 transition-transform duration-300">
+                    {tool.icon}
+                  </span>
+                  {tool.name}
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </span>
               ))}

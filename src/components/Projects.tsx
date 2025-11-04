@@ -370,6 +370,7 @@ const Projects = () => {
                 <div
                   key={project.title}
                   className="project-card group bg-card/40 backdrop-blur-md border border-border/50 rounded-xl overflow-hidden hover:border-primary/50 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 cursor-pointer transform-gpu opacity-0"
+                  onClick={() => navigate(`/project/${project.id}`)}
                   onMouseMove={handleMouseMove}
                 >
                   {/* Mouse follow glow effect */}
