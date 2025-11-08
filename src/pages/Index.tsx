@@ -14,7 +14,11 @@ import SplashScreen from '../components/SplashScreen';
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showSplashScreen, setShowSplashScreen] = useState(true);
+  const [showSplashScreen, setShowSplashScreen] = useState(() => {
+    // Only show splash screen on first visit or page refresh
+    const hasShownSplash = sessionStorage.getItem('hasShownSplash');
+    return !hasShownSplash;
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -22,8 +26,13 @@ const Index = () => {
     document.documentElement.style.scrollBehavior = 'smooth';
   }, []);
 
+  const handleSplashComplete = () => {
+    sessionStorage.setItem('hasShownSplash', 'true');
+    setShowSplashScreen(false);
+  };
+
   if (showSplashScreen) {
-    return <SplashScreen onComplete={() => setShowSplashScreen(false)} />;
+    return <SplashScreen onComplete={handleSplashComplete} />;
   }
 
   return (
