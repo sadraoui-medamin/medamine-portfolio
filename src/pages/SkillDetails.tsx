@@ -14,13 +14,24 @@ const SkillDetails = () => {
 
   const skill = nameOfSkill ? skillDetails[nameOfSkill.toLowerCase()] : null;
 
+  const handleBackToSkills = () => {
+    navigate('/');
+    // Use setTimeout to ensure navigation completes before scrolling
+    setTimeout(() => {
+      const skillsSection = document.getElementById('skills');
+      if (skillsSection) {
+        skillsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  };
+
   if (!skill) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-6">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-foreground mb-4">Skill Not Found</h1>
           <p className="text-muted-foreground mb-8">The skill you're looking for doesn't exist.</p>
-          <Button onClick={() => navigate('/#skills')}>
+          <Button onClick={handleBackToSkills}>
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Skills
           </Button>
@@ -60,7 +71,7 @@ const SkillDetails = () => {
         <div className="container mx-auto px-6 py-4">
           <Button 
             variant="ghost" 
-            onClick={() => navigate('/#skills')}
+            onClick={handleBackToSkills}
             className="group hover:scale-105 transition-transform"
           >
             <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
@@ -182,7 +193,7 @@ const SkillDetails = () => {
                   Check out other technologies and tools I work with in my portfolio.
                 </p>
                 <Button 
-                  onClick={() => navigate('/#skills')}
+                  onClick={handleBackToSkills}
                   variant="secondary"
                   className="group/btn hover:scale-105 transition-all"
                 >
