@@ -30,7 +30,7 @@ const Projects = () => {
       title: 'E-commerce Platform',
       description: 'A modern, secure e-commerce website with integrated Stripe payment system, responsive design, and comprehensive product management.',
       image: techstoreimg ,
-      technologies: ['React.js', 'Node.js', 'Express', 'MongoDB', 'tawilwindcss','REST API''JWT', 'Stripe API'],
+      technologies: ['React.js', 'Node.js', 'Express', 'MongoDB', 'tawilwindcss','REST API','JWT', 'Stripe API'],
       category: 'Web Application',
       icon: Globe,
       github: 'https://github.com/sadraoui-medamin/EcommerceProject-frontend',
