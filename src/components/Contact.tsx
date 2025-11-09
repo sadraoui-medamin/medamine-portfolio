@@ -1,8 +1,17 @@
-
 import React, { useRef, useEffect, useState } from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, Send, User, MessageSquare } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import { useToast } from '@/hooks/use-toast';
+
+// EmailJS Configuration - Add your credentials here
+const EMAILJS_CONFIG = {
+  serviceId: 'YOUR_SERVICE_ID',
+  templateId: 'YOUR_TEMPLATE_ID',
+  publicKey: 'YOUR_PUBLIC_KEY'
+};
 
 const Contact = () => {
+  const { toast } = useToast();
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -79,21 +88,40 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Create mailto link with form data
-    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
-    const mailtoLink = `mailto:medaminsadraou111i@gmail.com?subject=${subject}&body=${body}`;
-    
-    // Open email client
-    window.location.href = mailtoLink;
-    
-    // Reset form after a short delay
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_name: 'Mohamed Amine Sadraoi',
+        },
+        EMAILJS_CONFIG.publicKey
+      );
+
+      console.log('Email sent successfully:', result.text);
+      
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for your message. I'll get back to you soon!",
+      });
+      
+      // Reset form
       setFormData({ name: '', email: '', message: '' });
-    }, 1000);
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      
+      toast({
+        title: "Failed to Send",
+        description: "Something went wrong. Please try again or contact me directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
