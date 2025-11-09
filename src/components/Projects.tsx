@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ExternalLink, Github, Code, Smartphone, Globe, Database, Zap, Star, Eye, Sparkles, Calendar, Building2 } from 'lucide-react';
+import techstoreimg from '../assets/techstore.png'
+import dhashbordIMG from '../assets/dhashbordpj.png'
 
 const Projects = () => {
   const navigate = useNavigate();
@@ -13,8 +15,8 @@ const Projects = () => {
       id: 'debt-recovery',
       title: 'Debt Recovery Management System',
       description: 'A comprehensive web application designed to digitalize debt recovery processes for SBA Company. Features responsive design and secure backend implementation.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
-      technologies: ['React.js', 'Spring Boot', 'MySQL', 'Bootstrap'],
+      image: dhashbordIMG,
+      technologies: ['React.js', 'Spring Boot', 'MySQL', 'AntDesign', 'REST API','cloudinary'],
       category: 'Web Application',
       icon: Globe,
       github: '#',
@@ -27,11 +29,11 @@ const Projects = () => {
       id: 'ecommerce',
       title: 'E-commerce Platform',
       description: 'A modern, secure e-commerce website with integrated Stripe payment system, responsive design, and comprehensive product management.',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
-      technologies: ['React.js', 'Node.js', 'Express', 'MongoDB'],
+      image: techstoreimg ,
+      technologies: ['React.js', 'Node.js', 'Express', 'MongoDB', 'tawilwindcss','REST API''JWT', 'Stripe API'],
       category: 'Web Application',
       icon: Globe,
-      github: '#',
+      github: 'https://github.com/sadraoui-medamin/EcommerceProject-frontend',
       live: '#',
       featured: true,
       color: 'from-green-500 to-emerald-500',
@@ -331,7 +333,7 @@ const Projects = () => {
                       <span
                         key={tech}
                         className="px-3 py-1 bg-secondary rounded-full text-sm text-muted-foreground border border-border hover:border-primary/50 hover:text-foreground transition-all duration-300 group-hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
-                        style={{ transitionDelay: `${techIndex * 0.1}s` }}
+                        style={{ transitionDelay: `${techIndex * 0.5}s` }}
                       >
                         {tech}
                       </span>
