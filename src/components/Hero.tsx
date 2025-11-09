@@ -60,15 +60,15 @@ const Hero = () => {
 
         {/* Name and Title with staggered animations */}
         <div className="mb-8 space-y-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 animate-fade-in-up relative">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 animate-fade-in-up relative px-4">
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent hover:animate-pulse transition-all duration-300">
               Mohamed Amine Sadraoui
             </span>
           </h1>
           
-          <div className="text-2xl md:text-3xl text-muted-foreground h-10 flex items-center justify-center animate-slide-in-left">
+          <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground min-h-10 flex flex-wrap items-center justify-center animate-slide-in-left px-4">
             <span className="mr-2">I'm a</span>
-            <span className="text-blue-400 font-semibold min-w-[280px] text-left relative">
+            <span className="text-blue-400 font-semibold text-left relative">
               {text}
               {isTyping && <span className="animate-blink">|</span>}
               
@@ -79,7 +79,7 @@ const Hero = () => {
         </div>
 
         {/* Description with typewriter reveal */}
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed animate-fade-in-up opacity-0" style={{ animationDelay: '1s', animationFillMode: 'forwards' }}>
+        <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed animate-fade-in-up opacity-0 px-4" style={{ animationDelay: '1s', animationFillMode: 'forwards' }}>
           Passionate about creating amazing digital experiences with modern technologies. 
           I build scalable web applications and bring ideas to life through code.
         </p>
