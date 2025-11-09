@@ -181,7 +181,7 @@ const Projects = () => {
               {/* Responsive Flex Container */}
               <div className="flex flex-col md:flex-row items-start md:space-x-6 space-y-4 md:space-y-0">
                 {/* Icon Section */}
-                <div className="p-3 md:p-4 rounded-lg bg-primary/20 border border-primary/30 self-start md:self-center">
+                <div className="p-3 md:p-4 rounded-lg bg-primary/20 border border-primary/30 self-start xs:self-center">
                   <Building2 className="h-7 w-7 md:h-8 md:w-8 text-primary" />
                 </div>
 
