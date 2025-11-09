@@ -8,15 +8,10 @@ interface NavigationProps {
 }
 
 const Navigation = ({ isMenuOpen, setIsMenuOpen }: NavigationProps) => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' || 'dark';
-    setTheme(savedTheme);
-    document.documentElement.classList.toggle('light', savedTheme === 'light');
-  }, []);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,12 +34,7 @@ const Navigation = ({ isMenuOpen, setIsMenuOpen }: NavigationProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.toggle('light', newTheme === 'light');
-  };
+
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
@@ -101,18 +91,7 @@ const Navigation = ({ isMenuOpen, setIsMenuOpen }: NavigationProps) => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-2">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-secondary hover:bg-accent transition-colors duration-300"
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? (
-                <Sun className="h-5 w-5 text-foreground" />
-              ) : (
-                <Moon className="h-5 w-5 text-foreground" />
-              )}
-            </button>
-            
+          
             <button
               className="p-2 rounded-lg hover:bg-secondary transition-colors duration-300"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
