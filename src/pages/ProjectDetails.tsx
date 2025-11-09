@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, Github, ExternalLink, Calendar, Building2, Code, Smartphone, Globe, Database, Zap, Star, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import techstoreimg from '../assets/techstore.png'
+import dhashbordIMG from '../assets/dhashbordpj.png'
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
@@ -14,8 +16,8 @@ const ProjectDetails = () => {
       title: 'Debt Recovery Management System',
       description: 'A comprehensive web application designed to digitalize debt recovery processes for SBA Company. Features responsive design and secure backend implementation.',
       fullDescription: 'This enterprise-level web application was developed during my final year internship at SBA Company, Tunisia. The system digitalized and automated the entire debt recovery process, improving efficiency and reducing manual errors. The application features a modern, responsive interface built with React.js and Bootstrap, ensuring seamless user experience across all devices. The backend was developed using Spring Boot, implementing RESTful APIs with secure authentication and authorization mechanisms. MySQL database was used to ensure data integrity and optimal performance.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
-      technologies: ['React.js', 'Spring Boot', 'MySQL', 'Bootstrap'],
+      image: dhashbordIMG,
+      technologies: ['React.js', 'Spring Boot', 'MySQL', 'AntDesign', 'REST API','cloudinary'],
       category: 'Web Application',
       icon: Globe,
       github: '#',
@@ -49,8 +51,8 @@ const ProjectDetails = () => {
       title: 'E-commerce Platform',
       description: 'A modern, secure e-commerce website with integrated Stripe payment system, responsive design, and comprehensive product management.',
       fullDescription: 'A full-stack e-commerce platform built from scratch using the MERN stack. This project showcases modern web development practices including secure payment processing, real-time inventory management, and responsive design. The platform features a React.js frontend with a focus on user experience, Node.js/Express backend for API services, and MongoDB for flexible data storage. Integrated Stripe payment gateway ensures secure transaction processing.',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
-      technologies: ['React.js', 'Node.js', 'Express', 'MongoDB'],
+      image: techstoreimg ,
+      technologies: ['React.js', 'Node.js', 'Express', 'MongoDB', 'tawilwindcss','REST API','JWT', 'Stripe API'],
       category: 'Web Application',
       icon: Globe,
       github: '#',
