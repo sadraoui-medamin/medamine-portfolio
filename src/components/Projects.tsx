@@ -175,37 +175,55 @@ const Projects = () => {
             Here are some projects I've worked on that showcase my skills and experience
           </p>
         </div>
-
-        {/* Experience Section */}
-        <div className="mb-20 transition-all duration-1000 opacity-0 experience-card">
-          <div className="max-w-4xl mx-auto bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-8 hover:border-primary/50 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20">
-            <div className="flex items-start space-x-6">
-              <div className="p-4 rounded-lg bg-primary/20 border border-primary/30">
-                <Building2 className="h-8 w-8 text-primary" />
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center space-x-4 mb-4">
-                  <h3 className="text-2xl font-bold text-foreground">{experience.title}</h3>
-                  <div className="flex items-center space-x-2 px-3 py-1 bg-primary/20 rounded-full border border-primary/30">
-                    <Calendar className="h-4 w-4 text-primary" />
-                    <span className="text-sm text-primary">{experience.duration}</span>
-                  </div>
+          {/* Experience Section */}
+          <div className="mb-20 transition-all duration-1000 opacity-0 experience-card">
+            <div className="max-w-4xl mx-auto bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 sm:p-8 hover:border-primary/50 hover:bg-card/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20">
+              {/* Responsive Flex Container */}
+              <div className="flex flex-col md:flex-row items-start md:space-x-6 space-y-4 md:space-y-0">
+                {/* Icon Section */}
+                <div className="p-3 md:p-4 rounded-lg bg-primary/20 border border-primary/30 self-start md:self-center">
+                  <Building2 className="h-7 w-7 md:h-8 md:w-8 text-primary" />
                 </div>
-                <p className="text-lg text-primary font-semibold mb-2">{experience.company}</p>
-                <p className="text-muted-foreground mb-4">{experience.description}</p>
-                <div className="space-y-2">
-                  <h4 className="text-foreground font-semibold mb-3">Key Contributions:</h4>
-                  {experience.achievements.map((achievement, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span className="text-muted-foreground">{achievement}</span>
+
+                {/* Content Section */}
+                <div className="flex-1">
+                  {/* Title and Duration */}
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 mb-3 sm:mb-4">
+                    <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-1 sm:mb-0">
+                      {experience.title}
+                    </h3>
+                    <div className="flex items-center space-x-2 px-3 py-1 bg-primary/20 rounded-full border border-primary/30 w-fit">
+                      <Calendar className="h-4 w-4 text-primary" />
+                      <span className="text-sm text-primary">{experience.duration}</span>
                     </div>
-                  ))}
+                  </div>
+
+                  {/* Company Name */}
+                  <p className="text-base sm:text-lg text-primary font-semibold mb-2">
+                    {experience.company}
+                  </p>
+
+                  {/* Description */}
+                  <p className="text-sm sm:text-base text-muted-foreground mb-4">
+                    {experience.description}
+                  </p>
+
+                  {/* Achievements */}
+                  <div className="space-y-2">
+                    <h4 className="text-foreground font-semibold mb-3">Key Contributions:</h4>
+                    {experience.achievements.map((achievement, index) => (
+                      <div key={index} className="flex items-start space-x-3">
+                        <div className="w-2 h-2 mt-1 bg-primary rounded-full"></div>
+                        <span className="text-sm sm:text-base text-muted-foreground">
+                          {achievement}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
         {/* Enhanced Featured Projects */}
         <div className="mb-20">
