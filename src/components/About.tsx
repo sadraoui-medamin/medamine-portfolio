@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import { Code, Coffee, tv, BookOpen, Star,  GraduationCap, MapPin } from 'lucide-react';
+import { Code, Coffee, Tv, BookOpen, Star,  GraduationCap, MapPin } from 'lucide-react';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);

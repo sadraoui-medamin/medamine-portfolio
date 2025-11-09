@@ -154,7 +154,7 @@ const Index = () => {
             <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
           </div>
           <p className="text-gray-400 hover:text-blue-400 transition-colors duration-300">
-            © 2024 Full Stack Developer. Built with React & Tailwind CSS
+            © 2025 Med amine - Full Stack Developer. All rights reserved.
           </p>
           <div className="mt-2 flex items-center justify-center space-x-1">
             <span className="text-gray-500 text-sm">Made with</span>
