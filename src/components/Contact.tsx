@@ -14,6 +14,7 @@ const Contact = () => {
   const { toast } = useToast();
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
+    subject: 'New Contact Message From Portfolio visitor',
     name: '',
     email: '',
     message: ''
@@ -94,10 +95,11 @@ const Contact = () => {
         EMAILJS_CONFIG.serviceId,
         EMAILJS_CONFIG.templateId,
         {
+          subject: formData.subject,
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
-          to_name: 'Mohamed Amine Sadraoi',
+          to_name: 'Mohamed Amine Sadraoui',
         },
         EMAILJS_CONFIG.publicKey
       );
@@ -110,7 +112,12 @@ const Contact = () => {
       });
       
       // Reset form
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ 
+        ...formData,
+        name: '',
+        email: '',
+        message: '' 
+      });
     } catch (error) {
       console.error('Failed to send email:', error);
       
