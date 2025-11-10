@@ -14,7 +14,6 @@ const Contact = () => {
   const { toast } = useToast();
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
-    subject: 'New Contact Message From Portfolio visitor',
     name: '',
     email: '',
     message: ''
@@ -88,21 +87,27 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({ title: "Please fill all fields" });
+      setIsSubmitting(false);
+      return;
+        }
+       
     try {
-      // Send email using EmailJS
+     const templateParams = {
+        subject: "New Contact Message From Portfolio visitor",
+        to_email: "your-receiving-email@gmail.com", // Use a different email than the sending Gmail account
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_name: "Mohamed Amine Sadraoui",
+      };
       const result = await emailjs.send(
         EMAILJS_CONFIG.serviceId,
         EMAILJS_CONFIG.templateId,
-        {
-          subject: formData.subject,
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        },
+        templateParams,
         EMAILJS_CONFIG.publicKey
       );
-
       console.log('Email sent successfully:', result.text);
       
       toast({
@@ -112,11 +117,12 @@ const Contact = () => {
       
       // Reset form
       setFormData({ 
-        ...formData,
+        ..formData,
         name: '',
         email: '',
         message: '' 
       });
+
     } catch (error) {
       console.error('Failed to send email:', error);
       
