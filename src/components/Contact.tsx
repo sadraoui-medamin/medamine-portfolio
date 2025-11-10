@@ -1,13 +1,13 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Send, User, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin Send, User, MessageSquare } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { useToast } from '@/hooks/use-toast';
 
 // EmailJS Configuration - Add your credentials here
 const EMAILJS_CONFIG = {
-  serviceId: 'YOUR_SERVICE_ID',
-  templateId: 'YOUR_TEMPLATE_ID',
-  publicKey: 'YOUR_PUBLIC_KEY'
+  serviceId: 'service_xvhyrca',
+  templateId: 'template_gr7sja4',
+  publicKey: 'hEd9iR6E-gze74O4f'
 };
 
 const Contact = () => {
