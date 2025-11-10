@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Mail, Phone, MapPin, Send, User, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Send, User, MessageSquare } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { useToast } from '@/hooks/use-toast';
 
