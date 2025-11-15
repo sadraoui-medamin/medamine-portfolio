@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { ArrowLeft, Github, ExternalLink, Calendar, Building2, Code, Smartphone, Globe, Database, Zap, Star, Sparkles } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, Calendar, Building2, Code, Smartphone, Globe, Database, Zap, Star, Sparkles, Server, Layers } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import techstoreimg from '../assets/techstore.png'
 import dhashbordIMG from '../assets/dhashbordpj.png'
@@ -11,6 +11,64 @@ const ProjectDetails = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const projects = [
+    {
+      id: 'hotel-booking',
+      title: 'Hotel Booking Platform',
+      description: 'A production-ready hotel booking platform built with microservices architecture featuring 10 microservices with independent databases, event-driven architecture using Redis, full-text search with Elasticsearch, and payment processing with Stripe & PayPal.',
+      fullDescription: 'A production-ready hotel booking platform built with modern microservices architecture. This platform showcases enterprise-level design patterns and scalability features including 10 independent microservices, each with its own database following the database-per-service pattern. The system uses event-driven architecture with Redis for inter-service communication, Elasticsearch for full-text search capabilities, and integrates multiple payment providers (Stripe & PayPal) for flexible payment processing. Built with NestJS and TypeScript for type-safety and maintainability, containerized with Docker, and orchestrated with Kubernetes for production deployment.',
+      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=600&fit=crop',
+      technologies: ['React', 'TypeScript', 'NestJS', 'PostgreSQL', 'Redis', 'Elasticsearch', 'Docker', 'Kubernetes', 'Stripe', 'PayPal', 'BullMQ', 'Cloudinary', 'JWT', 'Passport.js', 'Tailwind CSS'],
+      category: 'Web Application',
+      icon: Building2,
+      github: '#',
+      live: '#',
+      color: 'from-indigo-500 to-purple-600',
+      period: 'In Work',
+      status: 'in-work',
+      features: [
+        '10 Microservices with independent PostgreSQL databases',
+        'Event-driven architecture using Redis Pub/Sub',
+        'Full-text search with Elasticsearch 8.x',
+        'Dual payment gateway integration (Stripe + PayPal)',
+        'Image processing and storage with Cloudinary',
+        'Real-time analytics and monitoring dashboard',
+        'JWT-based authentication with Passport.js',
+        'Message queue processing with BullMQ',
+        'Docker containerization for all services',
+        'Kubernetes-ready deployment configuration',
+        'CI/CD pipeline with GitHub Actions',
+        'API Gateway for service orchestration'
+      ],
+      microservices: [
+        { name: 'Auth Service', description: 'User authentication and authorization with JWT tokens', tech: ['NestJS', 'PostgreSQL', 'JWT', 'Passport'] },
+        { name: 'User Service', description: 'User profile management and preferences', tech: ['NestJS', 'PostgreSQL', 'Redis'] },
+        { name: 'Hotel Service', description: 'Hotel listings, details, and availability', tech: ['NestJS', 'PostgreSQL', 'Elasticsearch'] },
+        { name: 'Booking Service', description: 'Reservation management and booking logic', tech: ['NestJS', 'PostgreSQL', 'Redis'] },
+        { name: 'Payment Service', description: 'Payment processing with Stripe and PayPal', tech: ['NestJS', 'PostgreSQL', 'Stripe', 'PayPal'] },
+        { name: 'Search Service', description: 'Full-text search with Elasticsearch', tech: ['NestJS', 'Elasticsearch', 'Redis'] },
+        { name: 'Notification Service', description: 'Email and push notifications', tech: ['NestJS', 'BullMQ', 'Redis'] },
+        { name: 'Review Service', description: 'User reviews and ratings management', tech: ['NestJS', 'PostgreSQL'] },
+        { name: 'Media Service', description: 'Image upload and processing', tech: ['NestJS', 'Cloudinary', 'BullMQ'] },
+        { name: 'Analytics Service', description: 'Real-time analytics and reporting', tech: ['NestJS', 'PostgreSQL', 'Redis'] }
+      ],
+      challenges: [
+        'Designing scalable microservices architecture with proper service boundaries',
+        'Implementing event-driven communication between services',
+        'Managing distributed transactions across multiple databases',
+        'Integrating multiple payment providers with fallback mechanisms',
+        'Optimizing Elasticsearch queries for fast search results',
+        'Setting up Kubernetes cluster with proper resource allocation',
+        'Implementing comprehensive monitoring and logging'
+      ],
+      outcomes: [
+        'Highly scalable architecture supporting thousands of concurrent users',
+        'Sub-second search response times with Elasticsearch',
+        'Zero-downtime deployments with Kubernetes',
+        '99.9% payment processing success rate',
+        'Reduced infrastructure costs through efficient containerization',
+        'Improved developer productivity with microservices isolation'
+      ]
+    },
     {
       id: 'debt-recovery',
       title: 'Debt Recovery Management System',
@@ -294,6 +352,43 @@ const ProjectDetails = () => {
             {project.fullDescription}
           </p>
         </div>
+
+        {/* Microservices Architecture - Only show for hotel-booking project */}
+        {project.microservices && (
+          <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+            <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
+              <Server className="mr-3 h-6 w-6 text-primary" />
+              Microservices Architecture
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {project.microservices.map((service, index) => (
+                <div
+                  key={service.name}
+                  className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 hover:border-primary/50 hover:scale-105 transition-all duration-300 hover:shadow-xl"
+                  style={{ transitionDelay: `${index * 0.05}s` }}
+                >
+                  <div className="flex items-start space-x-3 mb-3">
+                    <div className="p-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600">
+                      <Layers className="h-5 w-5 text-white" />
+                    </div>
+                    <h3 className="text-lg font-bold text-foreground flex-1">{service.name}</h3>
+                  </div>
+                  <p className="text-muted-foreground text-sm mb-4">{service.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {service.tech.map(tech => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 bg-primary/10 rounded text-xs text-primary border border-primary/20"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Features, Challenges, Outcomes Grid */}
         <div className="grid md:grid-cols-3 gap-8">
