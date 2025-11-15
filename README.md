@@ -1,73 +1,107 @@
-# Welcome to your Lovable project
+# Med Amine Portfolio
 
-## Project info
+A modern and fully responsive developer portfolio built with **React**, **TypeScript**, **Tailwind CSS**, and **lucide-react**. This portfolio showcases my projects, skills, experience, and creative work through a clean UI and smooth animations.
 
-**URL**: https://lovable.dev/projects/3a836da5-3b5a-43c5-9fe1-512a28d5b578
+## 🚀 Tech Stack
 
-## How can I edit this code?
+* **React + TypeScript** – Component-based UI with strict typing
+* **Tailwind CSS** – Utility-first styling
+* **lucide-react** – Beautiful, lightweight icons
+* **Framer Motion** (optional) – Smooth animations
+* **Axios** – API requests where needed
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## 📌 Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/3a836da5-3b5a-43c5-9fe1-512a28d5b578) and start prompting.
+### 🔹 Professional Developer Portfolio
 
-Changes made via Lovable will be committed automatically to this repo.
+* Hero section with introduction
+* About section with skills
+* Projects showcase
+* Contact section
+* Dynamic UI elements and animations
 
-**Use your preferred IDE**
+### 🔹 Responsive & Clean Design
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Fully optimized for:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+* Desktop 🖥️
+* Tablet 📱
+* Mobile 📱
 
-Follow these steps:
+### 🔹 Modern Components
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+* Reusable UI blocks
+* Dark/light friendly styling
+* Beautiful iconography using lucide-react
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 📁 Project Structure
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```
+src/
+  components/
+  pages/
+  assets/
+  hooks/
+  styles/
+```
+
+---
+
+## 🧩 Redeem Page (NEW)
+
+A new **Redeem Page** has been added with:
+
+* Reward claiming system
+* Code redemption input
+* API-ready structure using Axios
+* Clean modern UI built with Tailwind & lucide-react
+
+File: `src/pages/Redeem.tsx`
+
+---
+
+## 🛠️ Installation & Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/sadraoui-medamin/medamine-portfolio
+cd medamine-portfolio
+
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📦 Build for Production
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 🙌 Contributing
 
-This project is built with:
+Pull Requests are welcome! Feel free to improve the design, animations, or features.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## 📄 License
 
-Simply open [Lovable](https://lovable.dev/projects/3a836da5-3b5a-43c5-9fe1-512a28d5b578) and click on Share -> Publish.
+This project is licensed under the **MIT License**.
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## 👤 Author
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+**Med Amine Sadraoui**
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+If you like this portfolio, consider giving the repo a ⭐ on GitHub!
