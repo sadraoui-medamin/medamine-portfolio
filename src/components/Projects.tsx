@@ -12,6 +12,21 @@ const Projects = () => {
 
   const projects = [
     {
+      id: 'hotel-booking',
+      title: 'Hotel Booking Platform',
+      description: 'A production-ready hotel booking platform built with microservices architecture featuring 10 microservices with independent databases, event-driven architecture using Redis, full-text search with Elasticsearch, and payment processing with Stripe & PayPal.',
+      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop',
+      technologies: ['React', 'TypeScript', 'NestJS', 'PostgreSQL', 'Redis', 'Elasticsearch', 'Docker', 'Kubernetes', 'Stripe', 'PayPal'],
+      category: 'Web Application',
+      icon: Building2,
+      github: '#',
+      live: '#',
+      featured: true,
+      color: 'from-indigo-500 to-purple-600',
+      period: 'In Work',
+      status: 'in-work'
+    },
+    {
       id: 'debt-recovery',
       title: 'Debt Recovery Management System',
       description: 'A comprehensive web application designed to digitalize debt recovery processes for SBA Company. Features responsive design and secure backend implementation.',
