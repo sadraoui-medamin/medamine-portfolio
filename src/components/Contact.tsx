@@ -117,7 +117,7 @@ const Contact = () => {
       
       // Reset form
       setFormData({ 
-        ..formData,
+        ...formData,
         name: '',
         email: '',
         message: '' 
