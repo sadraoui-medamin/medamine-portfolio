@@ -96,7 +96,7 @@ const Contact = () => {
     try {
      const templateParams = {
         subject: "New Contact Message From Portfolio visitor",
-        to_email: "your-receiving-email@gmail.com", // Use a different email than the sending Gmail account
+        to_email: "medaminsadraou111i@gmail.com", // Use a different email than the sending Gmail account
         from_name: formData.name,
         from_email: formData.email,
         message: formData.message,
