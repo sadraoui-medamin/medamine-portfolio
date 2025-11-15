@@ -8,7 +8,7 @@ A modern and fully responsive developer portfolio built with **React**, **TypeSc
 * **Tailwind CSS** – Utility-first styling
 * **lucide-react** – Beautiful, lightweight icons
 * **Framer Motion** (optional) – Smooth animations
-* **Axios** – API requests where needed
+* **eamiljs** – send email
 
 ---
 
