@@ -16,7 +16,7 @@ const ProjectDetails = () => {
       title: 'Hotel Booking Platform',
       description: 'A production-ready hotel booking platform built with microservices architecture featuring 10 microservices with independent databases, event-driven architecture using Redis, full-text search with Elasticsearch, and payment processing with Stripe & PayPal.',
       fullDescription: 'A production-ready hotel booking platform built with modern microservices architecture. This platform showcases enterprise-level design patterns and scalability features including 10 independent microservices, each with its own database following the database-per-service pattern. The system uses event-driven architecture with Redis for inter-service communication, Elasticsearch for full-text search capabilities, and integrates multiple payment providers (Stripe & PayPal) for flexible payment processing. Built with NestJS and TypeScript for type-safety and maintainability, containerized with Docker, and orchestrated with Kubernetes for production deployment.',
-      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=600&fit=crop',
+      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80',
       technologies: ['React', 'TypeScript', 'NestJS', 'PostgreSQL', 'Redis', 'Elasticsearch', 'Docker', 'Kubernetes', 'Stripe', 'PayPal', 'BullMQ', 'Cloudinary', 'JWT', 'Passport.js', 'Tailwind CSS'],
       category: 'Web Application',
       icon: Building2,
