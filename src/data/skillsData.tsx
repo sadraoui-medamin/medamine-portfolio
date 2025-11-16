@@ -184,40 +184,7 @@ export const skillDetails: Record<string, {
     website: 'https://spring.io/projects/spring-boot',
     documentation: 'https://docs.spring.io/spring-boot/docs/current/reference/html/'
   },
-  'laravel': {
-    name: 'Laravel',
-    belongsTo: 'Backend Development',
-    definition: 'A PHP web application framework with expressive, elegant syntax. Laravel attempts to take the pain out of development by easing common tasks used in most web projects.',
-    keyLearnings: [
-      'MVC architecture pattern',
-      'Eloquent ORM for database operations',
-      'Blade templating engine',
-      'Authentication and authorization',
-      'RESTful routing and controllers',
-      'Artisan command-line tool'
-    ],
-    icon: <SiLaravel className="h-16 w-16" />,
-    color: 'from-red-600 to-orange-500',
-    website: 'https://laravel.com/',
-    documentation: 'https://laravel.com/docs'
-  },
-  'aspnet-core': {
-    name: 'ASP.NET Core',
-    belongsTo: 'Backend Development',
-    definition: 'A cross-platform, high-performance framework for building modern, cloud-enabled, Internet-connected apps. ASP.NET Core runs on .NET and supports building web APIs and web UI.',
-    keyLearnings: [
-      'MVC and Razor Pages',
-      'Dependency injection',
-      'Middleware pipeline',
-      'Entity Framework Core',
-      'Web API development',
-      'SignalR for real-time web functionality'
-    ],
-    icon: <SiDotnet className="h-16 w-16" />,
-    color: 'from-blue-600 to-purple-600',
-    website: 'https://dotnet.microsoft.com/apps/aspnet',
-    documentation: 'https://docs.microsoft.com/en-us/aspnet/core/'
-  },
+
   'restful-apis': {
     name: 'RESTful APIs',
     belongsTo: 'Backend Development',
@@ -302,23 +269,6 @@ export const skillDetails: Record<string, {
     color: 'from-blue-600 to-indigo-600',
     website: 'https://mui.com/',
     documentation: 'https://mui.com/material-ui/getting-started/'
-  },
-  'bootstrap': {
-    name: 'Bootstrap',
-    belongsTo: 'Frontend Development',
-    definition: 'A popular CSS framework for building responsive and mobile-first websites. Bootstrap provides pre-built components and a flexible grid system.',
-    keyLearnings: [
-      'Grid system for responsive layouts',
-      'Pre-built UI components',
-      'Utility classes for rapid development',
-      'JavaScript plugins for interactivity',
-      'Customization with Sass variables',
-      'Cross-browser compatibility'
-    ],
-    icon: <SiBootstrap className="h-16 w-16" />,
-    color: 'from-purple-600 to-purple-400',
-    website: 'https://getbootstrap.com/',
-    documentation: 'https://getbootstrap.com/docs/'
   },
   'android-java': {
     name: 'Android (Java)',
@@ -591,39 +541,5 @@ export const skillDetails: Record<string, {
     color: 'from-pink-600 to-purple-600',
     website: 'https://www.jetbrains.com/idea/',
     documentation: 'https://www.jetbrains.com/help/idea/'
-  },
-  'figma': {
-    name: 'Figma',
-    belongsTo: 'Development Tools',
-    definition: 'A collaborative web application for interface design with additional offline features. Figma allows teams to create, test, and ship better designs together.',
-    keyLearnings: [
-      'UI/UX design principles',
-      'Prototyping and wireframing',
-      'Component libraries',
-      'Collaborative design workflows',
-      'Design system creation',
-      'Developer handoff'
-    ],
-    icon: <SiFigma className="h-16 w-16" />,
-    color: 'from-purple-500 to-pink-500',
-    website: 'https://www.figma.com/',
-    documentation: 'https://help.figma.com/'
-  },
-  'angular': {
-    name: 'Angular',
-    belongsTo: 'Frontend Development',
-    definition: 'A TypeScript-based open-source web application framework led by Google. Angular provides a comprehensive solution for building dynamic single-page applications.',
-    keyLearnings: [
-      'Component-based architecture',
-      'Two-way data binding',
-      'Dependency injection',
-      'RxJS for reactive programming',
-      'Angular CLI for project scaffolding',
-      'Routing and navigation'
-    ],
-    icon: <SiAngular className="h-16 w-16" />,
-    color: 'from-red-600 to-red-400',
-    website: 'https://angular.io/',
-    documentation: 'https://angular.io/docs'
   }
 };

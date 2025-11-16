@@ -67,7 +67,6 @@ const Skills = () => {
         { name: 'Tailwind CSS', icon: SiTailwindcss, level: 90, description: 'Utility-first CSS framework' },
         { name: 'Ant Design', icon: SiAntdesign, level: 85, description: 'Enterprise UI design system' },
         { name: 'Material-UI', icon: SiMui, level: 85, description: 'React component library' },
-        { name: 'Bootstrap', icon: SiBootstrap, level: 85, description: 'Responsive framework' },
       ]
     },
     {
@@ -79,8 +78,6 @@ const Skills = () => {
         { name: 'Node.js', icon: FaNodeJs, level: 85, description: 'Server-side JavaScript runtime' },
         { name: 'Express.js', icon: SiExpress, level: 80, description: 'Node.js web framework' },
         { name: 'Spring Boot', icon: SiSpring, level: 85, description: 'Java-based framework' },
-        { name: 'Laravel', icon: SiLaravel, level: 80, description: 'PHP web framework' },
-        { name: 'ASP.NET Core', icon: SiDotnet, level: 75, description: 'Cross-platform framework' },
         { name: 'RESTful APIs', icon: FaGitAlt, level: 90, description: 'API design and development' },
       ]
     },
