@@ -27,6 +27,21 @@ const Projects = () => {
       status: 'in-work'
     },
     {
+      id: 'project-flow',
+      title: 'SaaS Project Management System',
+      description: 'ProjectFlow is a comprehensive SaaS project management platform with microservices architecture, real-time collaboration, agile sprint management, and powerful integrations.',
+      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
+      technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Redis', 'Elasticsearch', 'Docker', 'Kubernetes', 'RabbitMQ'],
+      category: 'Web Application',
+      icon: Globe,
+      github: '#',
+      live: '#',
+      featured: true,
+      color: 'from-emerald-500 to-teal-600',
+      period: 'In Work',
+      status: 'in-work'
+    },
+    {
       id: 'debt-recovery',
       title: 'Debt Recovery Management System',
       description: 'A comprehensive web application designed to digitalize debt recovery processes for SBA Company. Features responsive design and secure backend implementation.',
