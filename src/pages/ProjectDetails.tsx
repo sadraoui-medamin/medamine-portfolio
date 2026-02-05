@@ -70,6 +70,52 @@ const ProjectDetails = () => {
       ]
     },
     {
+      id: 'project-flow',
+      title: 'SaaS Project Management System',
+      description: 'ProjectFlow is a comprehensive SaaS project management platform with microservices architecture, real-time collaboration, agile sprint management, and powerful integrations.',
+      fullDescription: 'ProjectFlow is a comprehensive, open-source SaaS project management platform designed to help teams collaborate effectively and deliver projects on time. Built with a modern microservices architecture, it offers real-time collaboration, agile sprint management, time tracking, and powerful integrations. Unlike traditional tools, ProjectFlow provides self-hosted options, developer-friendly APIs, and customizable workflows.',
+      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
+      technologies: ['React 18', 'TypeScript', 'Vite', 'Zustand', 'TanStack Query', 'Node.js', 'Fastify', 'PostgreSQL', 'MongoDB', 'Redis', 'Elasticsearch', 'RabbitMQ', 'Docker', 'Kubernetes', 'Tailwind CSS'],
+      category: 'Web Application',
+      icon: Globe,
+      github: '#',
+      live: '#',
+      color: 'from-emerald-500 to-teal-600',
+      period: 'In Work',
+      status: 'in-work',
+      features: [
+        'Microservices architecture with independent databases',
+        'Real-time collaboration with Socket.io',
+        'Agile sprint management and Kanban boards',
+        'Time tracking and reporting',
+        'Multi-tenant architecture with granular permissions',
+        'Plugin architecture and REST API for integrations',
+        'Self-hosted deployment option',
+        'Comprehensive analytics with ClickHouse'
+      ],
+      microservices: [
+        { name: 'API Gateway', description: 'Rate limiting, JWT validation, routing', tech: ['Node.js', 'Express', 'TypeScript'] },
+        { name: 'Auth Service', description: 'Authentication with bcrypt, JWT, passport', tech: ['Node.js', 'PostgreSQL', 'Redis'] },
+        { name: 'Project & Task Service', description: 'Project management with search', tech: ['Fastify', 'PostgreSQL', 'Elasticsearch'] },
+        { name: 'Real-Time Service', description: 'Live updates and collaboration', tech: ['Socket.io', 'Redis'] },
+        { name: 'Notification Service', description: 'Email via SendGrid/AWS SES', tech: ['Node.js', 'RabbitMQ', 'MongoDB'] },
+        { name: 'File Storage Service', description: 'AWS S3/MinIO with Sharp processing', tech: ['Node.js', 'S3', 'PostgreSQL'] },
+        { name: 'Analytics Service', description: 'Visualization with Plotly', tech: ['Python', 'FastAPI', 'ClickHouse'] }
+      ],
+      challenges: [
+        'Designing scalable multi-tenant architecture',
+        'Implementing real-time collaboration features',
+        'Managing distributed services with Kubernetes',
+        'Building comprehensive monitoring with Prometheus/Grafana'
+      ],
+      outcomes: [
+        'Highly scalable architecture for thousands of users',
+        'Sub-second real-time updates',
+        'Complete self-hosted deployment option',
+        'Extensible plugin architecture'
+      ]
+    },
+    {
       id: 'debt-recovery',
       title: 'Debt Recovery Management System',
       description: 'A comprehensive web application designed to digitalize debt recovery processes for SBA Company. Features responsive design and secure backend implementation.',
