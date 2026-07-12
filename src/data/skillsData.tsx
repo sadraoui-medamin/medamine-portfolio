@@ -1,5 +1,5 @@
 import React from 'react';
-import { SiReact, SiJavascript, SiTypescript, SiNodedotjs, SiSpringboot, SiMysql, SiMongodb, SiPostgresql, SiTailwindcss, SiBootstrap, SiGit, SiDocker, SiAndroid, SiHtml5, SiCss, SiPhp, SiPython, SiAngular, SiAntdesign, SiMui, SiExpress, SiLaravel, SiDotnet, SiPostgresql, SiSqlite, SiPostman, SiAndroidstudio, SiEclipseide, SiIntellijidea, SiFigma } from 'react-icons/si';
+import { SiReact, SiJavascript, SiTypescript, SiNodedotjs, SiSpringboot, SiMysql, SiMongodb, SiPostgresql, SiTailwindcss, SiBootstrap, SiGit, SiDocker, SiAndroid, SiHtml5, SiCss, SiPhp, SiPython, SiAngular, SiAntdesign, SiMui, SiExpress, SiLaravel, SiDotnet, SiSqlite, SiPostman, SiAndroidstudio, SiEclipseide, SiIntellijidea, SiFigma } from 'react-icons/si';
 import { FaChartBar, FaJava, FaCode, FaGitAlt } from 'react-icons/fa';
 import { VscCode } from 'react-icons/vsc';
 
