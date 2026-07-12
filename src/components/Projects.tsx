@@ -42,6 +42,20 @@ const Projects = () => {
       status: 'in-work'
     },
     {
+      id: 'clothes-store-tn',
+      title: 'Clothes Store TN',
+      description: 'A modern e-commerce platform for shopping clothes for men, women, kids, and accessories. Fully built with Lovable.ai — frontend, backend, and everything in between.',
+      image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&h=400&fit=crop',
+      technologies: ['Lovable.ai', 'React', 'TypeScript', 'Tailwind CSS', 'Lovable Cloud', 'Supabase'],
+      category: 'Web Application',
+      icon: Globe,
+      github: 'https://github.com/sadraoui-medamin/stylesphere-platform',
+      live: '#',
+      featured: true,
+      color: 'from-pink-500 to-rose-600',
+      period: 'Personal Project'
+    },
+    {
       id: 'debt-recovery',
       title: 'Debt Recovery Management System',
       description: 'A comprehensive web application designed to digitalize debt recovery processes for SBA Company. Features responsive design and secure backend implementation.',

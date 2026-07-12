@@ -5,7 +5,7 @@ import { FaCode, FaDatabase, FaMobileAlt, FaGlobe, FaServer, FaPalette, FaBolt, 
   FaFileCode, FaCoffee, FaBox, FaLayerGroup, FaWrench, FaGitAlt, FaTerminal, FaCloud, FaCog, FaReact, FaHtml5, FaCss3Alt, 
   FaNodeJs, FaJava, FaPython, FaPhp, FaDocker, FaGithub, FaChartBar, FaLaptopCode, FaTools } from 'react-icons/fa';
 import { SiTailwindcss, SiAntdesign, SiMui, SiBootstrap, SiExpress, SiSpring, SiLaravel, SiDotnet, SiMongodb, 
-  SiMysql, SiOracle, SiSqlite, SiPostgresql, SiPostman, SiAndroid, SiAndroidstudio, SiCloudinary, SiOdoo,
+  SiMysql, SiPostgresql, SiSqlite, SiPostman, SiAndroid, SiAndroidstudio, SiCloudinary, SiOdoo,
   SiEclipseide, SiIntellijidea, SiFigma } from 'react-icons/si';
 import { AiFillStar } from 'react-icons/ai';
 import { VscCode } from 'react-icons/vsc';
@@ -101,7 +101,7 @@ const Skills = () => {
       skills: [
         { name: 'MongoDB', icon: SiMongodb, level: 85, description: 'NoSQL database' },
         { name: 'MySQL', icon: SiMysql, level: 85, description: 'Relational database' },
-        { name: 'Oracle', icon: SiOracle, level: 75, description: 'Enterprise database system' },
+        { name: 'Oracle', icon: SiPostgresql, level: 75, description: 'Enterprise database system' },
         { name: 'SQLite', icon: SiSqlite, level: 80, description: 'Lightweight database' },
         { name: 'PostgreSQL', icon: SiPostgresql, level: 80, description: 'Advanced open-source database' },
       ]

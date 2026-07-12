@@ -1,5 +1,5 @@
 import React from 'react';
-import { SiReact, SiJavascript, SiTypescript, SiNodedotjs, SiSpringboot, SiMysql, SiMongodb, SiPostgresql, SiTailwindcss, SiBootstrap, SiGit, SiDocker, SiAndroid, SiHtml5, SiCss3, SiPhp, SiPython, SiAngular, SiAntdesign, SiMui, SiExpress, SiLaravel, SiDotnet, SiOracle, SiSqlite, SiPostman, SiAndroidstudio, SiEclipseide, SiIntellijidea, SiFigma } from 'react-icons/si';
+import { SiReact, SiJavascript, SiTypescript, SiNodedotjs, SiSpringboot, SiMysql, SiMongodb, SiPostgresql, SiTailwindcss, SiBootstrap, SiGit, SiDocker, SiAndroid, SiHtml5, SiCss, SiPhp, SiPython, SiAngular, SiAntdesign, SiMui, SiExpress, SiLaravel, SiDotnet, SiSqlite, SiPostman, SiAndroidstudio, SiEclipseide, SiIntellijidea, SiFigma } from 'react-icons/si';
 import { FaChartBar, FaJava, FaCode, FaGitAlt } from 'react-icons/fa';
 import { VscCode } from 'react-icons/vsc';
 
@@ -367,7 +367,7 @@ export const skillDetails: Record<string, {
       'Security and user management',
       'Performance optimization'
     ],
-    icon: <SiOracle className="h-16 w-16" />,
+    icon: <SiPostgresql className="h-16 w-16" />,
     color: 'from-red-600 to-orange-600',
     website: 'https://www.oracle.com/database/',
     documentation: 'https://docs.oracle.com/en/database/'
