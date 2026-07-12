@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ExternalLink, Github, Code, Smartphone, Globe, Database, Zap, Star, Eye, Sparkles, Calendar, Building2 } from 'lucide-react';
 import techstoreimg from '../assets/techstore.png'
 import dhashbordIMG from '../assets/dhashbordpj.png'
+import clothesstoreimg from '../assets/clothes-store-tn.jpg'
 
 const Projects = () => {
   const navigate = useNavigate();

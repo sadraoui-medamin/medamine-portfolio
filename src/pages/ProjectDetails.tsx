@@ -4,6 +4,7 @@ import { ArrowLeft, Github, ExternalLink, Calendar, Building2, Code, Smartphone,
 import { Button } from '@/components/ui/button';
 import techstoreimg from '../assets/techstore.png'
 import dhashbordIMG from '../assets/dhashbordpj.png'
+import clothesstoreimg from '../assets/clothes-store-tn.jpg'
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
