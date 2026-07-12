@@ -116,6 +116,42 @@ const ProjectDetails = () => {
       ]
     },
     {
+      id: 'clothes-store-tn',
+      title: 'Clothes Store TN',
+      description: 'A modern e-commerce platform for shopping clothes for men, women, kids, and accessories. Fully built with Lovable.ai — frontend, backend, and everything in between.',
+      fullDescription: 'Clothes Store TN is a full-featured e-commerce platform tailored for the Tunisian market, offering a curated shopping experience for men, women, kids, and accessories. The entire project — frontend, backend, database, and authentication — was built end-to-end using Lovable.ai, showcasing the power of AI-assisted full-stack development. The platform features category browsing, product details, shopping cart, secure checkout, and user account management, all wrapped in a modern, responsive UI.',
+      image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&h=600&fit=crop',
+      technologies: ['Lovable.ai', 'React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Lovable Cloud', 'Supabase', 'PostgreSQL', 'shadcn/ui'],
+      category: 'Web Application',
+      icon: Globe,
+      github: 'https://github.com/sadraoui-medamin/stylesphere-platform',
+      live: '#',
+      color: 'from-pink-500 to-rose-600',
+      period: 'Personal Project',
+      features: [
+        'Multi-category shopping: Men, Women, Kids, Accessories',
+        'Product catalog with images, sizes, and variants',
+        'Shopping cart and checkout flow',
+        'User authentication and account management',
+        'Order history and tracking',
+        'Responsive design for mobile and desktop',
+        'Admin dashboard for product management',
+        'Built entirely with Lovable.ai (frontend + backend)'
+      ],
+      challenges: [
+        'Designing an intuitive category structure for a diverse product catalog',
+        'Implementing secure authentication and user data management',
+        'Building a smooth cart and checkout experience',
+        'Optimizing product images and page performance'
+      ],
+      outcomes: [
+        'Full-stack e-commerce platform delivered rapidly with Lovable.ai',
+        'Clean, modern UI with responsive design',
+        'Scalable backend powered by Lovable Cloud',
+        'Demonstrates the power of AI-assisted development'
+      ]
+    },
+    {
       id: 'debt-recovery',
       title: 'Debt Recovery Management System',
       description: 'A comprehensive web application designed to digitalize debt recovery processes for SBA Company. Features responsive design and secure backend implementation.',
