@@ -121,7 +121,7 @@ const ProjectDetails = () => {
       title: 'Clothes Store TN',
       description: 'A modern e-commerce platform for shopping clothes for men, women, kids, and accessories. Fully built with Lovable.ai — frontend, backend, and everything in between.',
       fullDescription: 'Clothes Store TN is a full-featured e-commerce platform tailored for the Tunisian market, offering a curated shopping experience for men, women, kids, and accessories. The entire project — frontend, backend, database, and authentication — was built end-to-end using Lovable.ai, showcasing the power of AI-assisted full-stack development. The platform features category browsing, product details, shopping cart, secure checkout, and user account management, all wrapped in a modern, responsive UI.',
-      image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&h=600&fit=crop',
+      image: clothesstoreimg,
       technologies: ['Lovable.ai', 'React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Lovable Cloud', 'Supabase', 'PostgreSQL', 'shadcn/ui'],
       category: 'Web Application',
       icon: Globe,

@@ -46,7 +46,7 @@ const Projects = () => {
       id: 'clothes-store-tn',
       title: 'Clothes Store TN',
       description: 'A modern e-commerce platform for shopping clothes for men, women, kids, and accessories. Fully built with Lovable.ai — frontend, backend, and everything in between.',
-      image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&h=400&fit=crop',
+      image: clothesstoreimg,
       technologies: ['Lovable.ai', 'React', 'TypeScript', 'Tailwind CSS', 'Lovable Cloud', 'Supabase'],
       category: 'Web Application',
       icon: Globe,
