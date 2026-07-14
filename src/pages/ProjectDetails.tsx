@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { ArrowLeft, Github, ExternalLink, Calendar, Building2, Code, Smartphone, Globe, Database, Zap, Star, Sparkles, Server, Layers } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, Calendar, Building2, Code, Smartphone, Globe, Database, Zap, Star, Sparkles, Server, Layers, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import techstoreimg from '../assets/techstore.png'
 import dhashbordIMG from '../assets/dhashbordpj.png'
 import clothesstoreimg from '../assets/clothes-store-tn.jpg'
@@ -398,12 +404,36 @@ const ProjectDetails = () => {
                     View Code
                   </a>
                 </Button>
-                <Button asChild variant="outline" className="group">
-                  <a href={project.live} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
-                    Live Demo
-                  </a>
-                </Button>
+                {project.id === 'ecommerce' ? (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="outline" className="group">
+                        <ExternalLink className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                        Live Demo
+                        <ChevronDown className="ml-2 h-4 w-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuItem asChild>
+                        <a href="https://ecommerce-project-frontend-2yf3lq6vw.vercel.app/" target="_blank" rel="noopener noreferrer">
+                          Landing Page
+                        </a>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <a href="https://ecommerce-project-admin-alpha.vercel.app/" target="_blank" rel="noopener noreferrer">
+                          Admin Console
+                        </a>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
+                  <Button asChild variant="outline" className="group">
+                    <a href={project.live} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                      Live Demo
+                    </a>
+                  </Button>
+                )}
               </div>
             </div>
           </div>
