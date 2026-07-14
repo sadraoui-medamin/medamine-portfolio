@@ -404,12 +404,36 @@ const ProjectDetails = () => {
                     View Code
                   </a>
                 </Button>
-                <Button asChild variant="outline" className="group">
-                  <a href={project.live} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
-                    Live Demo
-                  </a>
-                </Button>
+                {project.id === 'ecommerce' ? (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="outline" className="group">
+                        <ExternalLink className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                        Live Demo
+                        <ChevronDown className="ml-2 h-4 w-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuItem asChild>
+                        <a href="https://ecommerce-project-frontend-2yf3lq6vw.vercel.app/" target="_blank" rel="noopener noreferrer">
+                          Landing Page
+                        </a>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <a href="https://ecommerce-project-admin-alpha.vercel.app/" target="_blank" rel="noopener noreferrer">
+                          Admin Console
+                        </a>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
+                  <Button asChild variant="outline" className="group">
+                    <a href={project.live} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                      Live Demo
+                    </a>
+                  </Button>
+                )}
               </div>
             </div>
           </div>
