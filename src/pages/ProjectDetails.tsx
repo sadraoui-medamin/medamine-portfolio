@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Github, ExternalLink, Calendar, Building2, Code, Smartphone, Globe, Database, Zap, Star, Sparkles, Server, Layers, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -318,8 +319,33 @@ const ProjectDetails = () => {
     );
   }
 
+  const pageTitle = `${project.title} — Mohamed Amine Sadraoui`;
+  const pageDescription = (project.description || '').slice(0, 155);
+  const canonicalPath = `/project/${project.id}`;
+  const projectSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    description: project.description,
+    image: typeof project.image === 'string' ? project.image : undefined,
+    author: { "@type": "Person", name: "Mohamed Amine Sadraoui" },
+    url: canonicalPath,
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <link rel="canonical" href={canonicalPath} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={canonicalPath} />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <script type="application/ld+json">{JSON.stringify(projectSchema)}</script>
+      </Helmet>
       {/* Background Effects */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-background"></div>

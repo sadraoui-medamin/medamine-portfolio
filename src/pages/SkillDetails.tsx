@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { skillDetails } from '@/data/skillsData';
@@ -40,8 +41,23 @@ const SkillDetails = () => {
     );
   }
 
+  const pageTitle = `${skill.name} — Skills | Mohamed Amine Sadraoui`;
+  const pageDescription = (skill.definition || `Learn about ${skill.name} in Mohamed Amine Sadraoui's portfolio.`).slice(0, 155);
+  const canonicalPath = `/skill/${nameOfSkill}`;
+
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <link rel="canonical" href={canonicalPath} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={canonicalPath} />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+      </Helmet>
       {/* Gradient Background */}
       <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-5`}></div>
       

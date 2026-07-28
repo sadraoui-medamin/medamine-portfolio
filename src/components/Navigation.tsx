@@ -82,11 +82,14 @@ const Navigation = ({ isMenuOpen, setIsMenuOpen }: NavigationProps) => {
             <button
               className="p-2 rounded-lg hover:bg-secondary transition-colors duration-300"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-nav"
             >
               {isMenuOpen ? (
-                <X className="h-6 w-6 text-foreground" />
+                <X className="h-6 w-6 text-foreground" aria-hidden="true" />
               ) : (
-                <Menu className="h-6 w-6 text-foreground" />
+                <Menu className="h-6 w-6 text-foreground" aria-hidden="true" />
               )}
             </button>
           </div>

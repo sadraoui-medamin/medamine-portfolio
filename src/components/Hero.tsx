@@ -64,6 +64,9 @@ const Hero = () => {
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent hover:animate-pulse transition-all duration-300">
               Mohamed Amine Sadraoui
             </span>
+            <span className="block text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-muted-foreground mt-3">
+              Full Stack Developer
+            </span>
           </h1>
           
           <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground min-h-10 flex flex-wrap items-center justify-center animate-slide-in-left px-4">
