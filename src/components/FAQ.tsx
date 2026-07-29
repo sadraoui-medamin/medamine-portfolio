@@ -44,25 +44,14 @@ const FAQ = () => {
     return () => observer.disconnect();
   }, []);
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((f) => ({
-      '@type': 'Question',
-      name: f.question,
-      acceptedAnswer: { '@type': 'Answer', text: f.answer },
-    })),
-  };
-
   return (
     <section
       ref={sectionRef}
       id="faq"
       className="py-20 relative overflow-hidden"
     >
-      <Helmet>
-        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-      </Helmet>
+      <FaqJsonLd faqs={faqs} />
+
 
       <div className="container mx-auto px-6 relative z-10">
         <div
