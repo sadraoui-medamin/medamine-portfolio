@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { skillDetails } from '@/data/skillsData';
+import BreadcrumbJsonLd from '@/lib/breadcrumbSchema';
 
 const SkillDetails = () => {
   const { nameOfSkill } = useParams<{ nameOfSkill: string }>();
