@@ -39,6 +39,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white relative overflow-x-hidden">
+      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }]} />
       {/* Enhanced Background System */}
       <ParticleSystem />
       <LightBeams />
