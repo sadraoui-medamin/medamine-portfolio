@@ -6,6 +6,7 @@ import About from '../components/About';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Contact from '../components/Contact';
+import FAQ from '../components/FAQ';
 import Navigation from '../components/Navigation';
 import FloatingElements from '../components/FloatingElements';
 import ParticleSystem from '../components/ParticleSystem';
@@ -143,6 +144,7 @@ const Index = () => {
         <Skills />
         <Projects />
         <Contact />
+        <FAQ />
       </main>
 
       {/* Enhanced Footer */}
