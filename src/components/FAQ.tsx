@@ -3,8 +3,6 @@ import { ChevronDown } from 'lucide-react';
 import FaqJsonLd, { type FaqItem } from '@/lib/faqSchema';
 
 const faqs: FaqItem[] = [
-
-const faqs = [
   {
     question: 'Who is Mohamed Amine Sadraoui?',
     answer:
