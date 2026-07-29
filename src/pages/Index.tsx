@@ -12,6 +12,7 @@ import FloatingElements from '../components/FloatingElements';
 import ParticleSystem from '../components/ParticleSystem';
 import LightBeams from '../components/LightBeams';
 import SplashScreen from '../components/SplashScreen';
+import BreadcrumbJsonLd from '../lib/breadcrumbSchema';
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
