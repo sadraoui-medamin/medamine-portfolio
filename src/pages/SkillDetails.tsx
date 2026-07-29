@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { skillDetails } from '@/data/skillsData';
+import BreadcrumbJsonLd from '@/lib/breadcrumbSchema';
 
 const SkillDetails = () => {
   const { nameOfSkill } = useParams<{ nameOfSkill: string }>();
@@ -58,6 +59,13 @@ const SkillDetails = () => {
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
       </Helmet>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Skills', path: '/#skills' },
+          { name: skill.name, path: canonicalPath },
+        ]}
+      />
       {/* Gradient Background */}
       <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-5`}></div>
       

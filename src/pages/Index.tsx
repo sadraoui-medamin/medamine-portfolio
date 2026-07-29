@@ -12,6 +12,7 @@ import FloatingElements from '../components/FloatingElements';
 import ParticleSystem from '../components/ParticleSystem';
 import LightBeams from '../components/LightBeams';
 import SplashScreen from '../components/SplashScreen';
+import BreadcrumbJsonLd from '../lib/breadcrumbSchema';
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,6 +39,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white relative overflow-x-hidden">
+      <BreadcrumbJsonLd items={[{ name: 'Home', path: '/' }]} />
       {/* Enhanced Background System */}
       <ParticleSystem />
       <LightBeams />

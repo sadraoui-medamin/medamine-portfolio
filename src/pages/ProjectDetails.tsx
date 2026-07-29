@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Github, ExternalLink, Calendar, Building2, Code, Smartphone, Globe, Database, Zap, Star, Sparkles, Server, Layers, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import BreadcrumbJsonLd from '@/lib/breadcrumbSchema';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -346,6 +347,13 @@ const ProjectDetails = () => {
         <meta name="twitter:description" content={pageDescription} />
         <script type="application/ld+json">{JSON.stringify(projectSchema)}</script>
       </Helmet>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Projects', path: '/#projects' },
+          { name: project.title, path: canonicalPath },
+        ]}
+      />
       {/* Background Effects */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-background"></div>
