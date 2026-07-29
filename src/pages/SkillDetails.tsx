@@ -59,6 +59,13 @@ const SkillDetails = () => {
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
       </Helmet>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Skills', path: '/#skills' },
+          { name: skill.name, path: canonicalPath },
+        ]}
+      />
       {/* Gradient Background */}
       <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-5`}></div>
       
