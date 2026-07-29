@@ -144,6 +144,7 @@ const Index = () => {
         <Skills />
         <Projects />
         <Contact />
+        <FAQ />
       </main>
 
       {/* Enhanced Footer */}
