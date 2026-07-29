@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { ChevronDown } from 'lucide-react';
+import FaqJsonLd, { type FaqItem } from '@/lib/faqSchema';
+
+const faqs: FaqItem[] = [
 
 const faqs = [
   {
