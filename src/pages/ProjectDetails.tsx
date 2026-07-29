@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Github, ExternalLink, Calendar, Building2, Code, Smartphone, Globe, Database, Zap, Star, Sparkles, Server, Layers, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import BreadcrumbJsonLd from '@/lib/breadcrumbSchema';
 import {
   DropdownMenu,
   DropdownMenuContent,
