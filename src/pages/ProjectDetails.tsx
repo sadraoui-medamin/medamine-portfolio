@@ -346,6 +346,13 @@ const ProjectDetails = () => {
         <meta name="twitter:description" content={pageDescription} />
         <script type="application/ld+json">{JSON.stringify(projectSchema)}</script>
       </Helmet>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Projects', path: '/#projects' },
+          { name: project.title, path: canonicalPath },
+        ]}
+      />
       {/* Background Effects */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-background"></div>
