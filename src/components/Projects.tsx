@@ -51,7 +51,7 @@ const Projects = () => {
       category: 'Web Application',
       icon: Globe,
       github: 'https://github.com/sadraoui-medamin/stylesphere-platform',
-      live: '#',
+      live: 'https://clothes-store-tn.lovable.app/',
       featured: true,
       color: 'from-pink-500 to-rose-600',
       period: 'Personal Project'
