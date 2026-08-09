@@ -13,6 +13,14 @@ import {
 import techstoreimg from '../assets/techstore.png'
 import dhashbordIMG from '../assets/dhashbordpj.png'
 import clothesstoreimg from '../assets/clothes-store-tn.jpg'
+import csHero from '../assets/clothes-store/hero-banner.png.asset.json'
+import csShopMen from '../assets/clothes-store/shop-men.png.asset.json'
+import csProduct from '../assets/clothes-store/product.png.asset.json'
+import csSignIn from '../assets/clothes-store/sign-in.png.asset.json'
+import csInventory from '../assets/clothes-store/inventory.png.asset.json'
+import csBanners from '../assets/clothes-store/banners.png.asset.json'
+import csNewsletter from '../assets/clothes-store/newsletter.png.asset.json'
+import csContact from '../assets/clothes-store/contact.png.asset.json'
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
