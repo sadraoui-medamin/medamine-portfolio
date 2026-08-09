@@ -532,6 +532,52 @@ const ProjectDetails = () => {
           </p>
         </div>
 
+        {/* Admin Console Modules */}
+        {project.adminModules && (
+          <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+            <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
+              <Layers className="mr-3 h-6 w-6 text-primary" />
+              Admin Console — What It Manages
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {project.adminModules.map((mod) => (
+                <div
+                  key={mod.name}
+                  className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-xl"
+                >
+                  <h3 className="text-lg font-bold text-foreground mb-2">{mod.name}</h3>
+                  <p className="text-muted-foreground text-sm">{mod.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Screenshots Gallery */}
+        {project.gallery && (
+          <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+            <h2 className="text-2xl font-bold text-foreground mb-6">Screenshots</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {project.gallery.map((shot) => (
+                <figure
+                  key={shot.url}
+                  className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300"
+                >
+                  <img
+                    src={shot.url}
+                    alt={`${project.title} — ${shot.caption}`}
+                    loading="lazy"
+                    className="w-full object-cover"
+                  />
+                  <figcaption className="p-4 text-sm text-muted-foreground">{shot.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        )}
+
+
+
         {/* Microservices Architecture - Only show for hotel-booking project */}
         {project.microservices && (
           <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
