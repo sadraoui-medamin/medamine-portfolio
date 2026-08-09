@@ -142,28 +142,52 @@ const ProjectDetails = () => {
       category: 'Web Application',
       icon: Globe,
       github: 'https://github.com/sadraoui-medamin/stylesphere-platform',
-      live: '#',
+      live: 'https://clothes-store-tn.lovable.app/',
       color: 'from-pink-500 to-rose-600',
       period: 'Personal Project',
+      gallery: [
+        { url: csHero.url, caption: 'Home page hero carousel with editable banners' },
+        { url: csShopMen.url, caption: 'Shop page with gender, category and price filters' },
+        { url: csProduct.url, caption: 'Product page: sizes, colors, wishlist and cart' },
+        { url: csSignIn.url, caption: 'Authentication: email/password, Google and demo access' },
+        { url: csInventory.url, caption: 'Admin — Inventory: stock levels, low-stock alerts, bulk updates' },
+        { url: csBanners.url, caption: 'Admin — Banners & popular products with views/clicks/CTR' },
+        { url: csNewsletter.url, caption: 'Admin — Newsletter: subscribers, campaigns and reports' },
+        { url: csContact.url, caption: 'Multilingual storefront (EN/FR/AR with RTL) contact page' }
+      ],
+      adminModules: [
+        { name: 'Notifications', description: 'Real-time staff notification centre with unread badge for new orders, tickets and stock alerts.' },
+        { name: 'Products & Categories', description: 'Full CRUD for products, variants, sizes, colors, pricing, discounts, slugs and category tree.' },
+        { name: 'Inventory', description: 'Per-warehouse stock tracking, configurable low-stock threshold, restock alerts and bulk stock updates.' },
+        { name: 'Orders', description: 'Order lifecycle management, status transitions, order details, refunds and customer history.' },
+        { name: 'Payments', description: 'Payment tracking including cash on delivery, with reconciliation per order.' },
+        { name: 'Delivery & Shipping', description: 'Delivery assignment, courier tracking across Tunisia, shipping zones and delivery status updates.' },
+        { name: 'Reports & Analytics', description: 'Sales, subscriber and banner performance reports with views, clicks, CTR and open rate metrics.' },
+        { name: 'Users & Roles', description: 'Granular RBAC: Master, Admin, Product Manager, Order Manager, Support, Warehouse and Delivery roles.' },
+        { name: 'Support Inbox & Tickets', description: 'Contact-form tickets routed to a shared support inbox with statuses and replies.' },
+        { name: 'Newsletter', description: 'Subscriber list with source and language, segmentation, campaigns, unsubscribe and reporting.' },
+        { name: 'Home Banners & Highlights', description: 'Curate the home hero rotation, reorder, show/hide banners and pick featured products.' },
+        { name: 'Landing Page Heroes & Site Settings', description: 'Control landing page hero content, storefront copy, theme and global site settings.' }
+      ],
       features: [
         'Multi-category shopping: Men, Women, Kids, Accessories',
-        'Product catalog with images, sizes, and variants',
-        'Shopping cart and checkout flow',
-        'User authentication and account management',
-        'Order history and tracking',
-        'Responsive design for mobile and desktop',
-        'Admin dashboard for product management',
+        'Product catalog with variants, sizes, colors and discounts',
+        'Wishlist, cart and cash-on-delivery checkout',
+        'Multilingual storefront (EN / FR / AR with RTL) and dark mode',
+        'Authentication with email, Google and role-based staff access',
+        'Complete staff console covering catalog, orders, delivery and marketing',
+        'Newsletter, support inbox and banner analytics built in',
         'Built entirely with Lovable.ai (frontend + backend)'
       ],
       challenges: [
-        'Designing an intuitive category structure for a diverse product catalog',
-        'Implementing secure authentication and user data management',
-        'Building a smooth cart and checkout experience',
+        'Designing a granular role system so each staff role only sees its own scope',
+        'Keeping inventory, orders and delivery states consistent across the console',
+        'Supporting three languages including full right-to-left layout',
         'Optimizing product images and page performance'
       ],
       outcomes: [
         'Full-stack e-commerce platform delivered rapidly with Lovable.ai',
-        'Clean, modern UI with responsive design',
+        'Staff console managing catalog, stock, orders, delivery and marketing end to end',
         'Scalable backend powered by Lovable Cloud',
         'Demonstrates the power of AI-assisted development'
       ]
