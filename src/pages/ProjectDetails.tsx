@@ -31,9 +31,28 @@ import hbHotelBookings from '../assets/hotel-booking/hotel-bookings.png.asset.js
 import hbHotelProperties from '../assets/hotel-booking/hotel-properties.png.asset.json'
 import hbStaffOverview from '../assets/hotel-booking/staff-overview.png.asset.json'
 import hbSupport from '../assets/hotel-booking/support-disputes.png.asset.json'
+import hbCover from '../assets/hotel-booking-cover.jpg'
+import ThumbnailCarousel from '@/components/ui/thumbnail-carousel'
 
+
+type GroupedItem = { name: string; description: string; group?: string };
+
+const groupItems = <T extends GroupedItem>(items: T[]): [string, T[]][] => {
+  const order: string[] = [];
+  const map = new Map<string, T[]>();
+  items.forEach((item) => {
+    const key = item.group ?? 'General';
+    if (!map.has(key)) {
+      map.set(key, []);
+      order.push(key);
+    }
+    map.get(key)!.push(item);
+  });
+  return order.map((key) => [key, map.get(key)!]);
+};
 
 const ProjectDetails = () => {
+
   const { projectId } = useParams();
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
@@ -44,7 +63,7 @@ const ProjectDetails = () => {
       title: 'Hotel Booking Platform',
       description: 'StayVista — a two-sided hotel booking platform: travelers search, book and manage reservations, while subscribed hotels submit their properties and run their own staff team (general manager, revenue manager, front office, guest relations, housekeeping, maintenance, kitchen, accounting and security). Built on a microservices architecture.',
       fullDescription: 'StayVista is a production-ready, two-sided hotel booking platform. On the traveler side, simple users can explore and search thousands of listings, filter by price, star and guest rating, property type and amenities, book a room, pay online and manage their trips, refunds and invoices from a personal dashboard. On the partner side, hotels subscribe to a plan (Pro / Enterprise) and postulate their property for review; once approved they get a full hotel console to manage properties, rooms, availability, pricing, bookings, revenue reports and — most importantly — their own staff team with granular role-based permissions (general manager, revenue manager, front office, guest relations, housekeeping supervisor, room attendant/cleaner, maintenance technician, kitchen manager, accountant, security officer). A platform super-admin staff console sits on top for moderation, payouts, support and disputes. Technically the platform is built with modern microservices architecture: 10 independent services with database-per-service, Redis event-driven communication, Elasticsearch full-text search, Stripe & PayPal payments, Docker and Kubernetes.',
-      image: hbHome.url,
+      image: hbCover,
       technologies: ['React', 'TypeScript', 'NestJS', 'PostgreSQL', 'Redis', 'Elasticsearch', 'Docker', 'Kubernetes', 'Stripe', 'PayPal', 'BullMQ', 'Cloudinary', 'JWT', 'Passport.js', 'Tailwind CSS'],
       category: 'Web Application',
       icon: Building2,
@@ -66,31 +85,32 @@ const ProjectDetails = () => {
         { url: hbSupport.url, caption: 'Support & disputes — ticketing with escalation and resolution' }
       ],
       adminModules: [
-        { name: 'Traveler Booking', description: 'Search, compare and book rooms, manage trips, cancellations, refunds and PDF invoices from a personal account.' },
-        { name: 'Hotel Subscription', description: 'Hotels subscribe to a Pro or Enterprise plan, postulate their property and get verified badges plus featured placement.' },
-        { name: 'Property Onboarding', description: 'Submit properties for moderation: photos, rooms, amenities, policies and location, with pending / active / inactive states.' },
-        { name: 'Team & Staff Roles', description: 'Hotels invite and manage their own team with scoped permissions: general manager, revenue manager, front office, guest relations, housekeeping supervisor, room attendant, maintenance technician, kitchen manager, accountant and security officer.' },
-        { name: 'Reservations Management', description: 'Confirm, reject, check-in and check-out guests, track pending bookings and export reservation reports.' },
-        { name: 'Revenue & Pricing', description: 'Dynamic pricing, seasonal rates, occupancy tracking and revenue analytics per property.' },
-        { name: 'Finance & Payouts', description: 'Partner payouts, commissions, refunds and payment reconciliation via Stripe and PayPal.' },
-        { name: 'Housekeeping & Maintenance', description: 'Room status boards, cleaning assignments for attendants and maintenance work orders for technicians.' },
-        { name: 'Guest Relations & Reviews', description: 'Guest messaging, special requests, room services and review/rating moderation.' },
-        { name: 'Support & Disputes', description: 'Ticketing for clients and partners with priority, escalation, assignment and resolution workflows.' },
-        { name: 'Reports & Logs', description: 'Platform and hotel-level reporting plus immutable activity logs of every staff action.' },
-        { name: 'Notifications & Settings', description: 'Real-time notification centre, role switching, theme control and global platform settings.' }
+        { group: 'Travelers', name: 'Traveler Booking', description: 'Search, compare and book rooms, manage trips, cancellations, refunds and PDF invoices from a personal account.' },
+        { group: 'Travelers', name: 'Guest Relations & Reviews', description: 'Guest messaging, special requests, room services and review/rating moderation.' },
+        { group: 'Partners', name: 'Hotel Subscription', description: 'Hotels subscribe to a Pro or Enterprise plan, postulate their property and get verified badges plus featured placement.' },
+        { group: 'Partners', name: 'Property Onboarding', description: 'Submit properties for moderation: photos, rooms, amenities, policies and location, with pending / active / inactive states.' },
+        { group: 'Partners', name: 'Team & Staff Roles', description: 'Hotels invite and manage their own team with scoped permissions across ten hotel job roles.' },
+        { group: 'Operations', name: 'Reservations Management', description: 'Confirm, reject, check-in and check-out guests, track pending bookings and export reservation reports.' },
+        { group: 'Operations', name: 'Housekeeping & Maintenance', description: 'Room status boards, cleaning assignments for attendants and maintenance work orders for technicians.' },
+        { group: 'Revenue & Finance', name: 'Revenue & Pricing', description: 'Dynamic pricing, seasonal rates, occupancy tracking and revenue analytics per property.' },
+        { group: 'Revenue & Finance', name: 'Finance & Payouts', description: 'Partner payouts, commissions, refunds and payment reconciliation via Stripe and PayPal.' },
+        { group: 'Platform Administration', name: 'Support & Disputes', description: 'Ticketing for clients and partners with priority, escalation, assignment and resolution workflows.' },
+        { group: 'Platform Administration', name: 'Reports & Logs', description: 'Platform and hotel-level reporting plus immutable activity logs of every staff action.' },
+        { group: 'Platform Administration', name: 'Notifications & Settings', description: 'Real-time notification centre, role switching, theme control and global platform settings.' }
       ],
       teamRoles: [
-        { name: 'General Manager', description: 'Full access to the hotel workspace: team, properties, bookings, pricing and reports.' },
-        { name: 'Revenue Manager', description: 'Owns rates, seasonal pricing, occupancy targets and revenue analytics.' },
-        { name: 'Front Office', description: 'Handles check-in / check-out, walk-ins, room assignment and daily reservations.' },
-        { name: 'Guest Relations', description: 'Answers guest messages, special requests, complaints and review follow-up.' },
-        { name: 'Housekeeping Supervisor', description: 'Plans cleaning rounds, inspects rooms and validates room-ready status.' },
-        { name: 'Room Attendant / Cleaner', description: 'Receives cleaning assignments and updates room status from a simplified view.' },
-        { name: 'Maintenance Technician', description: 'Receives and closes work orders for equipment, plumbing and technical incidents.' },
-        { name: 'Kitchen Manager', description: 'Manages restaurant and room-service orders, menus and stock for the kitchen.' },
-        { name: 'Accountant', description: 'Access to invoices, payouts, commissions and financial exports only.' },
-        { name: 'Security Officer', description: 'Access logs, incident reports and safety checks across the property.' }
+        { group: 'Leadership', name: 'General Manager', description: 'Full access to the hotel workspace: team, properties, bookings, pricing and reports.' },
+        { group: 'Leadership', name: 'Revenue Manager', description: 'Owns rates, seasonal pricing, occupancy targets and revenue analytics.' },
+        { group: 'Leadership', name: 'Accountant', description: 'Access to invoices, payouts, commissions and financial exports only.' },
+        { group: 'Front of House', name: 'Front Office', description: 'Handles check-in / check-out, walk-ins, room assignment and daily reservations.' },
+        { group: 'Front of House', name: 'Guest Relations', description: 'Answers guest messages, special requests, complaints and review follow-up.' },
+        { group: 'Front of House', name: 'Kitchen Manager', description: 'Manages restaurant and room-service orders, menus and stock for the kitchen.' },
+        { group: 'Operations', name: 'Housekeeping Supervisor', description: 'Plans cleaning rounds, inspects rooms and validates room-ready status.' },
+        { group: 'Operations', name: 'Room Attendant / Cleaner', description: 'Receives cleaning assignments and updates room status from a simplified view.' },
+        { group: 'Operations', name: 'Maintenance Technician', description: 'Receives and closes work orders for equipment, plumbing and technical incidents.' },
+        { group: 'Operations', name: 'Security Officer', description: 'Access logs, incident reports and safety checks across the property.' }
       ],
+
 
       features: [
         'Travelers: search, filter, book, pay and manage reservations and refunds',
@@ -212,18 +232,19 @@ const ProjectDetails = () => {
         { url: csContact.url, caption: 'Multilingual storefront (EN/FR/AR with RTL) contact page' }
       ],
       adminModules: [
-        { name: 'Notifications', description: 'Real-time staff notification centre with unread badge for new orders, tickets and stock alerts.' },
-        { name: 'Products & Categories', description: 'Full CRUD for products, variants, sizes, colors, pricing, discounts, slugs and category tree.' },
-        { name: 'Inventory', description: 'Per-warehouse stock tracking, configurable low-stock threshold, restock alerts and bulk stock updates.' },
-        { name: 'Orders', description: 'Order lifecycle management, status transitions, order details, refunds and customer history.' },
-        { name: 'Payments', description: 'Payment tracking including cash on delivery, with reconciliation per order.' },
-        { name: 'Delivery & Shipping', description: 'Delivery assignment, courier tracking across Tunisia, shipping zones and delivery status updates.' },
-        { name: 'Reports & Analytics', description: 'Sales, subscriber and banner performance reports with views, clicks, CTR and open rate metrics.' },
-        { name: 'Users & Roles', description: 'Granular RBAC: Master, Admin, Product Manager, Order Manager, Support, Warehouse and Delivery roles.' },
-        { name: 'Support Inbox & Tickets', description: 'Contact-form tickets routed to a shared support inbox with statuses and replies.' },
-        { name: 'Newsletter', description: 'Subscriber list with source and language, segmentation, campaigns, unsubscribe and reporting.' },
-        { name: 'Home Banners & Highlights', description: 'Curate the home hero rotation, reorder, show/hide banners and pick featured products.' },
-        { name: 'Landing Page Heroes & Site Settings', description: 'Control landing page hero content, storefront copy, theme and global site settings.' }
+        { group: 'Catalog', name: 'Products & Categories', description: 'Full CRUD for products, variants, sizes, colors, pricing, discounts, slugs and category tree.' },
+        { group: 'Catalog', name: 'Inventory', description: 'Per-warehouse stock tracking, configurable low-stock threshold, restock alerts and bulk stock updates.' },
+        { group: 'Sales & Fulfilment', name: 'Orders', description: 'Order lifecycle management, status transitions, order details, refunds and customer history.' },
+        { group: 'Sales & Fulfilment', name: 'Payments', description: 'Payment tracking including cash on delivery, with reconciliation per order.' },
+        { group: 'Sales & Fulfilment', name: 'Delivery & Shipping', description: 'Delivery assignment, courier tracking across Tunisia, shipping zones and delivery status updates.' },
+        { group: 'Marketing & Content', name: 'Newsletter', description: 'Subscriber list with source and language, segmentation, campaigns, unsubscribe and reporting.' },
+        { group: 'Marketing & Content', name: 'Home Banners & Highlights', description: 'Curate the home hero rotation, reorder, show/hide banners and pick featured products.' },
+        { group: 'Marketing & Content', name: 'Landing Page Heroes & Site Settings', description: 'Control landing page hero content, storefront copy, theme and global site settings.' },
+        { group: 'Customers & Support', name: 'Support Inbox & Tickets', description: 'Contact-form tickets routed to a shared support inbox with statuses and replies.' },
+        { group: 'Customers & Support', name: 'Notifications', description: 'Real-time staff notification centre with unread badge for new orders, tickets and stock alerts.' },
+        { group: 'Administration', name: 'Users & Roles', description: 'Granular RBAC: Master, Admin, Product Manager, Order Manager, Support, Warehouse and Delivery roles.' },
+        { group: 'Administration', name: 'Reports & Analytics', description: 'Sales, subscriber and banner performance reports with views, clicks, CTR and open rate metrics.' }
+
       ],
       features: [
         'Multi-category shopping: Men, Women, Kids, Accessories',
@@ -591,18 +612,30 @@ const ProjectDetails = () => {
         {/* Admin Console Modules */}
         {project.adminModules && (
           <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-            <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
+            <h2 className="text-2xl font-bold text-foreground mb-2 flex items-center">
               <Layers className="mr-3 h-6 w-6 text-primary" />
               Admin Console — What It Manages
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {project.adminModules.map((mod) => (
-                <div
-                  key={mod.name}
-                  className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-xl"
-                >
-                  <h3 className="text-lg font-bold text-foreground mb-2">{mod.name}</h3>
-                  <p className="text-muted-foreground text-sm">{mod.description}</p>
+            <p className="text-muted-foreground mb-8">Grouped by area of responsibility.</p>
+            <div className="space-y-8">
+              {groupItems(project.adminModules).map(([group, mods]) => (
+                <div key={group}>
+                  <div className="flex items-center gap-3 mb-4">
+                    <h3 className="text-sm font-semibold uppercase tracking-wider text-primary">{group}</h3>
+                    <span className="text-xs text-muted-foreground">{mods.length}</span>
+                    <div className="flex-1 h-px bg-border/60" />
+                  </div>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {mods.map((mod) => (
+                      <div
+                        key={mod.name}
+                        className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-xl"
+                      >
+                        <h4 className="text-lg font-bold text-foreground mb-2">{mod.name}</h4>
+                        <p className="text-muted-foreground text-sm">{mod.description}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
@@ -612,18 +645,30 @@ const ProjectDetails = () => {
         {/* Hotel Team Roles */}
         {project.teamRoles && (
           <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-            <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
+            <h2 className="text-2xl font-bold text-foreground mb-2 flex items-center">
               <Layers className="mr-3 h-6 w-6 text-primary" />
               Hotel Team — Staff Roles
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {project.teamRoles.map((role) => (
-                <div
-                  key={role.name}
-                  className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-xl"
-                >
-                  <h3 className="text-lg font-bold text-foreground mb-2">{role.name}</h3>
-                  <p className="text-muted-foreground text-sm">{role.description}</p>
+            <p className="text-muted-foreground mb-8">Each hotel manages its own team with scoped permissions.</p>
+            <div className="space-y-8">
+              {groupItems(project.teamRoles).map(([group, roles]) => (
+                <div key={group}>
+                  <div className="flex items-center gap-3 mb-4">
+                    <h3 className="text-sm font-semibold uppercase tracking-wider text-primary">{group}</h3>
+                    <span className="text-xs text-muted-foreground">{roles.length}</span>
+                    <div className="flex-1 h-px bg-border/60" />
+                  </div>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {roles.map((role) => (
+                      <div
+                        key={role.name}
+                        className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-xl"
+                      >
+                        <h4 className="text-lg font-bold text-foreground mb-2">{role.name}</h4>
+                        <p className="text-muted-foreground text-sm">{role.description}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
@@ -631,28 +676,20 @@ const ProjectDetails = () => {
         )}
 
 
+
         {/* Screenshots Gallery */}
         {project.gallery && (
           <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
             <h2 className="text-2xl font-bold text-foreground mb-6">Screenshots</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {project.gallery.map((shot) => (
-                <figure
-                  key={shot.url}
-                  className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300"
-                >
-                  <img
-                    src={shot.url}
-                    alt={`${project.title} — ${shot.caption}`}
-                    loading="lazy"
-                    className="w-full object-cover"
-                  />
-                  <figcaption className="p-4 text-sm text-muted-foreground">{shot.caption}</figcaption>
-                </figure>
-              ))}
-            </div>
+            <ThumbnailCarousel
+              slides={project.gallery.map((shot) => ({
+                url: shot.url,
+                caption: shot.caption,
+              }))}
+            />
           </div>
         )}
+
 
 
 
