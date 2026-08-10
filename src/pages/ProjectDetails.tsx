@@ -21,6 +21,17 @@ import csInventory from '../assets/clothes-store/inventory.png.asset.json'
 import csBanners from '../assets/clothes-store/banners.png.asset.json'
 import csNewsletter from '../assets/clothes-store/newsletter.png.asset.json'
 import csContact from '../assets/clothes-store/contact.png.asset.json'
+import hbHome from '../assets/hotel-booking/home-hero.png.asset.json'
+import hbFeatured from '../assets/hotel-booking/featured-hotels.png.asset.json'
+import hbAllHotels from '../assets/hotel-booking/all-hotels.png.asset.json'
+import hbPartner from '../assets/hotel-booking/partner-listing.png.asset.json'
+import hbMyBookings from '../assets/hotel-booking/my-bookings.png.asset.json'
+import hbHotelDashboard from '../assets/hotel-booking/hotel-dashboard.png.asset.json'
+import hbHotelBookings from '../assets/hotel-booking/hotel-bookings.png.asset.json'
+import hbHotelProperties from '../assets/hotel-booking/hotel-properties.png.asset.json'
+import hbStaffOverview from '../assets/hotel-booking/staff-overview.png.asset.json'
+import hbSupport from '../assets/hotel-booking/support-disputes.png.asset.json'
+
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
@@ -31,9 +42,9 @@ const ProjectDetails = () => {
     {
       id: 'hotel-booking',
       title: 'Hotel Booking Platform',
-      description: 'A production-ready hotel booking platform built with microservices architecture featuring 10 microservices with independent databases, event-driven architecture using Redis, full-text search with Elasticsearch, and payment processing with Stripe & PayPal.',
-      fullDescription: 'A production-ready hotel booking platform built with modern microservices architecture. This platform showcases enterprise-level design patterns and scalability features including 10 independent microservices, each with its own database following the database-per-service pattern. The system uses event-driven architecture with Redis for inter-service communication, Elasticsearch for full-text search capabilities, and integrates multiple payment providers (Stripe & PayPal) for flexible payment processing. Built with NestJS and TypeScript for type-safety and maintainability, containerized with Docker, and orchestrated with Kubernetes for production deployment.',
-      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80',
+      description: 'StayVista — a two-sided hotel booking platform: travelers search, book and manage reservations, while subscribed hotels submit their properties and run their own staff team (general manager, revenue manager, front office, guest relations, housekeeping, maintenance, kitchen, accounting and security). Built on a microservices architecture.',
+      fullDescription: 'StayVista is a production-ready, two-sided hotel booking platform. On the traveler side, simple users can explore and search thousands of listings, filter by price, star and guest rating, property type and amenities, book a room, pay online and manage their trips, refunds and invoices from a personal dashboard. On the partner side, hotels subscribe to a plan (Pro / Enterprise) and postulate their property for review; once approved they get a full hotel console to manage properties, rooms, availability, pricing, bookings, revenue reports and — most importantly — their own staff team with granular role-based permissions (general manager, revenue manager, front office, guest relations, housekeeping supervisor, room attendant/cleaner, maintenance technician, kitchen manager, accountant, security officer). A platform super-admin staff console sits on top for moderation, payouts, support and disputes. Technically the platform is built with modern microservices architecture: 10 independent services with database-per-service, Redis event-driven communication, Elasticsearch full-text search, Stripe & PayPal payments, Docker and Kubernetes.',
+      image: hbHome.url,
       technologies: ['React', 'TypeScript', 'NestJS', 'PostgreSQL', 'Redis', 'Elasticsearch', 'Docker', 'Kubernetes', 'Stripe', 'PayPal', 'BullMQ', 'Cloudinary', 'JWT', 'Passport.js', 'Tailwind CSS'],
       category: 'Web Application',
       icon: Building2,
@@ -42,8 +53,53 @@ const ProjectDetails = () => {
       color: 'from-indigo-500 to-purple-600',
       period: 'In Work',
       status: 'in-work',
+      gallery: [
+        { url: hbHome.url, caption: 'Traveler home — hero search with destination, dates and guests' },
+        { url: hbFeatured.url, caption: 'Featured hotels from Pro-tier partner properties' },
+        { url: hbAllHotels.url, caption: 'Explore all hotels with price, star, rating, type and amenity filters' },
+        { url: hbPartner.url, caption: 'Partner subscription landing — list your property and grow your business' },
+        { url: hbMyBookings.url, caption: 'Traveler account — bookings, trips, refunds and PDF invoices' },
+        { url: hbHotelDashboard.url, caption: 'Hotel dashboard — bookings, revenue, page views and ratings' },
+        { url: hbHotelBookings.url, caption: 'Hotel bookings — reservations, guest tracking and approvals' },
+        { url: hbHotelProperties.url, caption: 'Hotel properties — rooms, occupancy, activation and moderation state' },
+        { url: hbStaffOverview.url, caption: 'Platform staff console — users, partners, revenue and activity logs' },
+        { url: hbSupport.url, caption: 'Support & disputes — ticketing with escalation and resolution' }
+      ],
+      adminModules: [
+        { name: 'Traveler Booking', description: 'Search, compare and book rooms, manage trips, cancellations, refunds and PDF invoices from a personal account.' },
+        { name: 'Hotel Subscription', description: 'Hotels subscribe to a Pro or Enterprise plan, postulate their property and get verified badges plus featured placement.' },
+        { name: 'Property Onboarding', description: 'Submit properties for moderation: photos, rooms, amenities, policies and location, with pending / active / inactive states.' },
+        { name: 'Team & Staff Roles', description: 'Hotels invite and manage their own team with scoped permissions: general manager, revenue manager, front office, guest relations, housekeeping supervisor, room attendant, maintenance technician, kitchen manager, accountant and security officer.' },
+        { name: 'Reservations Management', description: 'Confirm, reject, check-in and check-out guests, track pending bookings and export reservation reports.' },
+        { name: 'Revenue & Pricing', description: 'Dynamic pricing, seasonal rates, occupancy tracking and revenue analytics per property.' },
+        { name: 'Finance & Payouts', description: 'Partner payouts, commissions, refunds and payment reconciliation via Stripe and PayPal.' },
+        { name: 'Housekeeping & Maintenance', description: 'Room status boards, cleaning assignments for attendants and maintenance work orders for technicians.' },
+        { name: 'Guest Relations & Reviews', description: 'Guest messaging, special requests, room services and review/rating moderation.' },
+        { name: 'Support & Disputes', description: 'Ticketing for clients and partners with priority, escalation, assignment and resolution workflows.' },
+        { name: 'Reports & Logs', description: 'Platform and hotel-level reporting plus immutable activity logs of every staff action.' },
+        { name: 'Notifications & Settings', description: 'Real-time notification centre, role switching, theme control and global platform settings.' }
+      ],
+      teamRoles: [
+        { name: 'General Manager', description: 'Full access to the hotel workspace: team, properties, bookings, pricing and reports.' },
+        { name: 'Revenue Manager', description: 'Owns rates, seasonal pricing, occupancy targets and revenue analytics.' },
+        { name: 'Front Office', description: 'Handles check-in / check-out, walk-ins, room assignment and daily reservations.' },
+        { name: 'Guest Relations', description: 'Answers guest messages, special requests, complaints and review follow-up.' },
+        { name: 'Housekeeping Supervisor', description: 'Plans cleaning rounds, inspects rooms and validates room-ready status.' },
+        { name: 'Room Attendant / Cleaner', description: 'Receives cleaning assignments and updates room status from a simplified view.' },
+        { name: 'Maintenance Technician', description: 'Receives and closes work orders for equipment, plumbing and technical incidents.' },
+        { name: 'Kitchen Manager', description: 'Manages restaurant and room-service orders, menus and stock for the kitchen.' },
+        { name: 'Accountant', description: 'Access to invoices, payouts, commissions and financial exports only.' },
+        { name: 'Security Officer', description: 'Access logs, incident reports and safety checks across the property.' }
+      ],
+
       features: [
+        'Travelers: search, filter, book, pay and manage reservations and refunds',
+        'Hotels: subscription plans (Pro / Enterprise) to postulate and list properties',
+        'Property moderation workflow before a hotel goes live',
+        'Hotel team management with 10 scoped staff roles and permissions',
+        'Super-admin staff console for users, partners, payouts and disputes',
         '10 Microservices with independent PostgreSQL databases',
+
         'Event-driven architecture using Redis Pub/Sub',
         'Full-text search with Elasticsearch 8.x',
         'Dual payment gateway integration (Stripe + PayPal)',
@@ -552,6 +608,28 @@ const ProjectDetails = () => {
             </div>
           </div>
         )}
+
+        {/* Hotel Team Roles */}
+        {project.teamRoles && (
+          <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+            <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
+              <Layers className="mr-3 h-6 w-6 text-primary" />
+              Hotel Team — Staff Roles
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {project.teamRoles.map((role) => (
+                <div
+                  key={role.name}
+                  className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-xl"
+                >
+                  <h3 className="text-lg font-bold text-foreground mb-2">{role.name}</h3>
+                  <p className="text-muted-foreground text-sm">{role.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
 
         {/* Screenshots Gallery */}
         {project.gallery && (

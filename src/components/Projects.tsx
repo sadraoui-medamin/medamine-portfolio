@@ -4,6 +4,8 @@ import { ExternalLink, Github, Code, Smartphone, Globe, Database, Zap, Star, Eye
 import techstoreimg from '../assets/techstore.png'
 import dhashbordIMG from '../assets/dhashbordpj.png'
 import clothesstoreimg from '../assets/clothes-store-tn.jpg'
+import hbHome from '../assets/hotel-booking/home-hero.png.asset.json'
+
 
 const Projects = () => {
   const navigate = useNavigate();
@@ -15,8 +17,9 @@ const Projects = () => {
     {
       id: 'hotel-booking',
       title: 'Hotel Booking Platform',
-      description: 'A production-ready hotel booking platform built with microservices architecture featuring 10 microservices with independent databases, event-driven architecture using Redis, full-text search with Elasticsearch, and payment processing with Stripe & PayPal.',
-      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80',
+      description: 'A two-sided hotel booking platform: travelers search, book and manage reservations, while subscribed hotels postulate their properties and run their own staff team (general manager, revenue manager, front office, guest relations, housekeeping, maintenance, kitchen, accounting, security) — powered by a 10-service microservices backend.',
+      image: hbHome.url,
+
       technologies: ['React', 'TypeScript', 'NestJS', 'PostgreSQL', 'Redis', 'Elasticsearch', 'Docker', 'Kubernetes', 'Stripe', 'PayPal'],
       category: 'Web Application',
       icon: Building2,
