@@ -31,6 +31,9 @@ import hbHotelBookings from '../assets/hotel-booking/hotel-bookings.png.asset.js
 import hbHotelProperties from '../assets/hotel-booking/hotel-properties.png.asset.json'
 import hbStaffOverview from '../assets/hotel-booking/staff-overview.png.asset.json'
 import hbSupport from '../assets/hotel-booking/support-disputes.png.asset.json'
+import hbCover from '../assets/hotel-booking-cover.jpg'
+import ThumbnailCarousel from '@/components/ui/thumbnail-carousel'
+
 
 
 const ProjectDetails = () => {
