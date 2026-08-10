@@ -93,7 +93,13 @@ const ProjectDetails = () => {
       ],
 
       features: [
+        'Travelers: search, filter, book, pay and manage reservations and refunds',
+        'Hotels: subscription plans (Pro / Enterprise) to postulate and list properties',
+        'Property moderation workflow before a hotel goes live',
+        'Hotel team management with 10 scoped staff roles and permissions',
+        'Super-admin staff console for users, partners, payouts and disputes',
         '10 Microservices with independent PostgreSQL databases',
+
         'Event-driven architecture using Redis Pub/Sub',
         'Full-text search with Elasticsearch 8.x',
         'Dual payment gateway integration (Stripe + PayPal)',
