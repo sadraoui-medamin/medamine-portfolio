@@ -21,6 +21,17 @@ import csInventory from '../assets/clothes-store/inventory.png.asset.json'
 import csBanners from '../assets/clothes-store/banners.png.asset.json'
 import csNewsletter from '../assets/clothes-store/newsletter.png.asset.json'
 import csContact from '../assets/clothes-store/contact.png.asset.json'
+import hbHome from '../assets/hotel-booking/home-hero.png.asset.json'
+import hbFeatured from '../assets/hotel-booking/featured-hotels.png.asset.json'
+import hbAllHotels from '../assets/hotel-booking/all-hotels.png.asset.json'
+import hbPartner from '../assets/hotel-booking/partner-listing.png.asset.json'
+import hbMyBookings from '../assets/hotel-booking/my-bookings.png.asset.json'
+import hbHotelDashboard from '../assets/hotel-booking/hotel-dashboard.png.asset.json'
+import hbHotelBookings from '../assets/hotel-booking/hotel-bookings.png.asset.json'
+import hbHotelProperties from '../assets/hotel-booking/hotel-properties.png.asset.json'
+import hbStaffOverview from '../assets/hotel-booking/staff-overview.png.asset.json'
+import hbSupport from '../assets/hotel-booking/support-disputes.png.asset.json'
+
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
