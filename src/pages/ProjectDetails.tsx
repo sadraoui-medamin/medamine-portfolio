@@ -69,31 +69,32 @@ const ProjectDetails = () => {
         { url: hbSupport.url, caption: 'Support & disputes — ticketing with escalation and resolution' }
       ],
       adminModules: [
-        { name: 'Traveler Booking', description: 'Search, compare and book rooms, manage trips, cancellations, refunds and PDF invoices from a personal account.' },
-        { name: 'Hotel Subscription', description: 'Hotels subscribe to a Pro or Enterprise plan, postulate their property and get verified badges plus featured placement.' },
-        { name: 'Property Onboarding', description: 'Submit properties for moderation: photos, rooms, amenities, policies and location, with pending / active / inactive states.' },
-        { name: 'Team & Staff Roles', description: 'Hotels invite and manage their own team with scoped permissions: general manager, revenue manager, front office, guest relations, housekeeping supervisor, room attendant, maintenance technician, kitchen manager, accountant and security officer.' },
-        { name: 'Reservations Management', description: 'Confirm, reject, check-in and check-out guests, track pending bookings and export reservation reports.' },
-        { name: 'Revenue & Pricing', description: 'Dynamic pricing, seasonal rates, occupancy tracking and revenue analytics per property.' },
-        { name: 'Finance & Payouts', description: 'Partner payouts, commissions, refunds and payment reconciliation via Stripe and PayPal.' },
-        { name: 'Housekeeping & Maintenance', description: 'Room status boards, cleaning assignments for attendants and maintenance work orders for technicians.' },
-        { name: 'Guest Relations & Reviews', description: 'Guest messaging, special requests, room services and review/rating moderation.' },
-        { name: 'Support & Disputes', description: 'Ticketing for clients and partners with priority, escalation, assignment and resolution workflows.' },
-        { name: 'Reports & Logs', description: 'Platform and hotel-level reporting plus immutable activity logs of every staff action.' },
-        { name: 'Notifications & Settings', description: 'Real-time notification centre, role switching, theme control and global platform settings.' }
+        { group: 'Travelers', name: 'Traveler Booking', description: 'Search, compare and book rooms, manage trips, cancellations, refunds and PDF invoices from a personal account.' },
+        { group: 'Travelers', name: 'Guest Relations & Reviews', description: 'Guest messaging, special requests, room services and review/rating moderation.' },
+        { group: 'Partners', name: 'Hotel Subscription', description: 'Hotels subscribe to a Pro or Enterprise plan, postulate their property and get verified badges plus featured placement.' },
+        { group: 'Partners', name: 'Property Onboarding', description: 'Submit properties for moderation: photos, rooms, amenities, policies and location, with pending / active / inactive states.' },
+        { group: 'Partners', name: 'Team & Staff Roles', description: 'Hotels invite and manage their own team with scoped permissions across ten hotel job roles.' },
+        { group: 'Operations', name: 'Reservations Management', description: 'Confirm, reject, check-in and check-out guests, track pending bookings and export reservation reports.' },
+        { group: 'Operations', name: 'Housekeeping & Maintenance', description: 'Room status boards, cleaning assignments for attendants and maintenance work orders for technicians.' },
+        { group: 'Revenue & Finance', name: 'Revenue & Pricing', description: 'Dynamic pricing, seasonal rates, occupancy tracking and revenue analytics per property.' },
+        { group: 'Revenue & Finance', name: 'Finance & Payouts', description: 'Partner payouts, commissions, refunds and payment reconciliation via Stripe and PayPal.' },
+        { group: 'Platform Administration', name: 'Support & Disputes', description: 'Ticketing for clients and partners with priority, escalation, assignment and resolution workflows.' },
+        { group: 'Platform Administration', name: 'Reports & Logs', description: 'Platform and hotel-level reporting plus immutable activity logs of every staff action.' },
+        { group: 'Platform Administration', name: 'Notifications & Settings', description: 'Real-time notification centre, role switching, theme control and global platform settings.' }
       ],
       teamRoles: [
-        { name: 'General Manager', description: 'Full access to the hotel workspace: team, properties, bookings, pricing and reports.' },
-        { name: 'Revenue Manager', description: 'Owns rates, seasonal pricing, occupancy targets and revenue analytics.' },
-        { name: 'Front Office', description: 'Handles check-in / check-out, walk-ins, room assignment and daily reservations.' },
-        { name: 'Guest Relations', description: 'Answers guest messages, special requests, complaints and review follow-up.' },
-        { name: 'Housekeeping Supervisor', description: 'Plans cleaning rounds, inspects rooms and validates room-ready status.' },
-        { name: 'Room Attendant / Cleaner', description: 'Receives cleaning assignments and updates room status from a simplified view.' },
-        { name: 'Maintenance Technician', description: 'Receives and closes work orders for equipment, plumbing and technical incidents.' },
-        { name: 'Kitchen Manager', description: 'Manages restaurant and room-service orders, menus and stock for the kitchen.' },
-        { name: 'Accountant', description: 'Access to invoices, payouts, commissions and financial exports only.' },
-        { name: 'Security Officer', description: 'Access logs, incident reports and safety checks across the property.' }
+        { group: 'Leadership', name: 'General Manager', description: 'Full access to the hotel workspace: team, properties, bookings, pricing and reports.' },
+        { group: 'Leadership', name: 'Revenue Manager', description: 'Owns rates, seasonal pricing, occupancy targets and revenue analytics.' },
+        { group: 'Leadership', name: 'Accountant', description: 'Access to invoices, payouts, commissions and financial exports only.' },
+        { group: 'Front of House', name: 'Front Office', description: 'Handles check-in / check-out, walk-ins, room assignment and daily reservations.' },
+        { group: 'Front of House', name: 'Guest Relations', description: 'Answers guest messages, special requests, complaints and review follow-up.' },
+        { group: 'Front of House', name: 'Kitchen Manager', description: 'Manages restaurant and room-service orders, menus and stock for the kitchen.' },
+        { group: 'Operations', name: 'Housekeeping Supervisor', description: 'Plans cleaning rounds, inspects rooms and validates room-ready status.' },
+        { group: 'Operations', name: 'Room Attendant / Cleaner', description: 'Receives cleaning assignments and updates room status from a simplified view.' },
+        { group: 'Operations', name: 'Maintenance Technician', description: 'Receives and closes work orders for equipment, plumbing and technical incidents.' },
+        { group: 'Operations', name: 'Security Officer', description: 'Access logs, incident reports and safety checks across the property.' }
       ],
+
 
       features: [
         'Travelers: search, filter, book, pay and manage reservations and refunds',
