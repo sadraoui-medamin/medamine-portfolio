@@ -609,6 +609,28 @@ const ProjectDetails = () => {
           </div>
         )}
 
+        {/* Hotel Team Roles */}
+        {project.teamRoles && (
+          <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+            <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
+              <Layers className="mr-3 h-6 w-6 text-primary" />
+              Hotel Team — Staff Roles
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {project.teamRoles.map((role) => (
+                <div
+                  key={role.name}
+                  className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-xl"
+                >
+                  <h3 className="text-lg font-bold text-foreground mb-2">{role.name}</h3>
+                  <p className="text-muted-foreground text-sm">{role.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+
         {/* Screenshots Gallery */}
         {project.gallery && (
           <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
