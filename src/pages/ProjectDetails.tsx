@@ -216,18 +216,19 @@ const ProjectDetails = () => {
         { url: csContact.url, caption: 'Multilingual storefront (EN/FR/AR with RTL) contact page' }
       ],
       adminModules: [
-        { name: 'Notifications', description: 'Real-time staff notification centre with unread badge for new orders, tickets and stock alerts.' },
-        { name: 'Products & Categories', description: 'Full CRUD for products, variants, sizes, colors, pricing, discounts, slugs and category tree.' },
-        { name: 'Inventory', description: 'Per-warehouse stock tracking, configurable low-stock threshold, restock alerts and bulk stock updates.' },
-        { name: 'Orders', description: 'Order lifecycle management, status transitions, order details, refunds and customer history.' },
-        { name: 'Payments', description: 'Payment tracking including cash on delivery, with reconciliation per order.' },
-        { name: 'Delivery & Shipping', description: 'Delivery assignment, courier tracking across Tunisia, shipping zones and delivery status updates.' },
-        { name: 'Reports & Analytics', description: 'Sales, subscriber and banner performance reports with views, clicks, CTR and open rate metrics.' },
-        { name: 'Users & Roles', description: 'Granular RBAC: Master, Admin, Product Manager, Order Manager, Support, Warehouse and Delivery roles.' },
-        { name: 'Support Inbox & Tickets', description: 'Contact-form tickets routed to a shared support inbox with statuses and replies.' },
-        { name: 'Newsletter', description: 'Subscriber list with source and language, segmentation, campaigns, unsubscribe and reporting.' },
-        { name: 'Home Banners & Highlights', description: 'Curate the home hero rotation, reorder, show/hide banners and pick featured products.' },
-        { name: 'Landing Page Heroes & Site Settings', description: 'Control landing page hero content, storefront copy, theme and global site settings.' }
+        { group: 'Catalog', name: 'Products & Categories', description: 'Full CRUD for products, variants, sizes, colors, pricing, discounts, slugs and category tree.' },
+        { group: 'Catalog', name: 'Inventory', description: 'Per-warehouse stock tracking, configurable low-stock threshold, restock alerts and bulk stock updates.' },
+        { group: 'Sales & Fulfilment', name: 'Orders', description: 'Order lifecycle management, status transitions, order details, refunds and customer history.' },
+        { group: 'Sales & Fulfilment', name: 'Payments', description: 'Payment tracking including cash on delivery, with reconciliation per order.' },
+        { group: 'Sales & Fulfilment', name: 'Delivery & Shipping', description: 'Delivery assignment, courier tracking across Tunisia, shipping zones and delivery status updates.' },
+        { group: 'Marketing & Content', name: 'Newsletter', description: 'Subscriber list with source and language, segmentation, campaigns, unsubscribe and reporting.' },
+        { group: 'Marketing & Content', name: 'Home Banners & Highlights', description: 'Curate the home hero rotation, reorder, show/hide banners and pick featured products.' },
+        { group: 'Marketing & Content', name: 'Landing Page Heroes & Site Settings', description: 'Control landing page hero content, storefront copy, theme and global site settings.' },
+        { group: 'Customers & Support', name: 'Support Inbox & Tickets', description: 'Contact-form tickets routed to a shared support inbox with statuses and replies.' },
+        { group: 'Customers & Support', name: 'Notifications', description: 'Real-time staff notification centre with unread badge for new orders, tickets and stock alerts.' },
+        { group: 'Administration', name: 'Users & Roles', description: 'Granular RBAC: Master, Admin, Product Manager, Order Manager, Support, Warehouse and Delivery roles.' },
+        { group: 'Administration', name: 'Reports & Analytics', description: 'Sales, subscriber and banner performance reports with views, clicks, CTR and open rate metrics.' }
+
       ],
       features: [
         'Multi-category shopping: Men, Women, Kids, Accessories',
