@@ -596,18 +596,30 @@ const ProjectDetails = () => {
         {/* Admin Console Modules */}
         {project.adminModules && (
           <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-            <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
+            <h2 className="text-2xl font-bold text-foreground mb-2 flex items-center">
               <Layers className="mr-3 h-6 w-6 text-primary" />
               Admin Console — What It Manages
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {project.adminModules.map((mod) => (
-                <div
-                  key={mod.name}
-                  className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-xl"
-                >
-                  <h3 className="text-lg font-bold text-foreground mb-2">{mod.name}</h3>
-                  <p className="text-muted-foreground text-sm">{mod.description}</p>
+            <p className="text-muted-foreground mb-8">Grouped by area of responsibility.</p>
+            <div className="space-y-8">
+              {groupItems(project.adminModules).map(([group, mods]) => (
+                <div key={group}>
+                  <div className="flex items-center gap-3 mb-4">
+                    <h3 className="text-sm font-semibold uppercase tracking-wider text-primary">{group}</h3>
+                    <span className="text-xs text-muted-foreground">{mods.length}</span>
+                    <div className="flex-1 h-px bg-border/60" />
+                  </div>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {mods.map((mod) => (
+                      <div
+                        key={mod.name}
+                        className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-xl"
+                      >
+                        <h4 className="text-lg font-bold text-foreground mb-2">{mod.name}</h4>
+                        <p className="text-muted-foreground text-sm">{mod.description}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
@@ -617,23 +629,36 @@ const ProjectDetails = () => {
         {/* Hotel Team Roles */}
         {project.teamRoles && (
           <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-            <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
+            <h2 className="text-2xl font-bold text-foreground mb-2 flex items-center">
               <Layers className="mr-3 h-6 w-6 text-primary" />
               Hotel Team — Staff Roles
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {project.teamRoles.map((role) => (
-                <div
-                  key={role.name}
-                  className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-xl"
-                >
-                  <h3 className="text-lg font-bold text-foreground mb-2">{role.name}</h3>
-                  <p className="text-muted-foreground text-sm">{role.description}</p>
+            <p className="text-muted-foreground mb-8">Each hotel manages its own team with scoped permissions.</p>
+            <div className="space-y-8">
+              {groupItems(project.teamRoles).map(([group, roles]) => (
+                <div key={group}>
+                  <div className="flex items-center gap-3 mb-4">
+                    <h3 className="text-sm font-semibold uppercase tracking-wider text-primary">{group}</h3>
+                    <span className="text-xs text-muted-foreground">{roles.length}</span>
+                    <div className="flex-1 h-px bg-border/60" />
+                  </div>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {roles.map((role) => (
+                      <div
+                        key={role.name}
+                        className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-xl"
+                      >
+                        <h4 className="text-lg font-bold text-foreground mb-2">{role.name}</h4>
+                        <p className="text-muted-foreground text-sm">{role.description}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         )}
+
 
 
         {/* Screenshots Gallery */}
