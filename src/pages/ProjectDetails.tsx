@@ -635,24 +635,15 @@ const ProjectDetails = () => {
         {project.gallery && (
           <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
             <h2 className="text-2xl font-bold text-foreground mb-6">Screenshots</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {project.gallery.map((shot) => (
-                <figure
-                  key={shot.url}
-                  className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300"
-                >
-                  <img
-                    src={shot.url}
-                    alt={`${project.title} — ${shot.caption}`}
-                    loading="lazy"
-                    className="w-full object-cover"
-                  />
-                  <figcaption className="p-4 text-sm text-muted-foreground">{shot.caption}</figcaption>
-                </figure>
-              ))}
-            </div>
+            <ThumbnailCarousel
+              slides={project.gallery.map((shot) => ({
+                url: shot.url,
+                caption: shot.caption,
+              }))}
+            />
           </div>
         )}
+
 
 
 
