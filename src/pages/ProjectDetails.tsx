@@ -35,8 +35,24 @@ import hbCover from '../assets/hotel-booking-cover.jpg'
 import ThumbnailCarousel from '@/components/ui/thumbnail-carousel'
 
 
+type GroupedItem = { name: string; description: string; group?: string };
+
+const groupItems = <T extends GroupedItem>(items: T[]): [string, T[]][] => {
+  const order: string[] = [];
+  const map = new Map<string, T[]>();
+  items.forEach((item) => {
+    const key = item.group ?? 'General';
+    if (!map.has(key)) {
+      map.set(key, []);
+      order.push(key);
+    }
+    map.get(key)!.push(item);
+  });
+  return order.map((key) => [key, map.get(key)!]);
+};
 
 const ProjectDetails = () => {
+
   const { projectId } = useParams();
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
