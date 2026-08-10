@@ -4,6 +4,8 @@ import { ExternalLink, Github, Code, Smartphone, Globe, Database, Zap, Star, Eye
 import techstoreimg from '../assets/techstore.png'
 import dhashbordIMG from '../assets/dhashbordpj.png'
 import clothesstoreimg from '../assets/clothes-store-tn.jpg'
+import hbHome from '../assets/hotel-booking/home-hero.png.asset.json'
+
 
 const Projects = () => {
   const navigate = useNavigate();
