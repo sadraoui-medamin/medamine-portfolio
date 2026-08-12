@@ -33,6 +33,17 @@ import hbStaffOverview from '../assets/hotel-booking/staff-overview.png.asset.js
 import hbSupport from '../assets/hotel-booking/support-disputes.png.asset.json'
 import hbCover from '../assets/hotel-booking-cover.jpg'
 import ThumbnailCarousel from '@/components/ui/thumbnail-carousel'
+import SectionTabs, { type SectionTab } from '@/components/ui/section-tabs'
+import ecHomeHero from '../assets/ecommerce/home-hero.jpg'
+import ecLandingFull from '../assets/ecommerce/landing-full.jpg'
+import ecProductDetails from '../assets/ecommerce/product-details.jpg'
+import ecCart from '../assets/ecommerce/cart.jpg'
+import ecContact from '../assets/ecommerce/contact.jpg'
+import ecAddProduct from '../assets/ecommerce/add-product.jpg'
+import ecProductList from '../assets/ecommerce/product-list.jpg'
+import ecOrders from '../assets/ecommerce/orders.jpg'
+import ecHomeBanners from '../assets/ecommerce/home-banners.jpg'
+import ecManageUsers from '../assets/ecommerce/manage-users.jpg'
 
 
 type GroupedItem = { name: string; description: string; group?: string };
@@ -317,6 +328,18 @@ const ProjectDetails = () => {
       live: '#',
       color: 'from-green-500 to-emerald-500',
       period: 'Personal Project',
+      gallery: [
+        { url: ecHomeHero, caption: 'TechStore home hero — featured collection banner with category navigation' },
+        { url: ecLandingFull, caption: 'Landing page — new arrivals, popular products and feature highlights' },
+        { url: ecProductDetails, caption: 'Product details — gallery, specs, rich description sections and similar products' },
+        { url: ecCart, caption: 'Cart list — quantities, subtotal, shipping fee and checkout' },
+        { url: ecContact, caption: 'Contact page — get in touch form with store details' },
+        { url: ecAddProduct, caption: 'Admin — add a product with images, pricing, category and description sections' },
+        { url: ecProductList, caption: 'Admin — product list with search, popularity and status filters' },
+        { url: ecOrders, caption: 'Admin — orders management with delivery status, payment and customer address' },
+        { url: ecHomeBanners, caption: 'Admin — home banners linked to products' },
+        { url: ecManageUsers, caption: 'Admin — manage users with ban / unban actions' },
+      ],
       features: [
         'Secure Stripe payment integration',
         'Product catalog with search and filtering',
@@ -432,6 +455,16 @@ const ProjectDetails = () => {
   const pageTitle = `${project.title} — Mohamed Amine Sadraoui`;
   const pageDescription = (project.description || '').slice(0, 155);
   const canonicalPath = `/project/${project.id}`;
+  const sectionTabs: SectionTab[] = [
+    { id: 'technologies', label: 'Technologies' },
+    { id: 'about', label: 'About This Project' },
+    ...(project.adminModules ? [{ id: 'admin-console', label: 'Admin Console' }] : []),
+    ...(project.teamRoles ? [{ id: 'team-roles', label: 'Staff Roles' }] : []),
+    ...(project.gallery ? [{ id: 'screenshots', label: 'Screenshots' }] : []),
+    ...(project.microservices ? [{ id: 'architecture', label: 'Architecture' }] : []),
+    { id: 'highlights', label: 'Features & Outcomes' },
+  ];
+
   const projectSchema = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
@@ -493,16 +526,16 @@ const ProjectDetails = () => {
       </nav>
 
       {/* Main Content */}
-      <main className="relative z-10 container mx-auto px-6 py-12">
+      <main className="relative z-10 container mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Hero Section */}
         <div className={`mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
             {/* Project Image */}
             <div className="relative group">
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-96 object-cover rounded-xl shadow-2xl"
+                className="w-full h-56 sm:h-80 lg:h-96 object-cover rounded-xl shadow-2xl"
               />
               <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 rounded-xl`}></div>
               <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60 rounded-xl"></div>
@@ -519,11 +552,11 @@ const ProjectDetails = () => {
                 </span>
               </div>
 
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
                 {project.title}
               </h1>
 
-              <p className="text-xl text-muted-foreground mb-6">
+              <p className="text-base sm:text-xl text-muted-foreground mb-6">
                 {project.description}
               </p>
 
@@ -540,7 +573,7 @@ const ProjectDetails = () => {
                 )}
               </div>
 
-              <div className="flex space-x-4">
+              <div className="flex flex-wrap gap-3">
                 <Button asChild className="group">
                   <a href={project.github} target="_blank" rel="noopener noreferrer">
                     <Github className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
@@ -582,9 +615,16 @@ const ProjectDetails = () => {
           </div>
         </div>
 
+        {/* Section navigation + content */}
+        <div className="grid lg:grid-cols-[220px_1fr] gap-8 lg:gap-12">
+          <div className="min-w-0 sticky top-[68px] z-30 -mx-4 px-4 py-2 bg-background/85 backdrop-blur-md lg:static lg:mx-0 lg:px-0 lg:bg-transparent lg:backdrop-blur-none lg:pt-2">
+            <SectionTabs sections={sectionTabs} />
+          </div>
+          <div className="min-w-0">
+
         {/* Technologies */}
-        <div className={`mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-          <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
+        <div id="technologies" className={`mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+          <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-6 flex items-center">
             <Zap className="mr-3 h-6 w-6 text-primary" />
             Technologies Used
           </h2>
@@ -602,17 +642,17 @@ const ProjectDetails = () => {
         </div>
 
         {/* Full Description */}
-        <div className={`mb-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-          <h2 className="text-2xl font-bold text-foreground mb-6">About This Project</h2>
-          <p className="text-muted-foreground leading-relaxed text-lg">
+        <div id="about" className={`mb-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+          <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-6">About This Project</h2>
+          <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
             {project.fullDescription}
           </p>
         </div>
 
         {/* Admin Console Modules */}
         {project.adminModules && (
-          <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-            <h2 className="text-2xl font-bold text-foreground mb-2 flex items-center">
+          <div id="admin-console" className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-2 flex items-center">
               <Layers className="mr-3 h-6 w-6 text-primary" />
               Admin Console — What It Manages
             </h2>
@@ -625,11 +665,11 @@ const ProjectDetails = () => {
                     <span className="text-xs text-muted-foreground">{mods.length}</span>
                     <div className="flex-1 h-px bg-border/60" />
                   </div>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
                     {mods.map((mod) => (
                       <div
                         key={mod.name}
-                        className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-xl"
+                        className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-4 sm:p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-xl"
                       >
                         <h4 className="text-lg font-bold text-foreground mb-2">{mod.name}</h4>
                         <p className="text-muted-foreground text-sm">{mod.description}</p>
@@ -644,8 +684,8 @@ const ProjectDetails = () => {
 
         {/* Hotel Team Roles */}
         {project.teamRoles && (
-          <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-            <h2 className="text-2xl font-bold text-foreground mb-2 flex items-center">
+          <div id="team-roles" className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-2 flex items-center">
               <Layers className="mr-3 h-6 w-6 text-primary" />
               Hotel Team — Staff Roles
             </h2>
@@ -658,11 +698,11 @@ const ProjectDetails = () => {
                     <span className="text-xs text-muted-foreground">{roles.length}</span>
                     <div className="flex-1 h-px bg-border/60" />
                   </div>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
                     {roles.map((role) => (
                       <div
                         key={role.name}
-                        className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-xl"
+                        className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-4 sm:p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-xl"
                       >
                         <h4 className="text-lg font-bold text-foreground mb-2">{role.name}</h4>
                         <p className="text-muted-foreground text-sm">{role.description}</p>
@@ -679,8 +719,8 @@ const ProjectDetails = () => {
 
         {/* Screenshots Gallery */}
         {project.gallery && (
-          <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-            <h2 className="text-2xl font-bold text-foreground mb-6">Screenshots</h2>
+          <div id="screenshots" className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-6">Screenshots</h2>
             <ThumbnailCarousel
               slides={project.gallery.map((shot) => ({
                 url: shot.url,
@@ -695,16 +735,16 @@ const ProjectDetails = () => {
 
         {/* Microservices Architecture - Only show for hotel-booking project */}
         {project.microservices && (
-          <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-            <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
+          <div id="architecture" className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-6 flex items-center">
               <Server className="mr-3 h-6 w-6 text-primary" />
               Microservices Architecture
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
               {project.microservices.map((service, index) => (
                 <div
                   key={service.name}
-                  className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 hover:border-primary/50 hover:scale-105 transition-all duration-300 hover:shadow-xl"
+                  className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-4 sm:p-6 hover:border-primary/50 hover:scale-105 transition-all duration-300 hover:shadow-xl"
                   style={{ transitionDelay: `${index * 0.05}s` }}
                 >
                   <div className="flex items-start space-x-3 mb-3">
@@ -731,7 +771,7 @@ const ProjectDetails = () => {
         )}
 
         {/* Features, Challenges, Outcomes Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div id="highlights" className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {/* Features */}
           <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
             <div className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 h-full hover:border-primary/50 hover:scale-105 transition-all duration-300 hover:shadow-xl">
@@ -786,13 +826,17 @@ const ProjectDetails = () => {
             </div>
           </div>
         </div>
+          </div>
+        </div>
+
+
 
         {/* CTA Section */}
         <div className={`mt-16 text-center transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-          <div className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-8">
+          <div className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 sm:p-8">
             <h3 className="text-2xl font-bold text-foreground mb-4">Interested in this project?</h3>
             <p className="text-muted-foreground mb-6">Check out the code or see it in action</p>
-            <div className="flex justify-center space-x-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button asChild size="lg" className="group">
                 <a href={project.github} target="_blank" rel="noopener noreferrer">
                   <Github className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
