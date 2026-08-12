@@ -813,3 +813,6 @@ All colors MUST be HSL.
     animation: fade-in 1s ease-out;
   }
 }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
