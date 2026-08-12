@@ -605,6 +605,13 @@ const ProjectDetails = () => {
           </div>
         </div>
 
+        {/* Section navigation + content */}
+        <div className="grid lg:grid-cols-[220px_1fr] gap-8 lg:gap-12">
+          <div className="lg:pt-2">
+            <SectionTabs sections={sectionTabs} />
+          </div>
+          <div className="min-w-0">
+
         {/* Technologies */}
         <div className={`mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
