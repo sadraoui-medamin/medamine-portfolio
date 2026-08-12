@@ -617,7 +617,7 @@ const ProjectDetails = () => {
 
         {/* Section navigation + content */}
         <div className="grid lg:grid-cols-[220px_1fr] gap-8 lg:gap-12">
-          <div className="lg:pt-2">
+          <div className="sticky top-[68px] z-30 -mx-4 px-4 py-2 bg-background/85 backdrop-blur-md lg:static lg:mx-0 lg:px-0 lg:bg-transparent lg:backdrop-blur-none lg:pt-2">
             <SectionTabs sections={sectionTabs} />
           </div>
           <div className="min-w-0">
