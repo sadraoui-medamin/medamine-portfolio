@@ -34,16 +34,16 @@ import hbSupport from '../assets/hotel-booking/support-disputes.png.asset.json'
 import hbCover from '../assets/hotel-booking-cover.jpg'
 import ThumbnailCarousel from '@/components/ui/thumbnail-carousel'
 import SectionTabs, { type SectionTab } from '@/components/ui/section-tabs'
-import ecHomeHero from '../assets/ecommerce/home-hero.png.asset.json'
-import ecLandingFull from '../assets/ecommerce/landing-full.webp.asset.json'
-import ecProductDetails from '../assets/ecommerce/product-details.webp.asset.json'
-import ecCart from '../assets/ecommerce/cart.png.asset.json'
-import ecContact from '../assets/ecommerce/contact.png.asset.json'
-import ecAddProduct from '../assets/ecommerce/add-product.png.asset.json'
-import ecProductList from '../assets/ecommerce/product-list.png.asset.json'
-import ecOrders from '../assets/ecommerce/orders.png.asset.json'
-import ecHomeBanners from '../assets/ecommerce/home-banners.png.asset.json'
-import ecManageUsers from '../assets/ecommerce/manage-users.png.asset.json'
+import ecHomeHero from '../assets/ecommerce/home-hero.jpg'
+import ecLandingFull from '../assets/ecommerce/landing-full.jpg'
+import ecProductDetails from '../assets/ecommerce/product-details.jpg'
+import ecCart from '../assets/ecommerce/cart.jpg'
+import ecContact from '../assets/ecommerce/contact.jpg'
+import ecAddProduct from '../assets/ecommerce/add-product.jpg'
+import ecProductList from '../assets/ecommerce/product-list.jpg'
+import ecOrders from '../assets/ecommerce/orders.jpg'
+import ecHomeBanners from '../assets/ecommerce/home-banners.jpg'
+import ecManageUsers from '../assets/ecommerce/manage-users.jpg'
 
 
 type GroupedItem = { name: string; description: string; group?: string };
@@ -329,16 +329,16 @@ const ProjectDetails = () => {
       color: 'from-green-500 to-emerald-500',
       period: 'Personal Project',
       gallery: [
-        { url: ecHomeHero.url, caption: 'TechStore home hero — featured collection banner with category navigation' },
-        { url: ecLandingFull.url, caption: 'Landing page — new arrivals, popular products and feature highlights' },
-        { url: ecProductDetails.url, caption: 'Product details — gallery, specs, rich description sections and similar products' },
-        { url: ecCart.url, caption: 'Cart list — quantities, subtotal, shipping fee and checkout' },
-        { url: ecContact.url, caption: 'Contact page — get in touch form with store details' },
-        { url: ecAddProduct.url, caption: 'Admin — add a product with images, pricing, category and description sections' },
-        { url: ecProductList.url, caption: 'Admin — product list with search, popularity and status filters' },
-        { url: ecOrders.url, caption: 'Admin — orders management with delivery status, payment and customer address' },
-        { url: ecHomeBanners.url, caption: 'Admin — home banners linked to products' },
-        { url: ecManageUsers.url, caption: 'Admin — manage users with ban / unban actions' },
+        { url: ecHomeHero, caption: 'TechStore home hero — featured collection banner with category navigation' },
+        { url: ecLandingFull, caption: 'Landing page — new arrivals, popular products and feature highlights' },
+        { url: ecProductDetails, caption: 'Product details — gallery, specs, rich description sections and similar products' },
+        { url: ecCart, caption: 'Cart list — quantities, subtotal, shipping fee and checkout' },
+        { url: ecContact, caption: 'Contact page — get in touch form with store details' },
+        { url: ecAddProduct, caption: 'Admin — add a product with images, pricing, category and description sections' },
+        { url: ecProductList, caption: 'Admin — product list with search, popularity and status filters' },
+        { url: ecOrders, caption: 'Admin — orders management with delivery status, payment and customer address' },
+        { url: ecHomeBanners, caption: 'Admin — home banners linked to products' },
+        { url: ecManageUsers, caption: 'Admin — manage users with ban / unban actions' },
       ],
       features: [
         'Secure Stripe payment integration',
