@@ -328,6 +328,18 @@ const ProjectDetails = () => {
       live: '#',
       color: 'from-green-500 to-emerald-500',
       period: 'Personal Project',
+      gallery: [
+        { url: ecHomeHero.url, caption: 'TechStore home hero — featured collection banner with category navigation' },
+        { url: ecLandingFull.url, caption: 'Landing page — new arrivals, popular products and feature highlights' },
+        { url: ecProductDetails.url, caption: 'Product details — gallery, specs, rich description sections and similar products' },
+        { url: ecCart.url, caption: 'Cart list — quantities, subtotal, shipping fee and checkout' },
+        { url: ecContact.url, caption: 'Contact page — get in touch form with store details' },
+        { url: ecAddProduct.url, caption: 'Admin — add a product with images, pricing, category and description sections' },
+        { url: ecProductList.url, caption: 'Admin — product list with search, popularity and status filters' },
+        { url: ecOrders.url, caption: 'Admin — orders management with delivery status, payment and customer address' },
+        { url: ecHomeBanners.url, caption: 'Admin — home banners linked to products' },
+        { url: ecManageUsers.url, caption: 'Admin — manage users with ban / unban actions' },
+      ],
       features: [
         'Secure Stripe payment integration',
         'Product catalog with search and filtering',
