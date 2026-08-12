@@ -809,6 +809,10 @@ const ProjectDetails = () => {
             </div>
           </div>
         </div>
+          </div>
+        </div>
+
+
 
         {/* CTA Section */}
         <div className={`mt-16 text-center transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
