@@ -33,6 +33,17 @@ import hbStaffOverview from '../assets/hotel-booking/staff-overview.png.asset.js
 import hbSupport from '../assets/hotel-booking/support-disputes.png.asset.json'
 import hbCover from '../assets/hotel-booking-cover.jpg'
 import ThumbnailCarousel from '@/components/ui/thumbnail-carousel'
+import SectionTabs, { type SectionTab } from '@/components/ui/section-tabs'
+import ecHomeHero from '../assets/ecommerce/home-hero.png.asset.json'
+import ecLandingFull from '../assets/ecommerce/landing-full.webp.asset.json'
+import ecProductDetails from '../assets/ecommerce/product-details.webp.asset.json'
+import ecCart from '../assets/ecommerce/cart.png.asset.json'
+import ecContact from '../assets/ecommerce/contact.png.asset.json'
+import ecAddProduct from '../assets/ecommerce/add-product.png.asset.json'
+import ecProductList from '../assets/ecommerce/product-list.png.asset.json'
+import ecOrders from '../assets/ecommerce/orders.png.asset.json'
+import ecHomeBanners from '../assets/ecommerce/home-banners.png.asset.json'
+import ecManageUsers from '../assets/ecommerce/manage-users.png.asset.json'
 
 
 type GroupedItem = { name: string; description: string; group?: string };
