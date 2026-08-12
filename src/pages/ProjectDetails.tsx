@@ -623,7 +623,7 @@ const ProjectDetails = () => {
           <div className="min-w-0">
 
         {/* Technologies */}
-        <div className={`mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+        <div id="technologies" className={`mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
             <Zap className="mr-3 h-6 w-6 text-primary" />
             Technologies Used
@@ -642,7 +642,7 @@ const ProjectDetails = () => {
         </div>
 
         {/* Full Description */}
-        <div className={`mb-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+        <div id="about" className={`mb-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           <h2 className="text-2xl font-bold text-foreground mb-6">About This Project</h2>
           <p className="text-muted-foreground leading-relaxed text-lg">
             {project.fullDescription}
@@ -651,7 +651,7 @@ const ProjectDetails = () => {
 
         {/* Admin Console Modules */}
         {project.adminModules && (
-          <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+          <div id="admin-console" className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
             <h2 className="text-2xl font-bold text-foreground mb-2 flex items-center">
               <Layers className="mr-3 h-6 w-6 text-primary" />
               Admin Console — What It Manages
@@ -684,7 +684,7 @@ const ProjectDetails = () => {
 
         {/* Hotel Team Roles */}
         {project.teamRoles && (
-          <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+          <div id="team-roles" className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
             <h2 className="text-2xl font-bold text-foreground mb-2 flex items-center">
               <Layers className="mr-3 h-6 w-6 text-primary" />
               Hotel Team — Staff Roles
@@ -719,7 +719,7 @@ const ProjectDetails = () => {
 
         {/* Screenshots Gallery */}
         {project.gallery && (
-          <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+          <div id="screenshots" className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
             <h2 className="text-2xl font-bold text-foreground mb-6">Screenshots</h2>
             <ThumbnailCarousel
               slides={project.gallery.map((shot) => ({
@@ -735,7 +735,7 @@ const ProjectDetails = () => {
 
         {/* Microservices Architecture - Only show for hotel-booking project */}
         {project.microservices && (
-          <div className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+          <div id="architecture" className={`mb-12 transition-all duration-1000 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
             <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
               <Server className="mr-3 h-6 w-6 text-primary" />
               Microservices Architecture
@@ -771,7 +771,7 @@ const ProjectDetails = () => {
         )}
 
         {/* Features, Challenges, Outcomes Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div id="highlights" className="grid md:grid-cols-3 gap-8">
           {/* Features */}
           <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
             <div className="bg-card/40 backdrop-blur-md border border-border/50 rounded-xl p-6 h-full hover:border-primary/50 hover:scale-105 transition-all duration-300 hover:shadow-xl">
