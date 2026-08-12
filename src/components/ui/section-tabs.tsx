@@ -36,7 +36,7 @@ const SectionTabs = ({ sections }: SectionTabsProps) => {
   return (
     <nav aria-label="Section navigation" className="lg:sticky lg:top-24">
       {/* Mobile: horizontal scroll */}
-      <div className="lg:hidden -mx-4 px-4 overflow-x-auto no-scrollbar">
+      <div className="lg:hidden overflow-x-auto no-scrollbar">
         <div className="flex gap-2 w-max pb-1">
           {sections.map((s) => (
             <button
