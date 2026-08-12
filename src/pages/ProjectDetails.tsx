@@ -455,6 +455,16 @@ const ProjectDetails = () => {
   const pageTitle = `${project.title} — Mohamed Amine Sadraoui`;
   const pageDescription = (project.description || '').slice(0, 155);
   const canonicalPath = `/project/${project.id}`;
+  const sectionTabs: SectionTab[] = [
+    { id: 'technologies', label: 'Technologies' },
+    { id: 'about', label: 'About This Project' },
+    ...(project.adminModules ? [{ id: 'admin-console', label: 'Admin Console' }] : []),
+    ...(project.teamRoles ? [{ id: 'team-roles', label: 'Staff Roles' }] : []),
+    ...(project.gallery ? [{ id: 'screenshots', label: 'Screenshots' }] : []),
+    ...(project.microservices ? [{ id: 'architecture', label: 'Architecture' }] : []),
+    { id: 'highlights', label: 'Features & Outcomes' },
+  ];
+
   const projectSchema = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
