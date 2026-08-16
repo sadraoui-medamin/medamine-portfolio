@@ -23,11 +23,6 @@ const faqs: FaqItem[] = [
     answer:
       'Yes, I am open to freelance projects, contract work and full-time roles. You can reach me through the contact form on this site or by email at medaminsadraou111i@gmail.com.',
   },
-  {
-    question: 'Where are you located and do you work remotely?',
-    answer:
-      'I am based in Ariana, Soukra — Tunisia, and I work remotely with clients and teams worldwide.',
-  },
 ];
 
 const FAQ = () => {
